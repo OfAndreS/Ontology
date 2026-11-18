@@ -1,0 +1,266 @@
+@prefix : <https://ontologia.governanca.credito/myont#> .
+@prefix myont: <https://ontologia.governanca.credito/myont#> .
+@prefix schema: <https://schema.org/> .
+@prefix dpv: <https://w3id.org/dpv#> .
+@prefix fibo: <https://spec.edmcouncil.org/fibo/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://ontologia.governanca.credito/myont> rdf:type owl:Ontology ;
+    rdfs:label "MyOnt - Ontologia de Governança de Variáveis de Crédito (PoC)"@pt-br ;
+    rdfs:comment "Prova de conceito focada no domínio de crédito, unificando variáveis na classe central myont:Variavel, separando natureza sensível (VariavelSensivel) do papel relacional de proxy (atuaComoProxyDe -> VariavelProxy), e integrando FIBO, Schema.org e W3C DPV como ontologias complementares."@pt-br .
+
+#################################################################
+#    1. CLASSES (Estrutura Conceitual)
+#################################################################
+
+### Classe central unificada de todas as variáveis do domínio de crédito
+myont:Variavel rdf:type owl:Class ;
+    rdfs:subClassOf dpv:PersonalData ;
+    rdfs:label "Variável de Crédito"@pt-br ;
+    rdfs:comment "Classe central unificada que representa qualquer atributo ou feature no domínio de governança de crédito (selecionável ou vetada). Todas as instâncias têm acesso às propriedades descritivas (xsd:string) para o relatório da V1."@pt-br .
+
+### Subclasse para dados sensíveis ou constitucionalmente protegidos
+### (Não é disjunta de VariavelProxy: uma variável pode ser ambas ao mesmo tempo)
+myont:VariavelSensivel rdf:type owl:Class ;
+    rdfs:subClassOf myont:Variavel ,
+                    dpv:SensitivePersonalData ;
+    rdfs:label "Variável Sensível ou Protegida"@pt-br ;
+    rdfs:comment "Atributo cuja natureza é juridicamente sensível (ex.: LGPD Art. 5º, II) ou protegida contra discriminação (ex.: CF Art. 3º, IV)."@pt-br .
+
+### Classe inferida para variáveis que atuam como proxy de outras variáveis
+### (Uma variável pode ser simultaneamente VariavelSensivel e VariavelProxy)
+myont:VariavelProxy rdf:type owl:Class ;
+    rdfs:subClassOf myont:Variavel ;
+    owl:equivalentClass [
+        rdf:type owl:Class ;
+        owl:intersectionOf (
+            myont:Variavel
+            [ rdf:type owl:Restriction ;
+              owl:onProperty myont:atuaComoProxyDe ;
+              owl:someValuesFrom myont:Variavel
+            ]
+        )
+    ] ;
+    rdfs:label "Variável Proxy"@pt-br ;
+    rdfs:comment "Classe inferida automaticamente para toda variável que possui ao menos uma relação atuaComoProxyDe apontando para outra variável."@pt-br .
+
+### Classes de apoio semântico (alinhadas ao W3C DPV)
+myont:BaseLegal rdf:type owl:Class ;
+    rdfs:subClassOf dpv:LegalBasis ;
+    rdfs:label "Base ou Justificativa Legal"@pt-br .
+
+myont:NivelDemandaGovernanca rdf:type owl:Class ;
+    rdfs:label "Nível de Demanda de Governança"@pt-br .
+
+
+#################################################################
+#    2. OBJECT PROPERTIES (Conexões entre Nós do Grafo)
+#################################################################
+
+myont:atuaComoProxyDe rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:Variavel ;
+    rdfs:label "atua como proxy de"@pt-br ;
+    rdfs:comment "Liga uma variável diretamente a outra variável do grafo (sensível ou não) cujas informações podem ser inferidas ou derivadas indiretamente."@pt-br .
+
+myont:temBaseLegal rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:BaseLegal ;
+    rdfs:label "tem base legal"@pt-br .
+
+myont:temNivelGovernanca rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:NivelDemandaGovernanca ;
+    rdfs:label "tem nível de governança"@pt-br .
+
+myont:mapeadaParaConceitoExterno rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:label "mapeada para conceito externo (Schema.org / FIBO / DPV)"@pt-br ;
+    rdfs:comment "Conecta a variável a conceitos padronizados da FIBO, Schema.org e DPV para embasar a origem e o significado da feature."@pt-br .
+
+
+#################################################################
+#    3. DATATYPE PROPERTIES (Textos do Advogado para Relatório V1)
+#################################################################
+
+myont:descricaoOrigem rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "1. Origem Sugerida (Texto)"@pt-br .
+
+myont:descricaoJustificativaLegal rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "2. Justificativa Legal (Texto)"@pt-br .
+
+myont:descricaoRiscoEtico rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "3. Possíveis Vieses e Riscos Éticos (Texto)"@pt-br .
+
+myont:descricaoDemandaGovernanca rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "4. Demanda de Governança (Texto)"@pt-br .
+
+myont:descricaoExplicabilidade rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "5. Explicabilidade Necessária (Texto)"@pt-br .
+
+myont:descricaoImplicacaoLegal rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "6. Implicações Legais (Texto)"@pt-br .
+
+myont:descricaoAtuacaoProxy rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "7. Atuação como Proxy (Texto)"@pt-br .
+
+
+#################################################################
+#    4. INDIVÍDUOS COMPARTILHADOS (Bases Legais e Níveis)
+#################################################################
+
+### Bases Legais (reutilizáveis por várias variáveis)
+myont:LGPD_Art7_X_ProtecaoCredito rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "LGPD Art. 7º, X - Proteção ao Crédito"@pt-br .
+
+myont:LGPD_Art7_V_ExecucaoContrato rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "LGPD Art. 7º, V - Execução de Contrato"@pt-br .
+
+myont:Lei_14181_2021_Superendividamento rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Lei 14.181/2021 (Art. 54-D) - Prevenção ao Superendividamento"@pt-br .
+
+myont:CodigoCivil_Garantias rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Código Civil (Arts. 1.419 a 1.510) - Garantias"@pt-br .
+
+myont:CF_Art3_IV_VedacaoDiscriminacao rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Constituição Federal Art. 3º, IV - Vedação à Discriminação"@pt-br .
+
+myont:CF_Art5_XV_LiberdadeLocomocao rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Constituição Federal Art. 5º, XV - Liberdade de Locomoção"@pt-br .
+
+### Níveis de Governança
+myont:Governanca_Maxima rdf:type owl:NamedIndividual , myont:NivelDemandaGovernanca ;
+    rdfs:label "Demanda de Governança Máxima"@pt-br .
+
+myont:Governanca_Alta rdf:type owl:NamedIndividual , myont:NivelDemandaGovernanca ;
+    rdfs:label "Demanda de Governança Alta"@pt-br .
+
+myont:Governanca_Media rdf:type owl:NamedIndividual , myont:NivelDemandaGovernanca ;
+    rdfs:label "Demanda de Governança Média"@pt-br .
+
+myont:Governanca_Veto rdf:type owl:NamedIndividual , myont:NivelDemandaGovernanca ;
+    rdfs:label "Veto para Tomada de Decisão"@pt-br .
+
+
+#################################################################
+#    5. INSTÂNCIAS DE VARIÁVEIS (Exemplos do Anexo 4 e Complementos)
+#################################################################
+
+### Exemplo 1: Income (Renda)
+myont:Income rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Income (Renda)"@pt-br ;
+    # Ligações de Objeto (Grafo)
+    myont:mapeadaParaConceitoExterno fibo:MonetaryAmount , schema:MonetaryAmount ;
+    myont:temBaseLegal myont:LGPD_Art7_X_ProtecaoCredito ,
+                       myont:LGPD_Art7_V_ExecucaoContrato ,
+                       myont:Lei_14181_2021_Superendividamento ;
+    myont:atuaComoProxyDe myont:SocialClass ;
+    myont:temNivelGovernanca myont:Governanca_Alta ;
+    # Textos Literais do Advogado (Para o Relatório da V1)
+    myont:descricaoOrigem "Titular / SCR / Bureaus" ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7, X), Execução de Contrato e Lei 14.181/2021 (Art. 54-D)" ;
+    myont:descricaoRiscoEtico "Ignorar renda informal ou sazonal pode gerar viés de exclusão contra autônomos." ;
+    myont:descricaoDemandaGovernanca "Alta: Monitoramento de consistência entre renda declarada e renda movimentada (Open Finance)." ;
+    myont:descricaoExplicabilidade "Alta: Fundamental para justificar o cálculo de comprometimento de renda." ;
+    myont:descricaoImplicacaoLegal "Base para defesas em casos de superendividamento." ;
+    myont:descricaoAtuacaoProxy "Proxy com viéses de exclusão de renda não comprovada formalmente, podendo excluir população de baixa renda mesmo com capacidade de pagamento real, mas não documental." .
+
+
+### Exemplo 2: Social class (Classe Social)
+myont:SocialClass rdf:type owl:NamedIndividual , myont:Variavel , myont:VariavelSensivel ;
+    rdfs:label "Social class (Classe Social)"@pt-br ;
+    # Ligações de Objeto (Grafo)
+    myont:temBaseLegal myont:LGPD_Art7_X_ProtecaoCredito ,
+                       myont:CF_Art3_IV_VedacaoDiscriminacao ;
+    myont:temNivelGovernanca myont:Governanca_Media ;
+    # Textos Literais do Advogado (Para o Relatório da V1)
+    myont:descricaoOrigem "Titular / Institucional (Cadastro)" ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7, X)" ;
+    myont:descricaoRiscoEtico "Viés de classe explícito; reforço de estratificação social." ;
+    myont:descricaoDemandaGovernanca "Média: Uso deve ser residual, focado na capacidade de pagamento, não no rótulo social." ;
+    myont:descricaoExplicabilidade "Baixa: Difícil justificar o uso direto do rótulo \"classe\" em negativa de crédito." ;
+    myont:descricaoImplicacaoLegal "Discriminação econômica direta." ;
+    myont:descricaoAtuacaoProxy "O uso explicítico é discriminatório e atua como proxy para todas as proteções constitucionais de igualdade." .
+
+
+### Exemplo 3: Home ownership (Posse de Imóvel)
+myont:HomeOwnership rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Home ownership (Posse de Imóvel)"@pt-br ;
+    # Ligações de Objeto (Grafo)
+    myont:mapeadaParaConceitoExterno schema:Residence ;
+    myont:temBaseLegal myont:LGPD_Art7_X_ProtecaoCredito ,
+                       myont:CodigoCivil_Garantias ;
+    myont:atuaComoProxyDe myont:Ethnicity ,
+                          myont:SocialClass ;
+    myont:temNivelGovernanca myont:Governanca_Media ;
+    # Textos Literais do Advogado (Para o Relatório da V1)
+    myont:descricaoOrigem "Titular / Cartórios" ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7, X) e Garantias, Código Civil (Arts. 1.419 a 1.510)" ;
+    myont:descricaoRiscoEtico "Penalização de quem paga aluguel ou vive em áreas informais (sem escritura)" ;
+    myont:descricaoDemandaGovernanca "Média: Verificar se a posse do imóvel tem correlação real com adimplência no modelo." ;
+    myont:descricaoExplicabilidade "Média: Demonstrar nexo entre estabilidade de moradia e risco." ;
+    myont:descricaoImplicacaoLegal "Potencial discriminação indireta baseada em CEP ou regularização fundiária." ;
+    myont:descricaoAtuacaoProxy "Proxy de raça e classe, considerando populações marginalizadas que vivem em áreas informais ou de aluguel. Exclusão de grupos raciais ou de periferias." .
+
+
+### Exemplo 4: Ethnicity (Etnia / Raça)
+### Coexistência na prática: É Variavel + VariavelSensivel, e também atua como proxy de GeographicalLocations
+myont:Ethnicity rdf:type owl:NamedIndividual , myont:Variavel , myont:VariavelSensivel ;
+    rdfs:label "Ethnicity (Etnia / Raça)"@pt-br ;
+    # Ligações de Objeto (Grafo)
+    myont:mapeadaParaConceitoExterno dpv:EthnicOrigin ;
+    myont:temBaseLegal myont:CF_Art3_IV_VedacaoDiscriminacao ;
+    myont:atuaComoProxyDe myont:GeographicalLocations ;
+    myont:temNivelGovernanca myont:Governanca_Veto ;
+    # Textos Literais do Advogado (Para o Relatório da V1)
+    myont:descricaoOrigem "Institucional (Cadastro)" ;
+    myont:descricaoJustificativaLegal "Cumprimento de Obrigação Legal (Identificação do cliente). Proibido utilizar como definidor de decisão (Constituição Federal, art. 3º, IV)" ;
+    myont:descricaoRiscoEtico "Discriminação racial. Etnia/Raça são dados sensíveis (Art. 5º da LGPD)" ;
+    myont:descricaoDemandaGovernanca "Baixa: Vetado para tomada de decisão." ;
+    myont:descricaoExplicabilidade "N/A: Tal dado não deve ser usado para decisão de crédito." ;
+    myont:descricaoImplicacaoLegal "Violação direta da Constituição e do uso de dados sensíveis, conforme a LGPD." ;
+    myont:descricaoAtuacaoProxy "Proxy de local de residência, penalizando áreas periféricas. Pode acabar penalizando indiretamente pessoas negras." .
+
+
+### Exemplo 5: Geographical locations (Localização Geográfica / CEP / GPS)
+myont:GeographicalLocations rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Geographical locations (Localização Geográfica)"@pt-br ;
+    # Ligações de Objeto (Grafo)
+    myont:mapeadaParaConceitoExterno schema:GeoCoordinates , schema:PostalAddress ;
+    myont:temBaseLegal myont:CF_Art5_XV_LiberdadeLocomocao ;
+    myont:atuaComoProxyDe myont:Ethnicity ,
+                          myont:SocialClass ;
+    myont:temNivelGovernanca myont:Governanca_Maxima ;
+    # Textos Literais do Advogado (Para o Relatório da V1)
+    myont:descricaoOrigem "Tracking do GPS pelo App do Banco" ;
+    myont:descricaoJustificativaLegal "CF (Art. 5º, XV)" ;
+    myont:descricaoRiscoEtico "Rastrear a rotina física do cidadão. Pune com taxas de juros maiores quem dorme ou trabalha em áreas de risco, periferias ou favelas (Redlining Geográfico)." ;
+    myont:descricaoDemandaGovernanca "Máxima: Segregação de Dados (Ring-Fencing). O GPS coletado pelo App do banco só pode ser usado momentaneamente pelo Motor Antifraude, nunca guardado para treinar modelos IRB de risco de crédito." ;
+    myont:descricaoExplicabilidade "Impossível: Injustificável negar crédito baseado nos locais lícitos que a pessoa frequenta." ;
+    myont:descricaoImplicacaoLegal "Infração ao Princípio da Não-Discriminação (LGPD) e passível de graves Danos Morais Coletivos por discriminação territorial." ;
+    myont:descricaoAtuacaoProxy "O território urbano brasileiro é profundamente segregado; o CEP/GPS é o proxy número 1 para Raça e Classe Social." .
+
+
+### Exemplo 6: Orientação Sexual (Variável ainda fora do CSV inicial, mas já apta aos mesmos campos de descrição)
+myont:OrientacaoSexual rdf:type owl:NamedIndividual , myont:Variavel , myont:VariavelSensivel ;
+    rdfs:label "Orientação Sexual"@pt-br ;
+    myont:mapeadaParaConceitoExterno dpv:SexualPreference ;
+    myont:temBaseLegal myont:CF_Art3_IV_VedacaoDiscriminacao ;
+    myont:temNivelGovernanca myont:Governanca_Veto .

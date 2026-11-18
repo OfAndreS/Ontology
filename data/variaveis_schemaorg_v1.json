@@ -1,0 +1,1136 @@
+[
+  {
+    "id": "Income",
+    "uri": "https://ontologia.governanca.credito/myont#Income",
+    "nome": "Income",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "LGPD_Art7_V_ExecucaoContrato",
+      "Lei_14181_2021_Superendividamento"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:MonetaryAmount",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:baseSalary",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Income",
+    "origem": "Titular / SCR / Bureaus",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7, X), Execução de Contrato e Lei 14.181/2021 (Art. 54-D)",
+    "risco_etico": "Ignorar renda informal ou sazonal pode gerar viés de exclusão contra autônomos.",
+    "demanda_governanca": "Alta: Monitoramento de consistência entre renda declarada e renda movimentada (Open Finance).",
+    "explicabilidade": "Alta: Fundamental para justificar o cálculo de comprometimento de renda.",
+    "implicacao_legal": "Base para defesas em casos de superendividamento.",
+    "atuacao_proxy": "Proxy com viéses de exclusão de renda não comprovada formalmente, podendo excluir população de baixa renda mesmo com capacidade de pagamento real, mas não documental."
+  },
+  {
+    "id": "FamilyIncome",
+    "uri": "https://ontologia.governanca.credito/myont#FamilyIncome",
+    "nome": "Family income",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "LGPD_Art7_V_ExecucaoContrato",
+      "Lei_14181_2021_Superendividamento"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:MonetaryAmount",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Family income",
+    "origem": "Titular / Parceiro / Open Finance",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7, X), Execução de Contrato, Lei 14.181/2021 (Art. 54-D)",
+    "risco_etico": "Reforço de desigualdade por penalizar rendas variáveis/informais,; elitismo.",
+    "demanda_governanca": "Alta: Verificar comprovação documental para evitar fraude e gaantir precisão na capacidade de pagamento.",
+    "explicabilidade": "Alta: O cliente deve entender claramente como sua renda impacta o limite aprovado.",
+    "implicacao_legal": "Risco de exclusão econômica injustificada se a renda informal não for considerada.",
+    "atuacao_proxy": ""
+  },
+  {
+    "id": "ParentsIncome",
+    "uri": "https://ontologia.governanca.credito/myont#ParentsIncome",
+    "nome": "Parents’ income",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Baixa",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "CodigoCivil_Geral"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:MonetaryAmount",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:parent",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Parents’ income",
+    "origem": "Titular / Parceiro / Bureaus",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7, X) e Código Civil (Fiança, Aval)",
+    "risco_etico": "Baixa mobilidade social; favorecimento de herdeiros.",
+    "demanda_governanca": "Baixa: Apenas relevante se os pais forem garantidores solidários.",
+    "explicabilidade": "Baixa: Irrelevante para o risco do titular, salvo garantia.",
+    "implicacao_legal": "Reforço de desigualdade intergeracional.",
+    "atuacao_proxy": ""
+  },
+  {
+    "id": "Wealth",
+    "uri": "https://ontologia.governanca.credito/myont#Wealth",
+    "nome": "Wealth",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Media",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "CodigoCivil_Garantias"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:netWorth",
+        "rel": "equivalente"
+      },
+      {
+        "curie": "schema:MonetaryAmount",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Wealth",
+    "origem": "Titular",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7, X) e Garantias - Código Civil (Art. 391)",
+    "risco_etico": "Favorecimento de classes alta; Viés de acumulação histórica",
+    "demanda_governanca": "Média: Validação de liquidez dos ativos declarados.",
+    "explicabilidade": "Média: Explicar como ativos entram como redutores de risco.",
+    "implicacao_legal": "Reforço de desiguldades patrimoniais estruturais.",
+    "atuacao_proxy": "Reforço de determinadas desigualdades, principalmente para quem tem renda, mas não possui ativos acumulados."
+  },
+  {
+    "id": "TotalFinancialAssets",
+    "uri": "https://ontologia.governanca.credito/myont#TotalFinancialAssets",
+    "nome": "Total financial assets",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:netWorth",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:MonetaryAmount",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Total financial assets",
+    "origem": "Institucional / Open Finance",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7º, X)",
+    "risco_etico": "Favorecimento de clientes de alta renda.",
+    "demanda_governanca": "Alta: Validação de liquidez dos ativos para recuperação de crédito.",
+    "explicabilidade": "Média: Ativos como mitigadores de risco.",
+    "implicacao_legal": "",
+    "atuacao_proxy": ""
+  },
+  {
+    "id": "HomeOwnership",
+    "uri": "https://ontologia.governanca.credito/myont#HomeOwnership",
+    "nome": "Home ownership",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Media",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "CodigoCivil_Garantias"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:Residence",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:homeLocation",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Home ownership",
+    "origem": "Titular / Cartórios",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7, X) e Garantias, Código Civil (Arts. 1.419 a 1.510)",
+    "risco_etico": "Penalização de quem paga aluguel ou vive em áreas informais (sem escritura)",
+    "demanda_governanca": "Média: Verificar se a posse do imóvel tem correlação real com adimplência no modelo.",
+    "explicabilidade": "Média: Demonstrar nexo entre estabilidade de moradia e risco.",
+    "implicacao_legal": "Potencial discriminação indireta baseada em CEP ou regularização fundiária.",
+    "atuacao_proxy": "Proxy de raça e classe, considerando populações marginalizadas que vivem em áreas informais ou de aluguel. Exclusão de grupos raciais ou de periferias."
+  },
+  {
+    "id": "Occupation",
+    "uri": "https://ontologia.governanca.credito/myont#Occupation",
+    "nome": "Occupation",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "Res_CMN_4966_2021"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:Occupation",
+        "rel": "equivalente"
+      },
+      {
+        "curie": "schema:hasOccupation",
+        "rel": "equivalente"
+      }
+    ],
+    "proxy_de": [
+      "Gender"
+    ],
+    "derivada_de": [],
+    "variavel": "Occupation",
+    "origem": "Titular",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7, X) e Res. CMN 4.966/2021 (Art. 51)",
+    "risco_etico": "Discriminação de profissões estigmatizadas ou informais.",
+    "demanda_governanca": "Alta: Monitorar se certas profissões estão sendo bloqueadas indevidamente.",
+    "explicabilidade": "Alta: Cliente deve entender como a estabilidade da profissão afeta o risco.",
+    "implicacao_legal": "Risco de discriminação laboral.",
+    "atuacao_proxy": "Proxy de gênero e classe, considerando que determinadas profissões podem estar mais relacionadas a determinado gênro ou raça, assim como à desigualdades estruturais de classe."
+  },
+  {
+    "id": "EmploymentStatus",
+    "uri": "https://ontologia.governanca.credito/myont#EmploymentStatus",
+    "nome": "Employment status",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "Res_CMN_4966_2021"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:employmentType",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:EmployeeRole",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [
+      "Gender"
+    ],
+    "derivada_de": [],
+    "variavel": "Employment status",
+    "origem": "Titular / Institucional (Cadastro)",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7, X) e Res. CMN 4.966/2021 (Art. 51)",
+    "risco_etico": "Penalização de desempregados ou autônomos momentâneos.",
+    "demanda_governanca": "Alta: Considerar a volatilidade da renda, não apenas o vínculo formal.",
+    "explicabilidade": "Alta: Justificar o peso da \"estabilidade\" no score.",
+    "implicacao_legal": "Exclusão de trabalhadores da economia gig (uberização).",
+    "atuacao_proxy": "Proxy de gênero e classe, considerando que determinadas profissões podem estar mais relacionadas a determinado gênro ou raça, assim como à desigualdades estruturais de classe."
+  },
+  {
+    "id": "LengthOfEmployment",
+    "uri": "https://ontologia.governanca.credito/myont#LengthOfEmployment",
+    "nome": "Length of employment",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Media",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "Res_CMN_4966_2021"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:monthsOfExperience",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [
+      "Age",
+      "PhysicalHealthStatus",
+      "Gender"
+    ],
+    "derivada_de": [],
+    "variavel": "Length of employment",
+    "origem": "Titular / Institucional (Cadastro)",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7, X) e Res. CMN 4.966/2021 (Consistência da capacidade financeira)",
+    "risco_etico": "Viés contra jovens ou profissionais em transição de carreira frequente.",
+    "demanda_governanca": "Média: Avaliar estabilidade vs. empregabilidade.",
+    "explicabilidade": "Média: Pode possuir correlação com economias diretas do cliente, incluindo fluxo de caixa.",
+    "implicacao_legal": "Pode afetar desproporcionalmente gerações mais novas.",
+    "atuacao_proxy": "Proxy de idade, saúde e gênero por penalizar jovens, pausas na carreira por motivos de saúde ou de maternidade."
+  },
+  {
+    "id": "Education",
+    "uri": "https://ontologia.governanca.credito/myont#Education",
+    "nome": "Education",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Media",
+    "bases_legais": [
+      "LGPD_Art7_IX_InteresseLegitimo",
+      "Res_CMN_4966_2021"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:educationalLevel",
+        "rel": "equivalente"
+      },
+      {
+        "curie": "schema:EducationalOccupationalCredential",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:alumniOf",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [
+      "Income"
+    ],
+    "derivada_de": [],
+    "variavel": "Education",
+    "origem": "Titular / Parceiro / Institucional (Cadastro)",
+    "justificativa_legal": "Interesse Legítimo (com cautela) e Res. CMN 4.966/2021",
+    "risco_etico": "Alto Risco: Atuar como proxy de renda ou classe social; elitismo acadêmico",
+    "demanda_governanca": "Média: Monitorar estritamente para garantir que não substitua a análise de renda real",
+    "explicabilidade": "Média: Nexo entre formação e empregabilidade futura.",
+    "implicacao_legal": "Reforço de desigualdades de acesso à educação; potencial discriminação indireta.",
+    "atuacao_proxy": "Proxy de raça e de renda graças ao acesso desigual à educação por pessoas PPI ou de baixa renda."
+  },
+  {
+    "id": "NumberOfChildrenDependents",
+    "uri": "https://ontologia.governanca.credito/myont#NumberOfChildrenDependents",
+    "nome": "Number of children/dependents",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Media",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "Lei_14181_2021_Superendividamento"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:children",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Number of children/dependents",
+    "origem": "Titular",
+    "justificativa_legal": "Proteção ao Crédito (Cálculo de renda residual) e Lei 14.181/2021",
+    "risco_etico": "Penalização de famílias numerosas; potencial viés contra mulheres (maternidade).",
+    "demanda_governanca": "Média: Uso estrito para cálculo de renda disponível (residual).",
+    "explicabilidade": "Alta: Explicar impacto no comprometimento da renda.",
+    "implicacao_legal": "Risco de discriminação familiar ou de gênero (indireta).",
+    "atuacao_proxy": "Proxy de religião ou culura, considerando que certas religiões ou culturas tradicionais podem se relacionar diretamente com a organização e padrões familiares."
+  },
+  {
+    "id": "Age",
+    "uri": "https://ontologia.governanca.credito/myont#Age",
+    "nome": "Age",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Media",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "Res_CMN_4966_2021",
+      "CodigoCivil_Geral"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:birthDate",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [
+      "PhysicalHealthStatus"
+    ],
+    "derivada_de": [],
+    "variavel": "Age",
+    "origem": "Institucional (Cadastro)",
+    "justificativa_legal": "Código Civil (Arts. 3º e 4º sobre capacidade civil), Proteção ao Crédito (Art. 7, X) e Res. CMN 4.966/2021 (expectativa de vida e provisão da operação)",
+    "risco_etico": "Discriminação contra idosos (risco de saúde ou de vida) ou de jovens (falta de histórico)",
+    "demanda_governanca": "Média: Validar curvas de risco para não penalizar indevidamente faixas etárias específicas.",
+    "explicabilidade": "Alta: Explicar restrições baseadas em expectativa de vida, como a inviabilidade de empréstimos a serem pagos em longos períodos. Falta de movimentação/histórico financeiro (por idade)",
+    "implicacao_legal": "Discriminação etária (Estatuto do Idoso); vedação de discriminação abusiva.",
+    "atuacao_proxy": "Proxy de etarismo e classificador de saúde. Pode ser utilizado como uma negativa não declarada relacionada à saúde."
+  },
+  {
+    "id": "Gender",
+    "uri": "https://ontologia.governanca.credito/myont#Gender",
+    "nome": "Gender",
+    "sensivel": true,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Baixa",
+    "bases_legais": [
+      "LGPD_Art7_II_ObrigacaoLegal",
+      "CF_Art5_I_IgualdadeGenero"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:gender",
+        "rel": "equivalente"
+      },
+      {
+        "curie": "schema:GenderType",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [
+      "Income"
+    ],
+    "derivada_de": [],
+    "variavel": "Gender",
+    "origem": "Institucional (Cadastro)",
+    "justificativa_legal": "Cumprimento de Obrigação Legal (Identificação do cliente). Não deve ser utilizado como fato para distinção (Constituição Federal, Art. 5º, I). Somente para ações afirmativas.",
+    "risco_etico": "Discriminação de gênero; Aplicação de padrões de taxas distintos a depender do gênero. Apesar de a LGPD não classificar como dado sensível (por ser um dado público), é um dado que carrega uma vulnerabilidade implícita.",
+    "demanda_governanca": "Baixa: Uso improvável para decisão. Não recomendado.",
+    "explicabilidade": "N/A: Uso apenas regulatório e que não deve ser incluído para a tomada de decisão.",
+    "implicacao_legal": "Discriminação de gênero direta. Proibido utilizar como fato de decisão de crédito.",
+    "atuacao_proxy": "Proxy de renda se associado à estátistica de mulheres receberem menos e penalizar mulheres indevidamente."
+  },
+  {
+    "id": "MaritalStatus",
+    "uri": "https://ontologia.governanca.credito/myont#MaritalStatus",
+    "nome": "Marital status",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Baixa",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "CodigoCivil_Geral"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:spouse",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Marital status",
+    "origem": "Institucional (Cadastro)",
+    "justificativa_legal": "Proteção ao Crédito (Necessário verificar regime de bens) e Código Civil (art. 1.647)",
+    "risco_etico": "Possível viés contra determinados estados civis com base em garantias e patrimônio (solteiros, divorciados) e correlação com estabilidade.",
+    "demanda_governanca": "Baixa: É um dado relevante para garantias e composição de renda.",
+    "explicabilidade": "Média: Relevância apenas para informações sobre composição de renda e de garantias.",
+    "implicacao_legal": "Possível discriminação com base em status familiar.",
+    "atuacao_proxy": "Pode afetar pessoas solteiras e divorciadas a depender de como a variável é utilizada."
+  },
+  {
+    "id": "Nationality",
+    "uri": "https://ontologia.governanca.credito/myont#Nationality",
+    "nome": "Nationality / Foreign Worker Status (Nacionalidade)",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art7_II_ObrigacaoLegal"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:nationality",
+        "rel": "equivalente"
+      }
+    ],
+    "proxy_de": [
+      "GeographicalLocations"
+    ],
+    "derivada_de": [],
+    "variavel": "Nationality / Foreign Worker Status (Nacionalidade)",
+    "origem": "Institucional (Cadastro)/ Documentos",
+    "justificativa_legal": "LGPD: Cumprimento de Obrigação Legal.",
+    "risco_etico": "Xenofobia. Dificuldade de modelar histórico para imigrantes ou refugiados recém-chegados, gerando exclusão sistêmica do sistema financeiro.",
+    "demanda_governanca": "Alta: Garantir que o modelo não bloqueie ou cobre taxas maiores de clientes apenas por serem estrangeiros residentes.",
+    "explicabilidade": "Média: A recusa deve ser explicada pela \"falta de histórico local de crédito\" e não pela origem do indivíduo.",
+    "implicacao_legal": "Violação do Art. 5º da CF, que garante direitos iguais a brasileiros e estrangeiros residentes no país.",
+    "atuacao_proxy": "Proxy de raça/etnia e origem geográfica."
+  },
+  {
+    "id": "AccountBalance",
+    "uri": "https://ontologia.governanca.credito/myont#AccountBalance",
+    "nome": "Account balance",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "LGPD_Art7_V_ExecucaoContrato"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:BankAccount",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:MonetaryAmount",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Account balance",
+    "origem": "Institucional (Interna)",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7, X) e Execução de Contrato",
+    "risco_etico": "Exclusão de quem movimenta dinheiro em espécie ou outros bancos (se não houver Open Finance).",
+    "demanda_governanca": "Alta: Monitorar volatilidade do saldo.",
+    "explicabilidade": "Alta: Correlação direta com capacidade de pagamento imediata.",
+    "implicacao_legal": "Falso negativo para clientes com recursos em outras instituições.",
+    "atuacao_proxy": ""
+  },
+  {
+    "id": "NumberOfBankAccounts",
+    "uri": "https://ontologia.governanca.credito/myont#NumberOfBankAccounts",
+    "nome": "Number of bank accounts",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Media",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "Res_CMN_4966_2021"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:BankAccount",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Number of bank accounts",
+    "origem": "SCR / Open Finance",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7º, X) e Res. CMN 4.966/2021",
+    "risco_etico": "Interpretação ambígua: pode sinalizar diversificação ou desorganização financeira.",
+    "demanda_governanca": "Média: Avaliar se múltiplas contas indicam risco ou apenas comportamento multicanal.",
+    "explicabilidade": "Baixa: Baixa relevância isolada.",
+    "implicacao_legal": "",
+    "atuacao_proxy": ""
+  },
+  {
+    "id": "CreditLimit",
+    "uri": "https://ontologia.governanca.credito/myont#CreditLimit",
+    "nome": "Credit limit",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:accountOverdraftLimit",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:MonetaryAmount",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Credit limit",
+    "origem": "Institucional",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7º, X)",
+    "risco_etico": "",
+    "demanda_governanca": "Alta: Gestão de exposição ao risco.",
+    "explicabilidade": "Alta: Limite deve ser compatível com renda.",
+    "implicacao_legal": "Indução ao endividamento excessivo.",
+    "atuacao_proxy": ""
+  },
+  {
+    "id": "NumberOfCreditCards",
+    "uri": "https://ontologia.governanca.credito/myont#NumberOfCreditCards",
+    "nome": "Number of credit cards",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Media",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "Res_CMN_4966_2021"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:CreditCard",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:PaymentCard",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Number of credit cards",
+    "origem": "SCR",
+    "justificativa_legal": "Proteção ao Crédito (Art. 7º, X) e Res. CMN 4.966/2021",
+    "risco_etico": "\"Fome de crédito\"; risco de alavancagem excessiva.",
+    "demanda_governanca": "Média: Analisar uso vs. quantidade ociosa.",
+    "explicabilidade": "Média: Explicar risco de crédito rotativo latente.",
+    "implicacao_legal": "",
+    "atuacao_proxy": ""
+  },
+  {
+    "id": "LoanAmount",
+    "uri": "https://ontologia.governanca.credito/myont#LoanAmount",
+    "nome": "Loan amount",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art7_V_ExecucaoContrato"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:amount",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:LoanOrCredit",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:MonetaryAmount",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Loan amount",
+    "origem": "Institucional",
+    "justificativa_legal": "Execução de Contrato",
+    "risco_etico": "",
+    "demanda_governanca": "Alta: Validar adequação do valor à capacidade de pagamento.",
+    "explicabilidade": "Alta: Relação direta com o risco da operação.",
+    "implicacao_legal": "Empréstimo predatório se o valor for incompatível com a renda.",
+    "atuacao_proxy": "Risco de adequação, sendo necessário oferecer prazos e valores compatíveis com dados para não cometer prática abusiva sob o CDC."
+  },
+  {
+    "id": "LoanDuration",
+    "uri": "https://ontologia.governanca.credito/myont#LoanDuration",
+    "nome": "Loan duration",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art7_V_ExecucaoContrato"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:loanTerm",
+        "rel": "equivalente"
+      },
+      {
+        "curie": "schema:LoanOrCredit",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Loan duration",
+    "origem": "Institucional",
+    "justificativa_legal": "Execução de Contrato",
+    "risco_etico": "",
+    "demanda_governanca": "Alta: Impacto direto na probabilidade de inadimplência (aumenta com o tempo)",
+    "explicabilidade": "Alta: Explicar custo do dinheiro no tempo.",
+    "implicacao_legal": "",
+    "atuacao_proxy": "Risco de adequação, sendo necessário oferecer prazos e valores compatíveis com dados para não cometer prática abusiva sob o CDC."
+  },
+  {
+    "id": "PurposeOfLoan",
+    "uri": "https://ontologia.governanca.credito/myont#PurposeOfLoan",
+    "nome": "Purpose of loan",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Media",
+    "bases_legais": [
+      "LGPD_Art7_V_ExecucaoContrato"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:loanType",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:LoanOrCredit",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Purpose of loan",
+    "origem": "Institucional",
+    "justificativa_legal": "Execução de Contrato",
+    "risco_etico": "Riscos variados por finalidade (ex: investimento vs. consumo emergencial).",
+    "demanda_governanca": "Média: Categorização correta do destino do recurso.",
+    "explicabilidade": "Média: Taxas podem variar conforme o propósito.",
+    "implicacao_legal": "",
+    "atuacao_proxy": "Risco de adequação, sendo necessário oferecer prazos e valores compatíveis com dados para não cometer prática abusiva sob o CDC."
+  },
+  {
+    "id": "ParentFacilitation",
+    "uri": "https://ontologia.governanca.credito/myont#ParentFacilitation",
+    "nome": "Parent facilitation",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art7_IX_InteresseLegitimo"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:parent",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Parent facilitation",
+    "origem": "Parceiros / Questionários",
+    "justificativa_legal": "LGPD: Interesse Legítimo.",
+    "risco_etico": "Imposição de métricas baseadas em dinâmicas e facilidades familiares específicas.",
+    "demanda_governanca": "Alta: Risco reputacional por invasão da esfera familiar.",
+    "explicabilidade": "Alta: Baixo nexo de causalidade para modelos IRB.",
+    "implicacao_legal": "Afronta ao princípio da Finalidade e Necessidade (Art. 6º, I e III, LGPD) ao usar dados de terceiros (pais).",
+    "atuacao_proxy": "Pode penalizar arranjos familiares atípicos ou de baixa renda."
+  },
+  {
+    "id": "ConsumerBehavior",
+    "uri": "https://ontologia.governanca.credito/myont#ConsumerBehavior",
+    "nome": "Consumer behavior",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Media",
+    "bases_legais": [
+      "LGPD_Art7_IX_InteresseLegitimo",
+      "LGPD_Art7_I_Consentimento",
+      "Lei_14181_2021_Superendividamento"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:BuyAction",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:PayAction",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Consumer behavior",
+    "origem": "Open Finance / Faturas Institucionais",
+    "justificativa_legal": "LGPD: Interesse Legítimo ou Consentimento. Lei 14.181/2021.",
+    "risco_etico": "Intrusividade. Punição baseada em escolhas legítimas e legais de consumo do indivíduo.",
+    "demanda_governanca": "Média: Necessidade de limitar o uso a predição real de risco, sem julgamento moral.",
+    "explicabilidade": "Média: Explicar a relação do padrão de consumo com o risco de crédito.",
+    "implicacao_legal": "Risco de Prática Abusiva (CDC Art. 39) se o banco recusa crédito por não concordar com as escolhas de consumo legais.",
+    "atuacao_proxy": "Pode indiretamente captar orientação sexual, religião ou classe."
+  },
+  {
+    "id": "LevelOfExpenditure",
+    "uri": "https://ontologia.governanca.credito/myont#LevelOfExpenditure",
+    "nome": "Level of expenditure (spending pattern)",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art7_IX_InteresseLegitimo"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:PayAction",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:MonetaryAmount",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [
+      "GeographicalLocations"
+    ],
+    "derivada_de": [],
+    "variavel": "Level of expenditure (spending pattern)",
+    "origem": "Open Finance / Faturas Institucionais",
+    "justificativa_legal": "LGPD: Interesse Legítimo.",
+    "risco_etico": "Invasão da esfera íntima para traçar perfil diário. Pode penalizar consumidores focados em bens não duráveis.",
+    "demanda_governanca": "Alta: Risco do modelo focar na categoria dos gastos (viés) em vez do volume x renda.",
+    "explicabilidade": "Alta: Cliente tem o direito de contestar bloqueios via algoritmo.",
+    "implicacao_legal": "Violação da Privacidade e Intimidade (Art. 5º, X, CF) se a granularidade do gasto for excessiva.",
+    "atuacao_proxy": "Indica onde a pessoa vive e o que frequenta."
+  },
+  {
+    "id": "AdverseLifeEvents",
+    "uri": "https://ontologia.governanca.credito/myont#AdverseLifeEvents",
+    "nome": "Adverse life events or life-altering events",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Media",
+    "bases_legais": [
+      "LGPD_Art7_X_ProtecaoCredito",
+      "Normas_BACEN"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:lifeEvent",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Adverse life events or life-altering events",
+    "origem": "Titular / Atrasos Atípicos (Ex: Luto, Desastre)",
+    "justificativa_legal": "LGPD: Proteção ao Crédito. Normas de flexibilização de crédito (BACEN).",
+    "risco_etico": "Falta de empatia algorítmica. Penaliza clientes historicamente bons devido a choques súbitos incontroláveis.",
+    "demanda_governanca": "Média: Necessidade vital de Human-in-the-loop (revisão por humano) para remover o viés temporário.",
+    "explicabilidade": "Alta: Diferenciar matematicamente um default comum de uma força maior temporal.",
+    "implicacao_legal": "Violação da boa-fé objetiva exigida no CDC e necessidade de renegociação sob a Lei do Superendividamento.",
+    "atuacao_proxy": "Pode afetar populações inteiras de áreas sob desastres, ex: Rio Grande do Sul."
+  },
+  {
+    "id": "PhysicalHealthStatus",
+    "uri": "https://ontologia.governanca.credito/myont#PhysicalHealthStatus",
+    "nome": "Physical health status",
+    "sensivel": true,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Veto",
+    "bases_legais": [
+      "LGPD_Art11_DadosSensiveis"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:MedicalCondition",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:MedicalEntity",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [
+      "Age"
+    ],
+    "derivada_de": [],
+    "variavel": "Physical health status",
+    "origem": "N/A",
+    "justificativa_legal": "LGPD: Art. 11 (Sensível).",
+    "risco_etico": "Criar exclusão financeira e castas baseadas em doenças crônicas ou morbidades.",
+    "demanda_governanca": "Crítico: Impossível de ser aprovado na governança.",
+    "explicabilidade": "N/A",
+    "implicacao_legal": "Crime de Discriminação (Lei 13.146/2015 - Estatuto da PCD). Ofensa à Constituição Federal.",
+    "atuacao_proxy": "Proxy de Idade (Idosos) e Deficiência (PCD)."
+  },
+  {
+    "id": "PostingPatterns",
+    "uri": "https://ontologia.governanca.credito/myont#PostingPatterns",
+    "nome": "Posting patterns",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Veto",
+    "bases_legais": [
+      "CF_Art5_PrivacidadeSigilo"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:SocialMediaPosting",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [
+      "Education",
+      "GeographicalLocations"
+    ],
+    "derivada_de": [],
+    "variavel": "Posting patterns",
+    "origem": "Redes Sociais",
+    "justificativa_legal": "CF (Art. 5º, IV e X)",
+    "risco_etico": "Penalização baseada em opiniões, gírias regionais ou na forma de o indivíduo se expressar.",
+    "demanda_governanca": "Máxima: Proibir o uso de algoritmos de Processamento de Linguagem Natural (NLP) sobre textos do cliente para análise de risco.",
+    "explicabilidade": "Impossível.",
+    "implicacao_legal": "Prática abusiva sob o Código de Defesa do Consumidor (CDC) por estipular métricas desconexas com a relação de consumo.",
+    "atuacao_proxy": "Proxy Cultural e de Classe: O uso de linguagem capta dialetos, escolaridade e região de origem."
+  },
+  {
+    "id": "UsageOfPhotoForPosts",
+    "uri": "https://ontologia.governanca.credito/myont#UsageOfPhotoForPosts",
+    "nome": "Usage of photo for posts",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Maxima",
+    "bases_legais": [
+      "LGPD_Art11_DadosSensiveis"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:Photograph",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:ImageObject",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:SocialMediaPosting",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [
+      "Gender",
+      "Age"
+    ],
+    "derivada_de": [],
+    "variavel": "Usage of photo for posts",
+    "origem": "Visão Computacional sobre Imagens",
+    "justificativa_legal": "LGPD (Art. 11)",
+    "risco_etico": "Racismo algorítmico. Se a máquina extrair cor de pele, fenótipo ou estética da face a partir dos pixels para modular o risco.",
+    "demanda_governanca": "Máxima: Auditoria estrita para impedir que APIs de visão computacional sejam usadas fora do escopo exclusivo de prevenção à fraude (biometria facial).",
+    "explicabilidade": "Impossível.",
+    "implicacao_legal": "Crime de Discriminação (Lei 7.716/89) e violação do Princípio da Não-Discriminação (Art. 6º, IX, LGPD).",
+    "atuacao_proxy": "Raça/Cor, Gênero e Idade."
+  },
+  {
+    "id": "MajorThingsInPeoplesLives",
+    "uri": "https://ontologia.governanca.credito/myont#MajorThingsInPeoplesLives",
+    "nome": "Major things in people’s lives",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Maxima",
+    "bases_legais": [
+      "CF_Art5_PrivacidadeSigilo"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:lifeEvent",
+        "rel": "equivalente"
+      }
+    ],
+    "proxy_de": [
+      "MaritalStatus",
+      "PhysicalHealthStatus"
+    ],
+    "derivada_de": [],
+    "variavel": "Major things in people’s lives",
+    "origem": "Mineração de Textos em Redes",
+    "justificativa_legal": "CF (Art. 5º, X)",
+    "risco_etico": "Penalizar clientes que expuseram publicamente divórcios, luto ou demissões.",
+    "demanda_governanca": "Máxima: Impedir a coleta oportunista de eventos de vida extraídos fora do ambiente bancário formal.",
+    "explicabilidade": "Nula: O modelo perderia completamente o rigor financeiro exigido pelo BACEN.",
+    "implicacao_legal": "Ofensa ao princípio da Boa-Fé Objetiva do Código Civil.",
+    "atuacao_proxy": "Proxy de Estado Civil, Saúde (Luto/Doença) e Religião."
+  },
+  {
+    "id": "PostingTime",
+    "uri": "https://ontologia.governanca.credito/myont#PostingTime",
+    "nome": "Posting time",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "CF_Art5_PrivacidadeSigilo"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:SocialMediaPosting",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [
+      "Occupation"
+    ],
+    "derivada_de": [],
+    "variavel": "Posting time",
+    "origem": "Metadados de rede",
+    "justificativa_legal": "CF (Art. 5º, X)",
+    "risco_etico": "Inferir desorganização financeira, desemprego ou problemas de sono a partir dos horários em que a pessoa interage online.",
+    "demanda_governanca": "Alta: Impedir o uso de carimbos de data/hora (timestamps) não relacionados a transações bancárias.",
+    "explicabilidade": "Nula.",
+    "implicacao_legal": "Potencial infração ao princípio da Não-Discriminação Laboral.",
+    "atuacao_proxy": "Proxy de Profissão (trabalhadores de turno/noturnos) e Saúde Mental (Insônia/Ansiedade)."
+  },
+  {
+    "id": "NumberOfFollowers",
+    "uri": "https://ontologia.governanca.credito/myont#NumberOfFollowers",
+    "nome": "Number of followers",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Alta",
+    "bases_legais": [
+      "LGPD_Art6_I_Finalidade"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:follows",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:FollowAction",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [
+      "Age"
+    ],
+    "derivada_de": [],
+    "variavel": "Number of followers",
+    "origem": "Redes Sociais",
+    "justificativa_legal": "LGPD (Art. 6º, I)",
+    "risco_etico": "Gamificação do acesso à cidadania financeira.",
+    "demanda_governanca": "Alta: Garantir que o algoritmo não confunda influência digital com capacidade de pagamento (Willingness to pay).",
+    "explicabilidade": "Nula.",
+    "implicacao_legal": "Infração administrativa à LGPD por coleta excessiva.",
+    "atuacao_proxy": "Proxy de Idade e Classe."
+  },
+  {
+    "id": "Friends",
+    "uri": "https://ontologia.governanca.credito/myont#Friends",
+    "nome": "Friends",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Veto",
+    "bases_legais": [
+      "CodigoCivil_Geral"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:knows",
+        "rel": "equivalente"
+      },
+      {
+        "curie": "schema:BefriendAction",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Friends",
+    "origem": "Grafos de Amizade",
+    "justificativa_legal": "Código Civil: Incomunicabilidade de obrigações sem fiança formal.",
+    "risco_etico": "Julgamento do indivíduo pelo histórico financeiro e inadimplência de seus amigos ou moradores do mesmo bairro.",
+    "demanda_governanca": "Máxima: Veto a técnicas de Graph Convolutional Networks para inferência de risco baseada em conexões pessoais.",
+    "explicabilidade": "Impossível: O IFRS 9 exige cálculo individual da Expected Credit Loss (ECL).",
+    "implicacao_legal": "Punição abusiva por atos de terceiros (CDC).",
+    "atuacao_proxy": "Redlining Estrutural (Mapeia e pune comunidades mais pobres e periféricas)."
+  },
+  {
+    "id": "NumberOfMessages",
+    "uri": "https://ontologia.governanca.credito/myont#NumberOfMessages",
+    "nome": "Number of messages",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Veto",
+    "bases_legais": [
+      "CF_Art5_PrivacidadeSigilo"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:Message",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [
+      "Age"
+    ],
+    "derivada_de": [],
+    "variavel": "Number of messages",
+    "origem": "Metadados do Celular",
+    "justificativa_legal": "CF (Art. 5º, XII)",
+    "risco_etico": "Buscar correlações estatísticas ilógicas associando uso intenso do WhatsApp/SMS com impulsividade de consumo.",
+    "demanda_governanca": "Máxima: Veto por falta total de embasamento na Resolução CMN 4.966/2021.",
+    "explicabilidade": "Impossível.",
+    "implicacao_legal": "Coleta desproporcional e ilegal.",
+    "atuacao_proxy": "Proxy de Idade (Gerações jovens mandam exponencialmente mais mensagens)."
+  },
+  {
+    "id": "SmsSendingPattern",
+    "uri": "https://ontologia.governanca.credito/myont#SmsSendingPattern",
+    "nome": "SMS sending pattern",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Maxima",
+    "bases_legais": [
+      "CF_Art5_PrivacidadeSigilo",
+      "MarcoCivil_Internet"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:Message",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "SMS sending pattern",
+    "origem": "Permissão intrusiva no App",
+    "justificativa_legal": "CF (Art. 5º, XII) e Marco Civil da Internet",
+    "risco_etico": "Raspagem invasiva dos SMS para capturar recibos de compras, faturas de outros bancos e mensagens pessoais.",
+    "demanda_governanca": "Máxima: Desativar captura de SMS pelo app do banco, limitando-se estritamente à leitura de tokens (MFA) via APIs nativas do celular.",
+    "explicabilidade": "Impossível.",
+    "implicacao_legal": "Quebra Ilegal de Sigilo de Telecomunicações.",
+    "atuacao_proxy": "Proxy de Comportamento Financeiro não autorizado."
+  },
+  {
+    "id": "GeographicalLocations",
+    "uri": "https://ontologia.governanca.credito/myont#GeographicalLocations",
+    "nome": "Geographical locations",
+    "sensivel": false,
+    "status_curadoria": "Auditada",
+    "nivel_governanca": "Governanca_Maxima",
+    "bases_legais": [
+      "CF_Art5_XV_LiberdadeLocomocao"
+    ],
+    "schema_terms": [
+      {
+        "curie": "schema:GeoCoordinates",
+        "rel": "equivalente"
+      },
+      {
+        "curie": "schema:PostalAddress",
+        "rel": "baseada"
+      },
+      {
+        "curie": "schema:address",
+        "rel": "baseada"
+      }
+    ],
+    "proxy_de": [],
+    "derivada_de": [],
+    "variavel": "Geographical locations",
+    "origem": "Tracking do GPS pelo App do Banco",
+    "justificativa_legal": "CF (Art. 5º, XV)",
+    "risco_etico": "Rastrear a rotina física do cidadão. Pune com taxas de juros maiores quem dorme ou trabalha em áreas de risco, periferias ou favelas (Redlining Geográfico).",
+    "demanda_governanca": "Máxima: Segregação de Dados (Ring-Fencing). O GPS coletado pelo App do banco só pode ser usado momentaneamente pelo Motor Antifraude, nunca guardado para treinar modelos IRB de risco de crédito.",
+    "explicabilidade": "Impossível: Injustificável negar crédito baseado nos locais lícitos que a pessoa frequenta.",
+    "implicacao_legal": "Infração ao Princípio da Não-Discriminação (LGPD) e passível de graves Danos Morais Coletivos por discriminação territorial.",
+    "atuacao_proxy": "O território urbano brasileiro é profundamente segregado; o CEP/GPS é o proxy número 1 para Raça e Classe Social."
+  }
+]

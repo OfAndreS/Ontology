@@ -1,0 +1,355 @@
+{
+  "description": "Mapeamento curado das variáveis do Anexo 4 que possuem correspondência direta ou conceitual em Schema.org (V1 reduzida).",
+  "variables": [
+    {
+      "id": "Income",
+      "csv_name": "Income",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:MonetaryAmount", "rel": "baseada"},
+        {"curie": "schema:baseSalary", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "FamilyIncome",
+      "csv_name": "Family income",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:MonetaryAmount", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "ParentsIncome",
+      "csv_name": "Parents’ income",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:MonetaryAmount", "rel": "baseada"},
+        {"curie": "schema:parent", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "Wealth",
+      "csv_name": "Wealth",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:netWorth", "rel": "equivalente"},
+        {"curie": "schema:MonetaryAmount", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "TotalFinancialAssets",
+      "csv_name": "Total financial assets",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:netWorth", "rel": "baseada"},
+        {"curie": "schema:MonetaryAmount", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "HomeOwnership",
+      "csv_name": "Home ownership",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:Residence", "rel": "baseada"},
+        {"curie": "schema:homeLocation", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "Occupation",
+      "csv_name": "Occupation",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:Occupation", "rel": "equivalente"},
+        {"curie": "schema:hasOccupation", "rel": "equivalente"}
+      ],
+      "proxy_de": ["Gender"]
+    },
+    {
+      "id": "EmploymentStatus",
+      "csv_name": "Employment status",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:employmentType", "rel": "baseada"},
+        {"curie": "schema:EmployeeRole", "rel": "baseada"}
+      ],
+      "proxy_de": ["Gender"]
+    },
+    {
+      "id": "LengthOfEmployment",
+      "csv_name": "Length of employment",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:monthsOfExperience", "rel": "baseada"}
+      ],
+      "proxy_de": ["Age", "PhysicalHealthStatus", "Gender"]
+    },
+    {
+      "id": "Education",
+      "csv_name": "Education",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:educationalLevel", "rel": "equivalente"},
+        {"curie": "schema:EducationalOccupationalCredential", "rel": "baseada"},
+        {"curie": "schema:alumniOf", "rel": "baseada"}
+      ],
+      "proxy_de": ["Income"]
+    },
+    {
+      "id": "NumberOfChildrenDependents",
+      "csv_name": "Number of children/dependents",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:children", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "Age",
+      "csv_name": "Age",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:birthDate", "rel": "baseada"}
+      ],
+      "proxy_de": ["PhysicalHealthStatus"]
+    },
+    {
+      "id": "Gender",
+      "csv_name": "Gender",
+      "sensivel": true,
+      "schema_terms": [
+        {"curie": "schema:gender", "rel": "equivalente"},
+        {"curie": "schema:GenderType", "rel": "baseada"}
+      ],
+      "proxy_de": ["Income"]
+    },
+    {
+      "id": "MaritalStatus",
+      "csv_name": "Marital status",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:spouse", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "Nationality",
+      "csv_name": "Nationality / Foreign Worker Status (Nacionalidade)",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:nationality", "rel": "equivalente"}
+      ],
+      "proxy_de": ["GeographicalLocations"]
+    },
+    {
+      "id": "AccountBalance",
+      "csv_name": "Account balance",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:BankAccount", "rel": "baseada"},
+        {"curie": "schema:MonetaryAmount", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "NumberOfBankAccounts",
+      "csv_name": "Number of bank accounts",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:BankAccount", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "CreditLimit",
+      "csv_name": "Credit limit",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:accountOverdraftLimit", "rel": "baseada"},
+        {"curie": "schema:MonetaryAmount", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "NumberOfCreditCards",
+      "csv_name": "Number of credit cards",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:CreditCard", "rel": "baseada"},
+        {"curie": "schema:PaymentCard", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "LoanAmount",
+      "csv_name": "Loan amount",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:amount", "rel": "baseada"},
+        {"curie": "schema:LoanOrCredit", "rel": "baseada"},
+        {"curie": "schema:MonetaryAmount", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "LoanDuration",
+      "csv_name": "Loan duration",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:loanTerm", "rel": "equivalente"},
+        {"curie": "schema:LoanOrCredit", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "PurposeOfLoan",
+      "csv_name": "Purpose of loan",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:loanType", "rel": "baseada"},
+        {"curie": "schema:LoanOrCredit", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "ParentFacilitation",
+      "csv_name": "Parent facilitation",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:parent", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "ConsumerBehavior",
+      "csv_name": "Consumer behavior",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:BuyAction", "rel": "baseada"},
+        {"curie": "schema:PayAction", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "LevelOfExpenditure",
+      "csv_name": "Level of expenditure (spending pattern)",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:PayAction", "rel": "baseada"},
+        {"curie": "schema:MonetaryAmount", "rel": "baseada"}
+      ],
+      "proxy_de": ["GeographicalLocations"]
+    },
+    {
+      "id": "AdverseLifeEvents",
+      "csv_name": "Adverse life events or life-altering events",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:lifeEvent", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "PhysicalHealthStatus",
+      "csv_name": "Physical health status",
+      "sensivel": true,
+      "schema_terms": [
+        {"curie": "schema:MedicalCondition", "rel": "baseada"},
+        {"curie": "schema:MedicalEntity", "rel": "baseada"}
+      ],
+      "proxy_de": ["Age"]
+    },
+    {
+      "id": "PostingPatterns",
+      "csv_name": "Posting patterns",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:SocialMediaPosting", "rel": "baseada"}
+      ],
+      "proxy_de": ["Education", "GeographicalLocations"]
+    },
+    {
+      "id": "UsageOfPhotoForPosts",
+      "csv_name": "Usage of photo for posts",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:Photograph", "rel": "baseada"},
+        {"curie": "schema:ImageObject", "rel": "baseada"},
+        {"curie": "schema:SocialMediaPosting", "rel": "baseada"}
+      ],
+      "proxy_de": ["Gender", "Age"]
+    },
+    {
+      "id": "MajorThingsInPeoplesLives",
+      "csv_name": "Major things in people’s lives",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:lifeEvent", "rel": "equivalente"}
+      ],
+      "proxy_de": ["MaritalStatus", "PhysicalHealthStatus"]
+    },
+    {
+      "id": "PostingTime",
+      "csv_name": "Posting time",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:SocialMediaPosting", "rel": "baseada"}
+      ],
+      "proxy_de": ["Occupation"]
+    },
+    {
+      "id": "NumberOfFollowers",
+      "csv_name": "Number of followers",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:follows", "rel": "baseada"},
+        {"curie": "schema:FollowAction", "rel": "baseada"}
+      ],
+      "proxy_de": ["Age"]
+    },
+    {
+      "id": "Friends",
+      "csv_name": "Friends",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:knows", "rel": "equivalente"},
+        {"curie": "schema:BefriendAction", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "NumberOfMessages",
+      "csv_name": "Number of messages",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:Message", "rel": "baseada"}
+      ],
+      "proxy_de": ["Age"]
+    },
+    {
+      "id": "SmsSendingPattern",
+      "csv_name": "SMS sending pattern",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:Message", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    },
+    {
+      "id": "GeographicalLocations",
+      "csv_name": "Geographical locations",
+      "sensivel": false,
+      "schema_terms": [
+        {"curie": "schema:GeoCoordinates", "rel": "equivalente"},
+        {"curie": "schema:PostalAddress", "rel": "baseada"},
+        {"curie": "schema:address", "rel": "baseada"}
+      ],
+      "proxy_de": []
+    }
+  ]
+}

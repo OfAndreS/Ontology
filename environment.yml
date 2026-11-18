@@ -1,0 +1,11 @@
+name: ontology-gov
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - streamlit>=1.39.0
+      - rdflib>=7.0.0
+      - pandas>=2.2.0

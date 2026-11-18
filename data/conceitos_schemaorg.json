@@ -1,0 +1,6067 @@
+[
+  {
+    "curie": "schema:AdministrativeArea",
+    "uri": "https://schema.org/AdministrativeArea",
+    "label": "AdministrativeArea",
+    "comment": "A geographical region, typically under the jurisdiction of a particular government.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Place"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Place"
+  },
+  {
+    "curie": "schema:Airline",
+    "uri": "https://schema.org/Airline",
+    "label": "Airline",
+    "comment": "An organization that provides flights for passengers.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:AnatomicalStructure",
+    "uri": "https://schema.org/AnatomicalStructure",
+    "label": "AnatomicalStructure",
+    "comment": "Any part of the human body, typically a component of an anatomical system. Organs, tissues, and cells are all anatomical structures.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:AnatomicalSystem",
+    "uri": "https://schema.org/AnatomicalSystem",
+    "label": "AnatomicalSystem",
+    "comment": "An anatomical system is a group of anatomical structures that work together to perform a certain task. Anatomical systems, such as organ systems, are one organizing principle of anatomy, and can include circulatory, digestive, endocrine, integumentary, immune, lymphatic, muscular, nervous, reproductive, respiratory, skeletal, urinary, vestibular, and other systems.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:ApartmentComplex",
+    "uri": "https://schema.org/ApartmentComplex",
+    "label": "ApartmentComplex",
+    "comment": "Residence type: Apartment complex.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Residence"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Residence"
+  },
+  {
+    "curie": "schema:BankAccount",
+    "uri": "https://schema.org/BankAccount",
+    "label": "BankAccount",
+    "comment": "A product or service offered by a bank whereby one may deposit, withdraw or transfer money and in some cases be paid interest.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:FinancialProduct"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:FinancialProduct"
+  },
+  {
+    "curie": "schema:BankOrCreditUnion",
+    "uri": "https://schema.org/BankOrCreditUnion",
+    "label": "BankOrCreditUnion",
+    "comment": "Bank or credit union.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:FinancialService"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:FinancialService"
+  },
+  {
+    "curie": "schema:Barcode",
+    "uri": "https://schema.org/Barcode",
+    "label": "Barcode",
+    "comment": "An image of a visual machine-readable code such as a barcode or QR code.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:ImageObject"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:ImageObject"
+  },
+  {
+    "curie": "schema:BefriendAction",
+    "uri": "https://schema.org/BefriendAction",
+    "label": "BefriendAction",
+    "comment": "The act of forming a personal connection with someone (object) mutually/bidirectionally/symmetrically.\\\\n\\\\nRelated actions:\\\\n\\\\n* FollowAction: Unlike FollowAction, BefriendAction implies that the connection is reciprocal.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:InteractAction"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:InteractAction"
+  },
+  {
+    "curie": "schema:BlogPosting",
+    "uri": "https://schema.org/BlogPosting",
+    "label": "BlogPosting",
+    "comment": "A blog post.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:SocialMediaPosting"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:SocialMediaPosting"
+  },
+  {
+    "curie": "schema:BuyAction",
+    "uri": "https://schema.org/BuyAction",
+    "label": "BuyAction",
+    "comment": "The act of giving money to a seller in exchange for goods or services rendered. An agent buys an object, product, or service from a seller for a price. Reciprocal of SellAction.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:TradeAction"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:TradeAction"
+  },
+  {
+    "curie": "schema:CivicStructure",
+    "uri": "https://schema.org/CivicStructure",
+    "label": "CivicStructure",
+    "comment": "A public structure, such as a town hall or concert hall.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Place"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Place"
+  },
+  {
+    "curie": "schema:Consortium",
+    "uri": "https://schema.org/Consortium",
+    "label": "Consortium",
+    "comment": "A Consortium is a membership Organization whose members are typically Organizations.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:Cooperative",
+    "uri": "https://schema.org/Cooperative",
+    "label": "Cooperative",
+    "comment": "An organization that is a joint project of multiple organizations or persons.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:Corporation",
+    "uri": "https://schema.org/Corporation",
+    "label": "Corporation",
+    "comment": "Organization: A business corporation.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:CreditCard",
+    "uri": "https://schema.org/CreditCard",
+    "label": "CreditCard",
+    "comment": "A card payment method of a particular brand or name. Used to mark up a particular payment method and/or the financial product/service that supplies the card account.\\\\n\\\\nCommonly used values:\\\\n\\\\n* http://purl.org/goodrelations/v1#AmericanExpress\\\\n* http://purl.org/goodrelations/v1#DinersClub\\\\n* http://purl.org/goodrelations/v1#Discover\\\\n* http://purl.org/goodrelations/v1#JCB\\\\n* http://purl.org/goodrelations/v1#MasterCard\\\\n* http://purl.org/goodrelations/v1#VISA",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:LoanOrCredit",
+      "schema:PaymentCard"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:LoanOrCredit, schema:PaymentCard"
+  },
+  {
+    "curie": "schema:CurrencyConversionService",
+    "uri": "https://schema.org/CurrencyConversionService",
+    "label": "CurrencyConversionService",
+    "comment": "A service to convert funds from one currency to another currency.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:FinancialProduct"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:FinancialProduct"
+  },
+  {
+    "curie": "schema:DepositAccount",
+    "uri": "https://schema.org/DepositAccount",
+    "label": "DepositAccount",
+    "comment": "A type of Bank Account with a main purpose of depositing funds to gain interest or other benefits.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:BankAccount",
+      "schema:InvestmentOrDeposit"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:BankAccount, schema:InvestmentOrDeposit"
+  },
+  {
+    "curie": "schema:DiscussionForumPosting",
+    "uri": "https://schema.org/DiscussionForumPosting",
+    "label": "DiscussionForumPosting",
+    "comment": "A posting to a discussion forum.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:SocialMediaPosting"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:SocialMediaPosting"
+  },
+  {
+    "curie": "schema:DrugClass",
+    "uri": "https://schema.org/DrugClass",
+    "label": "DrugClass",
+    "comment": "A class of medical drugs, e.g., statins. Classes can represent general pharmacological class, common mechanisms of action, common physiological effects, etc.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:DrugCost",
+    "uri": "https://schema.org/DrugCost",
+    "label": "DrugCost",
+    "comment": "The cost per unit of a medical drug. Note that this type is not meant to represent the price in an offer of a drug for sale; see the Offer type for that. This type will typically be used to tag wholesale or average retail cost of a drug, or maximum reimbursable cost. Costs of medical drugs vary widely depending on how and where they are paid for, so while this type captures some of the variables, costs should be used with caution by consumers of this schema's markup.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:EducationalOccupationalCredential",
+    "uri": "https://schema.org/EducationalOccupationalCredential",
+    "label": "EducationalOccupationalCredential",
+    "comment": "An educational or occupational credential. A diploma, academic degree, certification, qualification, badge, etc., that may be awarded to a person or other entity that meets the requirements defined by the credentialer.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Credential"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Credential"
+  },
+  {
+    "curie": "schema:EducationalOrganization",
+    "uri": "https://schema.org/EducationalOrganization",
+    "label": "EducationalOrganization",
+    "comment": "An educational organization.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:CivicStructure",
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:CivicStructure, schema:Organization"
+  },
+  {
+    "curie": "schema:EmailMessage",
+    "uri": "https://schema.org/EmailMessage",
+    "label": "EmailMessage",
+    "comment": "An email message.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Message"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Message"
+  },
+  {
+    "curie": "schema:EmployeeRole",
+    "uri": "https://schema.org/EmployeeRole",
+    "label": "EmployeeRole",
+    "comment": "A subclass of OrganizationRole used to describe employee relationships.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:OrganizationRole"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:OrganizationRole"
+  },
+  {
+    "curie": "schema:Female",
+    "uri": "https://schema.org/Female",
+    "label": "Female",
+    "comment": "The female gender.",
+    "tipo": "Enumeração",
+    "rdf_types": [
+      "schema:GenderType"
+    ],
+    "subclasses": [],
+    "domains": [],
+    "ranges": [],
+    "contexto": "tipo: schema:GenderType"
+  },
+  {
+    "curie": "schema:FinancialProduct",
+    "uri": "https://schema.org/FinancialProduct",
+    "label": "FinancialProduct",
+    "comment": "A product provided to consumers and businesses by financial institutions such as banks, insurance companies, brokerage firms, consumer finance companies, and investment companies which comprise the financial services industry.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Service"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Service"
+  },
+  {
+    "curie": "schema:FollowAction",
+    "uri": "https://schema.org/FollowAction",
+    "label": "FollowAction",
+    "comment": "The act of forming a personal connection with someone/something (object) unidirectionally/asymmetrically to get updates polled from.\\\\n\\\\nRelated actions:\\\\n\\\\n* BefriendAction: Unlike BefriendAction, FollowAction implies that the connection is *not* necessarily reciprocal.\\\\n* SubscribeAction: Unlike SubscribeAction, FollowAction implies that the follower acts as an active agent constantly/actively polling for updates.\\\\n* RegisterAction: Unlike RegisterAction, FollowAction implies that the agent is interested in continuing receiving updates from the object.\\\\n* JoinAction: Unlike JoinAction, FollowAction implies that the agent is interested in getting updates from the object.\\\\n* TrackAction: Unlike TrackAction, FollowAction refers to the polling of updates of all aspects of animate objects rather than the location of inanimate objects (e.g. you track a package, but you don't follow it).",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:InteractAction"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:InteractAction"
+  },
+  {
+    "curie": "schema:FundingScheme",
+    "uri": "https://schema.org/FundingScheme",
+    "label": "FundingScheme",
+    "comment": "A FundingScheme combines organizational, project and policy aspects of grant-based funding that sets guidelines, principles and mechanisms to support other kinds of projects and activities. Funding is typically organized via Grant funding. Examples of funding schemes: Swiss Priority Programmes (SPPs); EU Framework 7 (FP7); Horizon 2020; the NIH-R01 Grant Program; Wellcome institutional strategic support fund. For large scale public sector funding, the management and administration of grant awards is often handled by other, dedicated, organizations - FundingAgencys such as ERC, REA, ...",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:GatedResidenceCommunity",
+    "uri": "https://schema.org/GatedResidenceCommunity",
+    "label": "GatedResidenceCommunity",
+    "comment": "Residence type: Gated community.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Residence"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Residence"
+  },
+  {
+    "curie": "schema:GenderType",
+    "uri": "https://schema.org/GenderType",
+    "label": "GenderType",
+    "comment": "An enumeration of genders.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Enumeration"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Enumeration"
+  },
+  {
+    "curie": "schema:GeoCoordinates",
+    "uri": "https://schema.org/GeoCoordinates",
+    "label": "GeoCoordinates",
+    "comment": "The geographic coordinates of a place or event.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:StructuredValue"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:StructuredValue"
+  },
+  {
+    "curie": "schema:GovernmentOrganization",
+    "uri": "https://schema.org/GovernmentOrganization",
+    "label": "GovernmentOrganization",
+    "comment": "A governmental organization or agency.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:ImageObject",
+    "uri": "https://schema.org/ImageObject",
+    "label": "ImageObject",
+    "comment": "An image file.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MediaObject"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MediaObject"
+  },
+  {
+    "curie": "schema:ImageObjectSnapshot",
+    "uri": "https://schema.org/ImageObjectSnapshot",
+    "label": "ImageObjectSnapshot",
+    "comment": "A specific and exact (byte-for-byte) version of an ImageObject. Two byte-for-byte identical files, for the purposes of this type, considered identical. If they have different embedded metadata (e.g. XMP, EXIF) the files will differ. Different external facts about the files, e.g. creator or dateCreated that aren't represented in their actual content, do not affect this notion of identity.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:ImageObject"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:ImageObject"
+  },
+  {
+    "curie": "schema:InfectiousDisease",
+    "uri": "https://schema.org/InfectiousDisease",
+    "label": "InfectiousDisease",
+    "comment": "An infectious disease is a clinically evident human disease resulting from the presence of pathogenic microbial agents, like pathogenic viruses, pathogenic bacteria, fungi, protozoa, multicellular parasites, and prions. To be considered an infectious disease, such pathogens are known to be able to cause this disease.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalCondition"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalCondition"
+  },
+  {
+    "curie": "schema:InvestmentOrDeposit",
+    "uri": "https://schema.org/InvestmentOrDeposit",
+    "label": "InvestmentOrDeposit",
+    "comment": "A type of financial product that typically requires the client to transfer funds to a financial service in return for potential beneficial financial return.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:FinancialProduct"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:FinancialProduct"
+  },
+  {
+    "curie": "schema:Landform",
+    "uri": "https://schema.org/Landform",
+    "label": "Landform",
+    "comment": "A landform or physical feature. Landform elements include mountains, plains, lakes, rivers, seascape and oceanic waterbody interface features such as bays, peninsulas, seas and so forth, including sub-aqueous terrain features such as submersed mountain ranges, volcanoes, and the great ocean basins.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Place"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Place"
+  },
+  {
+    "curie": "schema:LandmarksOrHistoricalBuildings",
+    "uri": "https://schema.org/LandmarksOrHistoricalBuildings",
+    "label": "LandmarksOrHistoricalBuildings",
+    "comment": "An historical landmark or building.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Place"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Place"
+  },
+  {
+    "curie": "schema:LibrarySystem",
+    "uri": "https://schema.org/LibrarySystem",
+    "label": "LibrarySystem",
+    "comment": "A LibrarySystem is a collaborative system amongst several libraries.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:LifestyleModification",
+    "uri": "https://schema.org/LifestyleModification",
+    "label": "LifestyleModification",
+    "comment": "A process of care involving exercise, changes to diet, fitness routines, and other lifestyle changes aimed at improving a health condition.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:LoanOrCredit",
+    "uri": "https://schema.org/LoanOrCredit",
+    "label": "LoanOrCredit",
+    "comment": "A financial product for the loaning of an amount of money, or line of credit, under agreed terms and charges.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:FinancialProduct"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:FinancialProduct"
+  },
+  {
+    "curie": "schema:LocalBusiness",
+    "uri": "https://schema.org/LocalBusiness",
+    "label": "LocalBusiness",
+    "comment": "A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization",
+      "schema:Place"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization, schema:Place"
+  },
+  {
+    "curie": "schema:Male",
+    "uri": "https://schema.org/Male",
+    "label": "Male",
+    "comment": "The male gender.",
+    "tipo": "Enumeração",
+    "rdf_types": [
+      "schema:GenderType"
+    ],
+    "subclasses": [],
+    "domains": [],
+    "ranges": [],
+    "contexto": "tipo: schema:GenderType"
+  },
+  {
+    "curie": "schema:MedicalCause",
+    "uri": "https://schema.org/MedicalCause",
+    "label": "MedicalCause",
+    "comment": "The causative agent(s) that are responsible for the pathophysiologic process that eventually results in a medical condition, symptom or sign. In this schema, unless otherwise specified this is meant to be the proximate cause of the medical condition, symptom or sign. The proximate cause is defined as the causative agent that most directly results in the medical condition, symptom or sign. For example, the HIV virus could be considered a cause of AIDS. Or in a diagnostic context, if a patient fell and sustained a hip fracture and two days later sustained a pulmonary embolism which eventuated in a cardiac arrest, the cause of the cardiac arrest (the proximate cause) would be the pulmonary embolism and not the fall. Medical causes can include cardiovascular, chemical, dermatologic, endocrine, environmental, gastroenterologic, genetic, hematologic, gynecologic, iatrogenic, infectious, musculoskeletal, neurologic, nutritional, obstetric, oncologic, otolaryngologic, pharmacologic, psychiatric, pulmonary, renal, rheumatologic, toxic, traumatic, or urologic causes; medical conditions can be causes as well.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:MedicalCondition",
+    "uri": "https://schema.org/MedicalCondition",
+    "label": "MedicalCondition",
+    "comment": "Any condition of the human body that affects the normal functioning of a person, whether physically or mentally. Includes diseases, injuries, disabilities, disorders, syndromes, etc.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:MedicalContraindication",
+    "uri": "https://schema.org/MedicalContraindication",
+    "label": "MedicalContraindication",
+    "comment": "A condition or factor that serves as a reason to withhold a certain medical therapy. Contraindications can be absolute (there are no reasonable circumstances for undertaking a course of action) or relative (the patient is at higher risk of complications, but these risks may be outweighed by other considerations or mitigated by other measures).",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:MedicalDevice",
+    "uri": "https://schema.org/MedicalDevice",
+    "label": "MedicalDevice",
+    "comment": "Any object used in a medical capacity, such as to diagnose or treat a patient.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:MedicalEntity",
+    "uri": "https://schema.org/MedicalEntity",
+    "label": "MedicalEntity",
+    "comment": "The most generic type of entity related to health and the practice of medicine.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Thing"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Thing"
+  },
+  {
+    "curie": "schema:MedicalGuideline",
+    "uri": "https://schema.org/MedicalGuideline",
+    "label": "MedicalGuideline",
+    "comment": "Any recommendation made by a standard society (e.g. ACC/AHA) or consensus statement that denotes how to diagnose and treat a particular condition. Note: this type should be used to tag the actual guideline recommendation; if the guideline recommendation occurs in a larger scholarly article, use MedicalScholarlyArticle to tag the overall article, not this type. Note also: the organization making the recommendation should be captured in the recognizingAuthority base property of MedicalEntity.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:MedicalIndication",
+    "uri": "https://schema.org/MedicalIndication",
+    "label": "MedicalIndication",
+    "comment": "A condition or factor that indicates use of a medical therapy, including signs, symptoms, risk factors, anatomical states, etc.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:MedicalIntangible",
+    "uri": "https://schema.org/MedicalIntangible",
+    "label": "MedicalIntangible",
+    "comment": "A utility class that serves as the umbrella for a number of 'intangible' things in the medical space.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:MedicalOrganization",
+    "uri": "https://schema.org/MedicalOrganization",
+    "label": "MedicalOrganization",
+    "comment": "A medical organization (physical or not), such as hospital, institution or clinic.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:MedicalProcedure",
+    "uri": "https://schema.org/MedicalProcedure",
+    "label": "MedicalProcedure",
+    "comment": "A process of care used in either a diagnostic, therapeutic, preventive or palliative capacity that relies on invasive (surgical), non-invasive, or other techniques.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:MedicalRiskEstimator",
+    "uri": "https://schema.org/MedicalRiskEstimator",
+    "label": "MedicalRiskEstimator",
+    "comment": "Any rule set or interactive tool for estimating the risk of developing a complication or condition.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:MedicalRiskFactor",
+    "uri": "https://schema.org/MedicalRiskFactor",
+    "label": "MedicalRiskFactor",
+    "comment": "A risk factor is anything that increases a person's likelihood of developing or contracting a disease, medical condition, or complication.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:MedicalSignOrSymptom",
+    "uri": "https://schema.org/MedicalSignOrSymptom",
+    "label": "MedicalSignOrSymptom",
+    "comment": "Any feature associated or not with a medical condition. In medicine a symptom is generally subjective while a sign is objective.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalCondition"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalCondition"
+  },
+  {
+    "curie": "schema:MedicalStudy",
+    "uri": "https://schema.org/MedicalStudy",
+    "label": "MedicalStudy",
+    "comment": "A medical study is an umbrella type covering all kinds of research studies relating to human medicine or health, including observational studies and interventional trials and registries, randomized, controlled or not. When the specific type of study is known, use one of the extensions of this type, such as MedicalTrial or MedicalObservationalStudy. Also, note that this type should be used to mark up data that describes the study itself; to tag an article that publishes the results of a study, use MedicalScholarlyArticle. Note: use the code property of MedicalEntity to store study IDs, e.g. clinicaltrials.gov ID.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:MedicalTest",
+    "uri": "https://schema.org/MedicalTest",
+    "label": "MedicalTest",
+    "comment": "Any medical test, typically performed for diagnostic purposes.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:Message",
+    "uri": "https://schema.org/Message",
+    "label": "Message",
+    "comment": "A single message from a sender to one or more organizations or people.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:CreativeWork"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:CreativeWork"
+  },
+  {
+    "curie": "schema:MonetaryAmount",
+    "uri": "https://schema.org/MonetaryAmount",
+    "label": "MonetaryAmount",
+    "comment": "A monetary value or range. This type can be used to describe an amount of money such as $50 USD, or a range as in describing a bank account being suitable for a balance between £1,000 and £1,000,000 GBP, or the value of a salary, etc. It is recommended to use PriceSpecification Types to describe the price of an Offer, Invoice, etc.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:StructuredValue"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:StructuredValue"
+  },
+  {
+    "curie": "schema:MortgageLoan",
+    "uri": "https://schema.org/MortgageLoan",
+    "label": "MortgageLoan",
+    "comment": "A loan in which property or real estate is used as collateral. (A loan securitized against some real estate.)",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:LoanOrCredit"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:LoanOrCredit"
+  },
+  {
+    "curie": "schema:NGO",
+    "uri": "https://schema.org/NGO",
+    "label": "NGO",
+    "comment": "Organization: Non-governmental Organization.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:NewsMediaOrganization",
+    "uri": "https://schema.org/NewsMediaOrganization",
+    "label": "NewsMediaOrganization",
+    "comment": "A News/Media organization such as a newspaper or TV station.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:Occupation",
+    "uri": "https://schema.org/Occupation",
+    "label": "Occupation",
+    "comment": "A profession, may involve prolonged training and/or a formal qualification.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Intangible"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Intangible"
+  },
+  {
+    "curie": "schema:OnlineBusiness",
+    "uri": "https://schema.org/OnlineBusiness",
+    "label": "OnlineBusiness",
+    "comment": "A particular online business, either standalone or the online part of a broader organization. Examples include an eCommerce site, an online travel booking site, an online learning site, an online logistics and shipping provider, an online (virtual) doctor, etc.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:Organization",
+    "uri": "https://schema.org/Organization",
+    "label": "Organization",
+    "comment": "An organization such as a school, NGO, corporation, club, etc.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Thing"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Thing"
+  },
+  {
+    "curie": "schema:Patient",
+    "uri": "https://schema.org/Patient",
+    "label": "Patient",
+    "comment": "A patient is any person recipient of health care services.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalAudience",
+      "schema:Person"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalAudience, schema:Person"
+  },
+  {
+    "curie": "schema:PayAction",
+    "uri": "https://schema.org/PayAction",
+    "label": "PayAction",
+    "comment": "An agent pays a price to a participant.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:TradeAction"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:TradeAction"
+  },
+  {
+    "curie": "schema:PaymentCard",
+    "uri": "https://schema.org/PaymentCard",
+    "label": "PaymentCard",
+    "comment": "A payment method using a credit, debit, store or other card to associate the payment with an account.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:FinancialProduct",
+      "schema:PaymentMethod"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:FinancialProduct, schema:PaymentMethod"
+  },
+  {
+    "curie": "schema:PaymentService",
+    "uri": "https://schema.org/PaymentService",
+    "label": "PaymentService",
+    "comment": "A Service to transfer funds from a person or organization to a beneficiary person or organization.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:FinancialProduct",
+      "schema:PaymentMethod"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:FinancialProduct, schema:PaymentMethod"
+  },
+  {
+    "curie": "schema:PerformingGroup",
+    "uri": "https://schema.org/PerformingGroup",
+    "label": "PerformingGroup",
+    "comment": "A performance group, such as a band, an orchestra, or a circus.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:Person",
+    "uri": "https://schema.org/Person",
+    "label": "Person",
+    "comment": "A person (alive, dead, undead, or fictional).",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Thing"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Thing"
+  },
+  {
+    "curie": "schema:Photograph",
+    "uri": "https://schema.org/Photograph",
+    "label": "Photograph",
+    "comment": "A photograph.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:CreativeWork"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:CreativeWork"
+  },
+  {
+    "curie": "schema:Place",
+    "uri": "https://schema.org/Place",
+    "label": "Place",
+    "comment": "Entities that have a somewhat fixed, physical extension.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Thing"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Thing"
+  },
+  {
+    "curie": "schema:PoliticalParty",
+    "uri": "https://schema.org/PoliticalParty",
+    "label": "PoliticalParty",
+    "comment": "Organization: Political Party.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:PostalAddress",
+    "uri": "https://schema.org/PostalAddress",
+    "label": "PostalAddress",
+    "comment": "The mailing address.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:ContactPoint"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:ContactPoint"
+  },
+  {
+    "curie": "schema:RepaymentSpecification",
+    "uri": "https://schema.org/RepaymentSpecification",
+    "label": "RepaymentSpecification",
+    "comment": "A structured value representing repayment.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:StructuredValue"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:StructuredValue"
+  },
+  {
+    "curie": "schema:ResearchOrganization",
+    "uri": "https://schema.org/ResearchOrganization",
+    "label": "ResearchOrganization",
+    "comment": "A Research Organization (e.g. scientific institute, research company).",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:Residence",
+    "uri": "https://schema.org/Residence",
+    "label": "Residence",
+    "comment": "The place where a person lives.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Place"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Place"
+  },
+  {
+    "curie": "schema:SearchRescueOrganization",
+    "uri": "https://schema.org/SearchRescueOrganization",
+    "label": "SearchRescueOrganization",
+    "comment": "A Search and Rescue organization of some kind.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:SocialMediaPosting",
+    "uri": "https://schema.org/SocialMediaPosting",
+    "label": "SocialMediaPosting",
+    "comment": "A post to a social media platform, including blog posts, tweets, Facebook posts, etc.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Article"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Article"
+  },
+  {
+    "curie": "schema:SportsOrganization",
+    "uri": "https://schema.org/SportsOrganization",
+    "label": "SportsOrganization",
+    "comment": "Represents the collection of all sports organizations, including sports teams, governing bodies, and sports associations.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:Substance",
+    "uri": "https://schema.org/Substance",
+    "label": "Substance",
+    "comment": "Any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:SuperficialAnatomy",
+    "uri": "https://schema.org/SuperficialAnatomy",
+    "label": "SuperficialAnatomy",
+    "comment": "Anatomical features that can be observed by sight (without dissection), including the form and proportions of the human body as well as surface landmarks that correspond to deeper subcutaneous structures. Superficial anatomy plays an important role in sports medicine, phlebotomy, and other medical specialties as underlying anatomical structures can be identified through surface palpation. For example, during back surgery, superficial anatomy can be used to palpate and count vertebrae to find the site of incision. Or in phlebotomy, superficial anatomy can be used to locate an underlying vein; for example, the median cubital vein can be located by palpating the borders of the cubital fossa (such as the epicondyles of the humerus) and then looking for the superficial signs of the vein, such as size, prominence, ability to refill after depression, and feel of surrounding tissue support. As another example, in a subluxation (dislocation) of the glenohumeral joint, the bony structure becomes pronounced with the deltoid muscle failing to cover the glenohumeral joint allowing the edges of the scapula to be superficially visible. Here, the superficial anatomy is the visible edges of the scapula, implying the underlying dislocation of the joint (the related anatomical structure).",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:MedicalEntity"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:MedicalEntity"
+  },
+  {
+    "curie": "schema:TouristAttraction",
+    "uri": "https://schema.org/TouristAttraction",
+    "label": "TouristAttraction",
+    "comment": "A tourist attraction. In principle any Thing can be a TouristAttraction, from a Mountain and LandmarksOrHistoricalBuildings to a LocalBusiness. This Type can be used on its own to describe a general TouristAttraction, or be used as an additionalType to add tourist attraction properties to any other type. (See examples below)",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Place"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Place"
+  },
+  {
+    "curie": "schema:TouristDestination",
+    "uri": "https://schema.org/TouristDestination",
+    "label": "TouristDestination",
+    "comment": "A tourist destination. In principle any Place can be a TouristDestination from a City, Region or Country to an AmusementPark or Hotel. This Type can be used on its own to describe a general TouristDestination, or be used as an additionalType to add tourist relevant properties to any other Place. A TouristDestination is defined as a Place that contains, or is colocated with, one or more TouristAttractions, often linked by a similar theme or interest to a particular touristType. The UNWTO defines Destination (main destination of a tourism trip) as the place visited that is central to the decision to take the trip. (See examples below.)",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Place"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Place"
+  },
+  {
+    "curie": "schema:WorkersUnion",
+    "uri": "https://schema.org/WorkersUnion",
+    "label": "WorkersUnion",
+    "comment": "A Workers Union (also known as a Labor Union, Labour Union, or Trade Union) is an organization that promotes the interests of its worker members by collectively bargaining with management, organizing, and political lobbying.",
+    "tipo": "Classe",
+    "rdf_types": [
+      "rdfs:Class"
+    ],
+    "subclasses": [
+      "schema:Organization"
+    ],
+    "domains": [],
+    "ranges": [],
+    "contexto": "subClassOf: schema:Organization"
+  },
+  {
+    "curie": "schema:acceptedPaymentMethod",
+    "uri": "https://schema.org/acceptedPaymentMethod",
+    "label": "acceptedPaymentMethod",
+    "comment": "The payment method(s) that are accepted in general by an organization, or for some specific demand or offer.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Demand",
+      "schema:Offer",
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:LoanOrCredit",
+      "schema:PaymentMethod",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Demand, schema:Offer, schema:Organization | rangeIncludes: schema:LoanOrCredit, schema:PaymentMethod, schema:Text"
+  },
+  {
+    "curie": "schema:accommodationFloorPlan",
+    "uri": "https://schema.org/accommodationFloorPlan",
+    "label": "accommodationFloorPlan",
+    "comment": "A floorplan of some Accommodation.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Accommodation",
+      "schema:Residence"
+    ],
+    "ranges": [
+      "schema:FloorPlan"
+    ],
+    "contexto": "domainIncludes: schema:Accommodation, schema:Residence | rangeIncludes: schema:FloorPlan"
+  },
+  {
+    "curie": "schema:accountMinimumInflow",
+    "uri": "https://schema.org/accountMinimumInflow",
+    "label": "accountMinimumInflow",
+    "comment": "A minimum amount that has to be paid in every month.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:BankAccount"
+    ],
+    "ranges": [
+      "schema:MonetaryAmount"
+    ],
+    "contexto": "domainIncludes: schema:BankAccount | rangeIncludes: schema:MonetaryAmount"
+  },
+  {
+    "curie": "schema:accountOverdraftLimit",
+    "uri": "https://schema.org/accountOverdraftLimit",
+    "label": "accountOverdraftLimit",
+    "comment": "An overdraft is an extension of credit from a lending institution when an account reaches zero. An overdraft allows the individual to continue withdrawing money even if the account has no funds in it. Basically the bank allows people to borrow a set amount of money.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:BankAccount"
+    ],
+    "ranges": [
+      "schema:MonetaryAmount"
+    ],
+    "contexto": "domainIncludes: schema:BankAccount | rangeIncludes: schema:MonetaryAmount"
+  },
+  {
+    "curie": "schema:actionableFeedbackPolicy",
+    "uri": "https://schema.org/actionableFeedbackPolicy",
+    "label": "actionableFeedbackPolicy",
+    "comment": "For a NewsMediaOrganization or other news-related Organization, a statement about public engagement activities (for news media, the newsroom’s), including involving the public - digitally or otherwise -- in coverage decisions, reporting and activities after publication.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:NewsMediaOrganization",
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:CreativeWork",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:NewsMediaOrganization, schema:Organization | rangeIncludes: schema:CreativeWork, schema:URL | subPropertyOf: schema:publishingPrinciples"
+  },
+  {
+    "curie": "schema:additionalName",
+    "uri": "https://schema.org/additionalName",
+    "label": "additionalName",
+    "comment": "An additional name for a Person, can be used for a middle name.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Text | subPropertyOf: schema:alternateName"
+  },
+  {
+    "curie": "schema:address",
+    "uri": "https://schema.org/address",
+    "label": "address",
+    "comment": "Physical address of the item.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeoCoordinates",
+      "schema:GeoShape",
+      "schema:Organization",
+      "schema:Person",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:PostalAddress",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:GeoCoordinates, schema:GeoShape, schema:Organization, schema:Person, schema:Place | rangeIncludes: schema:PostalAddress, schema:Text"
+  },
+  {
+    "curie": "schema:addressCountry",
+    "uri": "https://schema.org/addressCountry",
+    "label": "addressCountry",
+    "comment": "The country. Recommended to be in 2-letter ISO 3166-1 alpha-2 format, for example \"US\". For backward compatibility, a 3-letter ISO 3166-1 alpha-3 country code such as \"SGP\" or a full country name such as \"Singapore\" can also be used.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:DefinedRegion",
+      "schema:GeoCoordinates",
+      "schema:GeoShape",
+      "schema:PostalAddress"
+    ],
+    "ranges": [
+      "schema:Country",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:DefinedRegion, schema:GeoCoordinates, schema:GeoShape, schema:PostalAddress | rangeIncludes: schema:Country, schema:Text"
+  },
+  {
+    "curie": "schema:addressLocality",
+    "uri": "https://schema.org/addressLocality",
+    "label": "addressLocality",
+    "comment": "The locality in which the street address is, and which is in the region. For example, Mountain View.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:PostalAddress"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:PostalAddress | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:addressRegion",
+    "uri": "https://schema.org/addressRegion",
+    "label": "addressRegion",
+    "comment": "The region in which the locality is, and which is in the country. For example, California or another appropriate first-level Administrative division such as the Province in Italy or Region in Germany.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:DefinedRegion",
+      "schema:PostalAddress"
+    ],
+    "ranges": [
+      "schema:AdministrativeArea",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:DefinedRegion, schema:PostalAddress | rangeIncludes: schema:AdministrativeArea, schema:Text"
+  },
+  {
+    "curie": "schema:affiliation",
+    "uri": "https://schema.org/affiliation",
+    "label": "affiliation",
+    "comment": "An organization that this person is affiliated with. For example, a school/university, a club, or a team.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Organization"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Organization | subPropertyOf: schema:memberOf"
+  },
+  {
+    "curie": "schema:agentInteractionStatistic",
+    "uri": "https://schema.org/agentInteractionStatistic",
+    "label": "agentInteractionStatistic",
+    "comment": "The number of completed interactions for this entity, in a particular role (the 'agent'), in a particular action (indicated in the statistic), and in a particular context (i.e. interactionService).",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:InteractionCounter"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:InteractionCounter"
+  },
+  {
+    "curie": "schema:aggregateRating",
+    "uri": "https://schema.org/aggregateRating",
+    "label": "aggregateRating",
+    "comment": "The overall rating, based on a collection of reviews or ratings, of the item.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Brand",
+      "schema:CreativeWork",
+      "schema:Event",
+      "schema:Offer",
+      "schema:Organization",
+      "schema:Place",
+      "schema:Product",
+      "schema:Service"
+    ],
+    "ranges": [
+      "schema:AggregateRating"
+    ],
+    "contexto": "domainIncludes: schema:Brand, schema:CreativeWork, schema:Event, schema:Offer, schema:Organization, schema:Place, schema:Product, schema:Service | rangeIncludes: schema:AggregateRating"
+  },
+  {
+    "curie": "schema:alumni",
+    "uri": "https://schema.org/alumni",
+    "label": "alumni",
+    "comment": "Alumni of an organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:EducationalOrganization",
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:EducationalOrganization, schema:Organization | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:alumniOf",
+    "uri": "https://schema.org/alumniOf",
+    "label": "alumniOf",
+    "comment": "An organization that the person is an alumni of.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:EducationalOrganization",
+      "schema:Organization"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:EducationalOrganization, schema:Organization"
+  },
+  {
+    "curie": "schema:amenityFeature",
+    "uri": "https://schema.org/amenityFeature",
+    "label": "amenityFeature",
+    "comment": "An amenity feature (e.g. a characteristic or service) of the Accommodation. This generic property does not make a statement about whether the feature is included in an offer for the main accommodation or available at extra costs.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Accommodation",
+      "schema:FloorPlan",
+      "schema:LodgingBusiness",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:LocationFeatureSpecification"
+    ],
+    "contexto": "domainIncludes: schema:Accommodation, schema:FloorPlan, schema:LodgingBusiness, schema:Place | rangeIncludes: schema:LocationFeatureSpecification"
+  },
+  {
+    "curie": "schema:amount",
+    "uri": "https://schema.org/amount",
+    "label": "amount",
+    "comment": "The amount of money.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:DatedMoneySpecification",
+      "schema:InvestmentOrDeposit",
+      "schema:LoanOrCredit",
+      "schema:MonetaryGrant",
+      "schema:MoneyTransfer"
+    ],
+    "ranges": [
+      "schema:MonetaryAmount",
+      "schema:Number"
+    ],
+    "contexto": "domainIncludes: schema:DatedMoneySpecification, schema:InvestmentOrDeposit, schema:LoanOrCredit, schema:MonetaryGrant, schema:MoneyTransfer | rangeIncludes: schema:MonetaryAmount, schema:Number"
+  },
+  {
+    "curie": "schema:annualPercentageRate",
+    "uri": "https://schema.org/annualPercentageRate",
+    "label": "annualPercentageRate",
+    "comment": "The annual rate that is charged for borrowing (or made by investing), expressed as a single percentage number that represents the actual yearly cost of funds over the term of a loan. This includes any fees or additional costs associated with the transaction.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:FinancialProduct"
+    ],
+    "ranges": [
+      "schema:Number",
+      "schema:QuantitativeValue"
+    ],
+    "contexto": "domainIncludes: schema:FinancialProduct | rangeIncludes: schema:Number, schema:QuantitativeValue"
+  },
+  {
+    "curie": "schema:areaServed",
+    "uri": "https://schema.org/areaServed",
+    "label": "areaServed",
+    "comment": "The geographic area where a service or offered item is provided.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:ContactPoint",
+      "schema:DeliveryChargeSpecification",
+      "schema:Demand",
+      "schema:FinancialIncentive",
+      "schema:Offer",
+      "schema:Organization",
+      "schema:Service"
+    ],
+    "ranges": [
+      "schema:AdministrativeArea",
+      "schema:GeoShape",
+      "schema:Place",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:ContactPoint, schema:DeliveryChargeSpecification, schema:Demand, schema:FinancialIncentive, schema:Offer, schema:Organization, schema:Service | rangeIncludes: schema:AdministrativeArea, schema:GeoShape, schema:Place, schema:Text"
+  },
+  {
+    "curie": "schema:associatedAnatomy",
+    "uri": "https://schema.org/associatedAnatomy",
+    "label": "associatedAnatomy",
+    "comment": "The anatomy of the underlying organ system or structures associated with this entity.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition",
+      "schema:PhysicalActivity"
+    ],
+    "ranges": [
+      "schema:AnatomicalStructure",
+      "schema:AnatomicalSystem",
+      "schema:SuperficialAnatomy"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition, schema:PhysicalActivity | rangeIncludes: schema:AnatomicalStructure, schema:AnatomicalSystem, schema:SuperficialAnatomy"
+  },
+  {
+    "curie": "schema:authorizedRepresentative",
+    "uri": "https://schema.org/authorizedRepresentative",
+    "label": "authorizedRepresentative",
+    "comment": "An organization or person officially appointed to act on behalf of the manufacturer in a specific region or context.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Product"
+    ],
+    "ranges": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Product | rangeIncludes: schema:Organization, schema:Person"
+  },
+  {
+    "curie": "schema:award",
+    "uri": "https://schema.org/award",
+    "label": "award",
+    "comment": "An award won by or for this item.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:CreativeWork",
+      "schema:Organization",
+      "schema:Person",
+      "schema:Product",
+      "schema:Service"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:CreativeWork, schema:Organization, schema:Person, schema:Product, schema:Service | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:awards",
+    "uri": "https://schema.org/awards",
+    "label": "awards",
+    "comment": "Awards won by or for this item.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:CreativeWork",
+      "schema:Organization",
+      "schema:Person",
+      "schema:Product"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:CreativeWork, schema:Organization, schema:Person, schema:Product | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:bankAccountType",
+    "uri": "https://schema.org/bankAccountType",
+    "label": "bankAccountType",
+    "comment": "The type of a bank account.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:BankAccount"
+    ],
+    "ranges": [
+      "schema:Text",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:BankAccount | rangeIncludes: schema:Text, schema:URL"
+  },
+  {
+    "curie": "schema:baseSalary",
+    "uri": "https://schema.org/baseSalary",
+    "label": "baseSalary",
+    "comment": "The base salary of the job or of an employee in an EmployeeRole.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:EmployeeRole",
+      "schema:JobPosting"
+    ],
+    "ranges": [
+      "schema:MonetaryAmount",
+      "schema:Number",
+      "schema:PriceSpecification"
+    ],
+    "contexto": "domainIncludes: schema:EmployeeRole, schema:JobPosting | rangeIncludes: schema:MonetaryAmount, schema:Number, schema:PriceSpecification"
+  },
+  {
+    "curie": "schema:bccRecipient",
+    "uri": "https://schema.org/bccRecipient",
+    "label": "bccRecipient",
+    "comment": "A sub property of recipient. The recipient blind copied on a message.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Message"
+    ],
+    "ranges": [
+      "schema:ContactPoint",
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Message | rangeIncludes: schema:ContactPoint, schema:Organization, schema:Person | subPropertyOf: schema:recipient"
+  },
+  {
+    "curie": "schema:birthDate",
+    "uri": "https://schema.org/birthDate",
+    "label": "birthDate",
+    "comment": "Date of birth.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Date"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Date"
+  },
+  {
+    "curie": "schema:birthPlace",
+    "uri": "https://schema.org/birthPlace",
+    "label": "birthPlace",
+    "comment": "The place where the person was born.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Place"
+  },
+  {
+    "curie": "schema:branchCode",
+    "uri": "https://schema.org/branchCode",
+    "label": "branchCode",
+    "comment": "A short textual code (also called \"store code\") that uniquely identifies a place of business. The code is typically assigned by the parentOrganization and used in structured URLs.\\\\n\\\\nFor example, in the URL http://www.starbucks.co.uk/store-locator/etc/detail/3047 the code \"3047\" is a branchCode for a particular branch.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:brand",
+    "uri": "https://schema.org/brand",
+    "label": "brand",
+    "comment": "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person",
+      "schema:Product",
+      "schema:Service"
+    ],
+    "ranges": [
+      "schema:Brand",
+      "schema:Organization"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person, schema:Product, schema:Service | rangeIncludes: schema:Brand, schema:Organization"
+  },
+  {
+    "curie": "schema:callSign",
+    "uri": "https://schema.org/callSign",
+    "label": "callSign",
+    "comment": "A callsign, as used in broadcasting and radio communications to identify people, radio and TV stations, or vehicles.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:BroadcastService",
+      "schema:Person",
+      "schema:Vehicle"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:BroadcastService, schema:Person, schema:Vehicle | rangeIncludes: schema:Text | subPropertyOf: schema:identifier"
+  },
+  {
+    "curie": "schema:caption",
+    "uri": "https://schema.org/caption",
+    "label": "caption",
+    "comment": "The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the encodingFormat.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:AudioObject",
+      "schema:ImageObject",
+      "schema:VideoObject"
+    ],
+    "ranges": [
+      "schema:MediaObject",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:AudioObject, schema:ImageObject, schema:VideoObject | rangeIncludes: schema:MediaObject, schema:Text"
+  },
+  {
+    "curie": "schema:cashBack",
+    "uri": "https://schema.org/cashBack",
+    "label": "cashBack",
+    "comment": "A cardholder benefit that pays the cardholder a small percentage of their net expenditures.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:PaymentCard"
+    ],
+    "ranges": [
+      "schema:Boolean",
+      "schema:Number"
+    ],
+    "contexto": "domainIncludes: schema:PaymentCard | rangeIncludes: schema:Boolean, schema:Number"
+  },
+  {
+    "curie": "schema:category",
+    "uri": "https://schema.org/category",
+    "label": "category",
+    "comment": "A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:ActionAccessSpecification",
+      "schema:Guide",
+      "schema:Invoice",
+      "schema:Offer",
+      "schema:PhysicalActivity",
+      "schema:Product",
+      "schema:Recommendation",
+      "schema:Service",
+      "schema:SpecialAnnouncement"
+    ],
+    "ranges": [
+      "schema:CategoryCode",
+      "schema:PhysicalActivityCategory",
+      "schema:Text",
+      "schema:Thing",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:ActionAccessSpecification, schema:Guide, schema:Invoice, schema:Offer, schema:PhysicalActivity, schema:Product, schema:Recommendation, schema:Service, schema:SpecialAnnouncement | rangeIncludes: schema:CategoryCode, schema:PhysicalActivityCategory, schema:Text, schema:Thing, schema:URL"
+  },
+  {
+    "curie": "schema:cause",
+    "uri": "https://schema.org/cause",
+    "label": "cause",
+    "comment": "The cause of a medical condition.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition"
+    ],
+    "ranges": [
+      "schema:MedicalCause"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition | rangeIncludes: schema:MedicalCause"
+  },
+  {
+    "curie": "schema:ccRecipient",
+    "uri": "https://schema.org/ccRecipient",
+    "label": "ccRecipient",
+    "comment": "A sub property of recipient. The recipient copied on a message.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Message"
+    ],
+    "ranges": [
+      "schema:ContactPoint",
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Message | rangeIncludes: schema:ContactPoint, schema:Organization, schema:Person | subPropertyOf: schema:recipient"
+  },
+  {
+    "curie": "schema:children",
+    "uri": "https://schema.org/children",
+    "label": "children",
+    "comment": "A child of the person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:code",
+    "uri": "https://schema.org/code",
+    "label": "code",
+    "comment": "A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalEntity"
+    ],
+    "ranges": [
+      "schema:MedicalCode"
+    ],
+    "contexto": "domainIncludes: schema:MedicalEntity | rangeIncludes: schema:MedicalCode"
+  },
+  {
+    "curie": "schema:colleague",
+    "uri": "https://schema.org/colleague",
+    "label": "colleague",
+    "comment": "A colleague of the person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Person",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Person, schema:URL"
+  },
+  {
+    "curie": "schema:colleagues",
+    "uri": "https://schema.org/colleagues",
+    "label": "colleagues",
+    "comment": "A colleague of the person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:companyRegistration",
+    "uri": "https://schema.org/companyRegistration",
+    "label": "companyRegistration",
+    "comment": "The official registration information of a business including the organization that issued it such as Company House or Chamber of Commerce in form of a Certification.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Certification"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Certification"
+  },
+  {
+    "curie": "schema:competencyRequired",
+    "uri": "https://schema.org/competencyRequired",
+    "label": "competencyRequired",
+    "comment": "Knowledge, skill, ability or personal attribute that must be demonstrated by a person or other entity in order to do something such as earn an Educational Occupational Credential or understand a LearningResource.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:EducationalOccupationalCredential",
+      "schema:LearningResource"
+    ],
+    "ranges": [
+      "schema:DefinedTerm",
+      "schema:Text",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:EducationalOccupationalCredential, schema:LearningResource | rangeIncludes: schema:DefinedTerm, schema:Text, schema:URL"
+  },
+  {
+    "curie": "schema:contactPoint",
+    "uri": "https://schema.org/contactPoint",
+    "label": "contactPoint",
+    "comment": "A contact point for a person or organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:HealthInsurancePlan",
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:ContactPoint"
+    ],
+    "contexto": "domainIncludes: schema:HealthInsurancePlan, schema:Organization, schema:Person | rangeIncludes: schema:ContactPoint"
+  },
+  {
+    "curie": "schema:contactPoints",
+    "uri": "https://schema.org/contactPoints",
+    "label": "contactPoints",
+    "comment": "A contact point for a person or organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:ContactPoint"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:ContactPoint"
+  },
+  {
+    "curie": "schema:contactlessPayment",
+    "uri": "https://schema.org/contactlessPayment",
+    "label": "contactlessPayment",
+    "comment": "A secure method for consumers to purchase products or services via debit, credit or smartcards by using RFID or NFC technology.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:PaymentCard"
+    ],
+    "ranges": [
+      "schema:Boolean"
+    ],
+    "contexto": "domainIncludes: schema:PaymentCard | rangeIncludes: schema:Boolean"
+  },
+  {
+    "curie": "schema:containedIn",
+    "uri": "https://schema.org/containedIn",
+    "label": "containedIn",
+    "comment": "The basic containment relation between a place and one that contains it.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:Place"
+  },
+  {
+    "curie": "schema:containedInPlace",
+    "uri": "https://schema.org/containedInPlace",
+    "label": "containedInPlace",
+    "comment": "The basic containment relation between a place and one that contains it.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:Place"
+  },
+  {
+    "curie": "schema:containsPlace",
+    "uri": "https://schema.org/containsPlace",
+    "label": "containsPlace",
+    "comment": "The basic containment relation between a place and another that it contains.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:Place"
+  },
+  {
+    "curie": "schema:correctionsPolicy",
+    "uri": "https://schema.org/correctionsPolicy",
+    "label": "correctionsPolicy",
+    "comment": "For an Organization (e.g. NewsMediaOrganization), a statement describing (in news media, the newsroom’s) disclosure and correction policy for errors.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:NewsMediaOrganization",
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:CreativeWork",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:NewsMediaOrganization, schema:Organization | rangeIncludes: schema:CreativeWork, schema:URL | subPropertyOf: schema:publishingPrinciples"
+  },
+  {
+    "curie": "schema:currency",
+    "uri": "https://schema.org/currency",
+    "label": "currency",
+    "comment": "The currency in which the monetary amount is expressed.\\\\n\\\\nUse standard formats: ISO 4217 currency format, e.g. \"USD\"; Ticker symbol for cryptocurrencies, e.g. \"BTC\"; well known names for Local Exchange Trading Systems (LETS) and other currency types, e.g. \"Ithaca HOUR\".",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:DatedMoneySpecification",
+      "schema:ExchangeRateSpecification",
+      "schema:LoanOrCredit",
+      "schema:MonetaryAmount",
+      "schema:MonetaryAmountDistribution"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:DatedMoneySpecification, schema:ExchangeRateSpecification, schema:LoanOrCredit, schema:MonetaryAmount, schema:MonetaryAmountDistribution | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:dateRead",
+    "uri": "https://schema.org/dateRead",
+    "label": "dateRead",
+    "comment": "The date/time at which the message has been read by the recipient if a single recipient exists.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Message"
+    ],
+    "ranges": [
+      "schema:Date",
+      "schema:DateTime"
+    ],
+    "contexto": "domainIncludes: schema:Message | rangeIncludes: schema:Date, schema:DateTime"
+  },
+  {
+    "curie": "schema:dateReceived",
+    "uri": "https://schema.org/dateReceived",
+    "label": "dateReceived",
+    "comment": "The date/time the message was received if a single recipient exists.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Message"
+    ],
+    "ranges": [
+      "schema:DateTime"
+    ],
+    "contexto": "domainIncludes: schema:Message | rangeIncludes: schema:DateTime"
+  },
+  {
+    "curie": "schema:dateSent",
+    "uri": "https://schema.org/dateSent",
+    "label": "dateSent",
+    "comment": "The date/time at which the message was sent.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Message"
+    ],
+    "ranges": [
+      "schema:DateTime"
+    ],
+    "contexto": "domainIncludes: schema:Message | rangeIncludes: schema:DateTime"
+  },
+  {
+    "curie": "schema:deathDate",
+    "uri": "https://schema.org/deathDate",
+    "label": "deathDate",
+    "comment": "Date of death.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Date"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Date"
+  },
+  {
+    "curie": "schema:deathPlace",
+    "uri": "https://schema.org/deathPlace",
+    "label": "deathPlace",
+    "comment": "The place where the person died.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Place"
+  },
+  {
+    "curie": "schema:department",
+    "uri": "https://schema.org/department",
+    "label": "department",
+    "comment": "A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Organization"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Organization"
+  },
+  {
+    "curie": "schema:differentialDiagnosis",
+    "uri": "https://schema.org/differentialDiagnosis",
+    "label": "differentialDiagnosis",
+    "comment": "One of a set of differential diagnoses for the condition. Specifically, a closely-related or competing diagnosis typically considered later in the cognitive process whereby this medical condition is distinguished from others most likely responsible for a similar collection of signs and symptoms to reach the most parsimonious diagnosis or diagnoses in a patient.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition"
+    ],
+    "ranges": [
+      "schema:DDxElement"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition | rangeIncludes: schema:DDxElement"
+  },
+  {
+    "curie": "schema:dissolutionDate",
+    "uri": "https://schema.org/dissolutionDate",
+    "label": "dissolutionDate",
+    "comment": "The date that this organization was dissolved.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Date"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Date"
+  },
+  {
+    "curie": "schema:diversityPolicy",
+    "uri": "https://schema.org/diversityPolicy",
+    "label": "diversityPolicy",
+    "comment": "Statement on diversity policy by an Organization e.g. a NewsMediaOrganization. For a NewsMediaOrganization, a statement describing the newsroom’s diversity policy on both staffing and sources, typically providing staffing data.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:NewsMediaOrganization",
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:CreativeWork",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:NewsMediaOrganization, schema:Organization | rangeIncludes: schema:CreativeWork, schema:URL"
+  },
+  {
+    "curie": "schema:diversityStaffingReport",
+    "uri": "https://schema.org/diversityStaffingReport",
+    "label": "diversityStaffingReport",
+    "comment": "For an Organization (often but not necessarily a NewsMediaOrganization), a report on staffing diversity issues. In a news context this might be for example ASNE or RTDNA (US) reports, or self-reported.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:NewsMediaOrganization",
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Article",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:NewsMediaOrganization, schema:Organization | rangeIncludes: schema:Article, schema:URL | subPropertyOf: schema:publishingPrinciples"
+  },
+  {
+    "curie": "schema:downPayment",
+    "uri": "https://schema.org/downPayment",
+    "label": "downPayment",
+    "comment": "a type of payment made in cash during the onset of the purchase of an expensive good/service. The payment typically represents only a percentage of the full purchase price.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:RepaymentSpecification"
+    ],
+    "ranges": [
+      "schema:MonetaryAmount",
+      "schema:Number"
+    ],
+    "contexto": "domainIncludes: schema:RepaymentSpecification | rangeIncludes: schema:MonetaryAmount, schema:Number"
+  },
+  {
+    "curie": "schema:drug",
+    "uri": "https://schema.org/drug",
+    "label": "drug",
+    "comment": "Specifying a drug or medicine used in a medication procedure.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:DrugClass",
+      "schema:MedicalCondition",
+      "schema:Patient",
+      "schema:TherapeuticProcedure"
+    ],
+    "ranges": [
+      "schema:Drug"
+    ],
+    "contexto": "domainIncludes: schema:DrugClass, schema:MedicalCondition, schema:Patient, schema:TherapeuticProcedure | rangeIncludes: schema:Drug"
+  },
+  {
+    "curie": "schema:duns",
+    "uri": "https://schema.org/duns",
+    "label": "duns",
+    "comment": "The Dun & Bradstreet DUNS number for identifying an organization or business person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:Text | subPropertyOf: schema:identifier"
+  },
+  {
+    "curie": "schema:earlyPrepaymentPenalty",
+    "uri": "https://schema.org/earlyPrepaymentPenalty",
+    "label": "earlyPrepaymentPenalty",
+    "comment": "The amount to be paid as a penalty in the event of early payment of the loan.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:RepaymentSpecification"
+    ],
+    "ranges": [
+      "schema:MonetaryAmount"
+    ],
+    "contexto": "domainIncludes: schema:RepaymentSpecification | rangeIncludes: schema:MonetaryAmount"
+  },
+  {
+    "curie": "schema:educationRequirements",
+    "uri": "https://schema.org/educationRequirements",
+    "label": "educationRequirements",
+    "comment": "Educational background needed for the position or Occupation.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:JobPosting",
+      "schema:Occupation"
+    ],
+    "ranges": [
+      "schema:EducationalOccupationalCredential",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:JobPosting, schema:Occupation | rangeIncludes: schema:EducationalOccupationalCredential, schema:Text"
+  },
+  {
+    "curie": "schema:educationalLevel",
+    "uri": "https://schema.org/educationalLevel",
+    "label": "educationalLevel",
+    "comment": "The level in terms of progression through an educational or training context. Examples of educational levels include 'beginner', 'intermediate' or 'advanced', and formal sets of level indicators.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:CreativeWork",
+      "schema:EducationEvent",
+      "schema:EducationalOccupationalCredential",
+      "schema:LearningResource"
+    ],
+    "ranges": [
+      "schema:DefinedTerm",
+      "schema:Text",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:CreativeWork, schema:EducationEvent, schema:EducationalOccupationalCredential, schema:LearningResource | rangeIncludes: schema:DefinedTerm, schema:Text, schema:URL"
+  },
+  {
+    "curie": "schema:elevation",
+    "uri": "https://schema.org/elevation",
+    "label": "elevation",
+    "comment": "The elevation of a location (WGS 84). Values may be of the form 'NUMBER UNIT\\\\_OF\\\\_MEASUREMENT' (e.g., '1,000 m', '3,200 ft') while numbers alone should be assumed to be a value in meters.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeoCoordinates",
+      "schema:GeoShape"
+    ],
+    "ranges": [
+      "schema:Number",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:GeoCoordinates, schema:GeoShape | rangeIncludes: schema:Number, schema:Text"
+  },
+  {
+    "curie": "schema:email",
+    "uri": "https://schema.org/email",
+    "label": "email",
+    "comment": "Email address.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:ContactPoint",
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:ContactPoint, schema:Organization, schema:Person | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:embeddedTextCaption",
+    "uri": "https://schema.org/embeddedTextCaption",
+    "label": "embeddedTextCaption",
+    "comment": "Represents textual captioning from a MediaObject, e.g. text of a 'meme'.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:AudioObject",
+      "schema:ImageObject",
+      "schema:VideoObject"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:AudioObject, schema:ImageObject, schema:VideoObject | rangeIncludes: schema:Text | subPropertyOf: schema:caption"
+  },
+  {
+    "curie": "schema:employee",
+    "uri": "https://schema.org/employee",
+    "label": "employee",
+    "comment": "Someone working for this organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:employees",
+    "uri": "https://schema.org/employees",
+    "label": "employees",
+    "comment": "People working for this organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:employmentType",
+    "uri": "https://schema.org/employmentType",
+    "label": "employmentType",
+    "comment": "Type of employment (e.g. full-time, part-time, contract, temporary, seasonal, internship).",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:JobPosting"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:JobPosting | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:epidemiology",
+    "uri": "https://schema.org/epidemiology",
+    "label": "epidemiology",
+    "comment": "The characteristics of associated patients, such as age, gender, race etc.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition",
+      "schema:PhysicalActivity"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition, schema:PhysicalActivity | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:estimatedSalary",
+    "uri": "https://schema.org/estimatedSalary",
+    "label": "estimatedSalary",
+    "comment": "An estimated salary for a job posting or occupation, based on a variety of variables including, but not limited to industry, job title, and location. Estimated salaries are often computed by outside organizations rather than the hiring organization, who may not have committed to the estimated value.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:JobPosting",
+      "schema:Occupation"
+    ],
+    "ranges": [
+      "schema:MonetaryAmount",
+      "schema:MonetaryAmountDistribution",
+      "schema:Number"
+    ],
+    "contexto": "domainIncludes: schema:JobPosting, schema:Occupation | rangeIncludes: schema:MonetaryAmount, schema:MonetaryAmountDistribution, schema:Number"
+  },
+  {
+    "curie": "schema:ethicsPolicy",
+    "uri": "https://schema.org/ethicsPolicy",
+    "label": "ethicsPolicy",
+    "comment": "Statement about ethics policy, e.g. of a NewsMediaOrganization regarding journalistic and publishing practices, or of a Restaurant, a page describing food source policies. In the case of a NewsMediaOrganization, an ethicsPolicy is typically a statement describing the personal, organizational, and corporate standards of behavior expected by the organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:NewsMediaOrganization",
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:CreativeWork",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:NewsMediaOrganization, schema:Organization | rangeIncludes: schema:CreativeWork, schema:URL"
+  },
+  {
+    "curie": "schema:event",
+    "uri": "https://schema.org/event",
+    "label": "event",
+    "comment": "Upcoming or past event associated with this place, organization, or action.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:InformAction",
+      "schema:InviteAction",
+      "schema:JoinAction",
+      "schema:LeaveAction",
+      "schema:Organization",
+      "schema:Place",
+      "schema:PlayAction"
+    ],
+    "ranges": [
+      "schema:Event"
+    ],
+    "contexto": "domainIncludes: schema:InformAction, schema:InviteAction, schema:JoinAction, schema:LeaveAction, schema:Organization, schema:Place, schema:PlayAction | rangeIncludes: schema:Event"
+  },
+  {
+    "curie": "schema:events",
+    "uri": "https://schema.org/events",
+    "label": "events",
+    "comment": "Upcoming or past events associated with this place or organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Event"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Place | rangeIncludes: schema:Event"
+  },
+  {
+    "curie": "schema:exifData",
+    "uri": "https://schema.org/exifData",
+    "label": "exifData",
+    "comment": "exif data for this object.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:ImageObject"
+    ],
+    "ranges": [
+      "schema:PropertyValue",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:ImageObject | rangeIncludes: schema:PropertyValue, schema:Text"
+  },
+  {
+    "curie": "schema:expectedPrognosis",
+    "uri": "https://schema.org/expectedPrognosis",
+    "label": "expectedPrognosis",
+    "comment": "The likely outcome in either the short term or long term of the medical condition.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:experienceRequirements",
+    "uri": "https://schema.org/experienceRequirements",
+    "label": "experienceRequirements",
+    "comment": "Description of skills and experience needed for the position or Occupation.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:JobPosting",
+      "schema:Occupation"
+    ],
+    "ranges": [
+      "schema:OccupationalExperienceRequirements",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:JobPosting, schema:Occupation | rangeIncludes: schema:OccupationalExperienceRequirements, schema:Text"
+  },
+  {
+    "curie": "schema:extendedAddress",
+    "uri": "https://schema.org/extendedAddress",
+    "label": "extendedAddress",
+    "comment": "An address extension such as an apartment number, C/O or alternative name.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:PostalAddress"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:PostalAddress | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:familyName",
+    "uri": "https://schema.org/familyName",
+    "label": "familyName",
+    "comment": "Family name. In the U.S., the last name of a Person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:faxNumber",
+    "uri": "https://schema.org/faxNumber",
+    "label": "faxNumber",
+    "comment": "The fax number.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:ContactPoint",
+      "schema:Organization",
+      "schema:Person",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:ContactPoint, schema:Organization, schema:Person, schema:Place | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:feesAndCommissionsSpecification",
+    "uri": "https://schema.org/feesAndCommissionsSpecification",
+    "label": "feesAndCommissionsSpecification",
+    "comment": "Description of fees, commissions, and other terms applied either to a class of financial product, or by a financial service organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:FinancialProduct",
+      "schema:FinancialService"
+    ],
+    "ranges": [
+      "schema:Text",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:FinancialProduct, schema:FinancialService | rangeIncludes: schema:Text, schema:URL"
+  },
+  {
+    "curie": "schema:floorLevel",
+    "uri": "https://schema.org/floorLevel",
+    "label": "floorLevel",
+    "comment": "The floor level for an Accommodation in a multi-storey building. Since counting systems vary internationally, the local system should be used where possible.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Accommodation",
+      "schema:LocalBusiness",
+      "schema:Residence"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Accommodation, schema:LocalBusiness, schema:Residence | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:floorLimit",
+    "uri": "https://schema.org/floorLimit",
+    "label": "floorLimit",
+    "comment": "A floor limit is the amount of money above which credit card transactions must be authorized.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:PaymentCard"
+    ],
+    "ranges": [
+      "schema:MonetaryAmount"
+    ],
+    "contexto": "domainIncludes: schema:PaymentCard | rangeIncludes: schema:MonetaryAmount"
+  },
+  {
+    "curie": "schema:followee",
+    "uri": "https://schema.org/followee",
+    "label": "followee",
+    "comment": "A sub property of object. The person or organization being followed.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:FollowAction"
+    ],
+    "ranges": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:FollowAction | rangeIncludes: schema:Organization, schema:Person | subPropertyOf: schema:object"
+  },
+  {
+    "curie": "schema:follows",
+    "uri": "https://schema.org/follows",
+    "label": "follows",
+    "comment": "The most generic uni-directional social relation.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:founder",
+    "uri": "https://schema.org/founder",
+    "label": "founder",
+    "comment": "A person or organization who founded this organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Organization, schema:Person"
+  },
+  {
+    "curie": "schema:founders",
+    "uri": "https://schema.org/founders",
+    "label": "founders",
+    "comment": "A person who founded this organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:foundingDate",
+    "uri": "https://schema.org/foundingDate",
+    "label": "foundingDate",
+    "comment": "The date that this organization was founded.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Date"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Date"
+  },
+  {
+    "curie": "schema:foundingLocation",
+    "uri": "https://schema.org/foundingLocation",
+    "label": "foundingLocation",
+    "comment": "The place where the Organization was founded.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Place"
+  },
+  {
+    "curie": "schema:funder",
+    "uri": "https://schema.org/funder",
+    "label": "funder",
+    "comment": "A person or organization that supports (sponsors) something through some kind of financial contribution.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:CreativeWork",
+      "schema:Event",
+      "schema:Grant",
+      "schema:MonetaryGrant",
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:CreativeWork, schema:Event, schema:Grant, schema:MonetaryGrant, schema:Organization, schema:Person | rangeIncludes: schema:Organization, schema:Person | subPropertyOf: schema:sponsor"
+  },
+  {
+    "curie": "schema:funding",
+    "uri": "https://schema.org/funding",
+    "label": "funding",
+    "comment": "A Grant that directly or indirectly provide funding or sponsorship for this item. See also ownershipFundingInfo.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:BioChemEntity",
+      "schema:CreativeWork",
+      "schema:Event",
+      "schema:MedicalEntity",
+      "schema:Organization",
+      "schema:Person",
+      "schema:Product"
+    ],
+    "ranges": [
+      "schema:Grant"
+    ],
+    "contexto": "domainIncludes: schema:BioChemEntity, schema:CreativeWork, schema:Event, schema:MedicalEntity, schema:Organization, schema:Person, schema:Product | rangeIncludes: schema:Grant"
+  },
+  {
+    "curie": "schema:gender",
+    "uri": "https://schema.org/gender",
+    "label": "gender",
+    "comment": "Gender of something, typically a Person, but possibly also fictional characters, animals, etc. While https://schema.org/Male and https://schema.org/Female may be used, text strings are also acceptable for people who are not a binary gender. The gender property can also be used in an extended sense to cover e.g. the gender of sports teams. As with the gender of individuals, we do not try to enumerate all possibilities. A mixed-gender SportsTeam can be indicated with a text value of \"Mixed\".",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person",
+      "schema:SportsTeam"
+    ],
+    "ranges": [
+      "schema:GenderType",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Person, schema:SportsTeam | rangeIncludes: schema:GenderType, schema:Text"
+  },
+  {
+    "curie": "schema:geo",
+    "uri": "https://schema.org/geo",
+    "label": "geo",
+    "comment": "The geo coordinates of the place.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:GeoCoordinates",
+      "schema:GeoShape"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:GeoCoordinates, schema:GeoShape"
+  },
+  {
+    "curie": "schema:geoContains",
+    "uri": "https://schema.org/geoContains",
+    "label": "geoContains",
+    "comment": "Represents a relationship between two geometries (or the places they represent), relating a containing geometry to a contained geometry. \"a contains b iff no points of b lie in the exterior of a, and at least one point of the interior of b lies in the interior of a\". As defined in DE-9IM.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:GeospatialGeometry, schema:Place | rangeIncludes: schema:GeospatialGeometry, schema:Place"
+  },
+  {
+    "curie": "schema:geoCoveredBy",
+    "uri": "https://schema.org/geoCoveredBy",
+    "label": "geoCoveredBy",
+    "comment": "Represents a relationship between two geometries (or the places they represent), relating a geometry to another that covers it. As defined in DE-9IM.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:GeospatialGeometry, schema:Place | rangeIncludes: schema:GeospatialGeometry, schema:Place"
+  },
+  {
+    "curie": "schema:geoCovers",
+    "uri": "https://schema.org/geoCovers",
+    "label": "geoCovers",
+    "comment": "Represents a relationship between two geometries (or the places they represent), relating a covering geometry to a covered geometry. \"Every point of b is a point of (the interior or boundary of) a\". As defined in DE-9IM.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:GeospatialGeometry, schema:Place | rangeIncludes: schema:GeospatialGeometry, schema:Place"
+  },
+  {
+    "curie": "schema:geoCrosses",
+    "uri": "https://schema.org/geoCrosses",
+    "label": "geoCrosses",
+    "comment": "Represents a relationship between two geometries (or the places they represent), relating a geometry to another that crosses it: \"a crosses b: they have some but not all interior points in common, and the dimension of the intersection is less than that of at least one of them\". As defined in DE-9IM.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:GeospatialGeometry, schema:Place | rangeIncludes: schema:GeospatialGeometry, schema:Place"
+  },
+  {
+    "curie": "schema:geoDisjoint",
+    "uri": "https://schema.org/geoDisjoint",
+    "label": "geoDisjoint",
+    "comment": "Represents spatial relations in which two geometries (or the places they represent) are topologically disjoint: \"they have no point in common. They form a set of disconnected geometries.\" (A symmetric relationship, as defined in DE-9IM.)",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:GeospatialGeometry, schema:Place | rangeIncludes: schema:GeospatialGeometry, schema:Place"
+  },
+  {
+    "curie": "schema:geoEquals",
+    "uri": "https://schema.org/geoEquals",
+    "label": "geoEquals",
+    "comment": "Represents spatial relations in which two geometries (or the places they represent) are topologically equal, as defined in DE-9IM. \"Two geometries are topologically equal if their interiors intersect and no part of the interior or boundary of one geometry intersects the exterior of the other\" (a symmetric relationship).",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:GeospatialGeometry, schema:Place | rangeIncludes: schema:GeospatialGeometry, schema:Place"
+  },
+  {
+    "curie": "schema:geoIntersects",
+    "uri": "https://schema.org/geoIntersects",
+    "label": "geoIntersects",
+    "comment": "Represents spatial relations in which two geometries (or the places they represent) have at least one point in common. As defined in DE-9IM.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:GeospatialGeometry, schema:Place | rangeIncludes: schema:GeospatialGeometry, schema:Place"
+  },
+  {
+    "curie": "schema:geoOverlaps",
+    "uri": "https://schema.org/geoOverlaps",
+    "label": "geoOverlaps",
+    "comment": "Represents a relationship between two geometries (or the places they represent), relating a geometry to another that geospatially overlaps it, i.e. they have some but not all points in common. As defined in DE-9IM.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:GeospatialGeometry, schema:Place | rangeIncludes: schema:GeospatialGeometry, schema:Place"
+  },
+  {
+    "curie": "schema:geoTouches",
+    "uri": "https://schema.org/geoTouches",
+    "label": "geoTouches",
+    "comment": "Represents spatial relations in which two geometries (or the places they represent) touch: \"they have at least one boundary point in common, but no interior points.\" (A symmetric relationship, as defined in DE-9IM.)",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:GeospatialGeometry, schema:Place | rangeIncludes: schema:GeospatialGeometry, schema:Place"
+  },
+  {
+    "curie": "schema:geoWithin",
+    "uri": "https://schema.org/geoWithin",
+    "label": "geoWithin",
+    "comment": "Represents a relationship between two geometries (or the places they represent), relating a geometry to one that contains it, i.e. it is inside (i.e. within) its interior. As defined in DE-9IM.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:GeospatialGeometry",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:GeospatialGeometry, schema:Place | rangeIncludes: schema:GeospatialGeometry, schema:Place"
+  },
+  {
+    "curie": "schema:givenName",
+    "uri": "https://schema.org/givenName",
+    "label": "givenName",
+    "comment": "Given name. In the U.S., the first name of a Person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:globalLocationNumber",
+    "uri": "https://schema.org/globalLocationNumber",
+    "label": "globalLocationNumber",
+    "comment": "The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person, schema:Place | rangeIncludes: schema:Text | subPropertyOf: schema:identifier"
+  },
+  {
+    "curie": "schema:gracePeriod",
+    "uri": "https://schema.org/gracePeriod",
+    "label": "gracePeriod",
+    "comment": "The period of time after any due date that the borrower has to fulfil its obligations before a default (failure to pay) is deemed to have occurred.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:LoanOrCredit"
+    ],
+    "ranges": [
+      "schema:Duration"
+    ],
+    "contexto": "domainIncludes: schema:LoanOrCredit | rangeIncludes: schema:Duration"
+  },
+  {
+    "curie": "schema:guideline",
+    "uri": "https://schema.org/guideline",
+    "label": "guideline",
+    "comment": "A medical guideline related to this entity.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalEntity"
+    ],
+    "ranges": [
+      "schema:MedicalGuideline"
+    ],
+    "contexto": "domainIncludes: schema:MedicalEntity | rangeIncludes: schema:MedicalGuideline"
+  },
+  {
+    "curie": "schema:hasCertification",
+    "uri": "https://schema.org/hasCertification",
+    "label": "hasCertification",
+    "comment": "Certification information about a product, organization, service, place, or person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person",
+      "schema:Place",
+      "schema:Product",
+      "schema:Service"
+    ],
+    "ranges": [
+      "schema:Certification"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person, schema:Place, schema:Product, schema:Service | rangeIncludes: schema:Certification"
+  },
+  {
+    "curie": "schema:hasCredential",
+    "uri": "https://schema.org/hasCredential",
+    "label": "hasCredential",
+    "comment": "A credential awarded to the Person or Organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Credential"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:Credential"
+  },
+  {
+    "curie": "schema:hasDriveThroughService",
+    "uri": "https://schema.org/hasDriveThroughService",
+    "label": "hasDriveThroughService",
+    "comment": "Indicates whether some facility (e.g. FoodEstablishment, CovidTestingFacility) offers a service that can be used by driving through in a car. In the case of CovidTestingFacility such facilities could potentially help with social distancing from other potentially-infected users.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Boolean"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:Boolean"
+  },
+  {
+    "curie": "schema:hasGS1DigitalLink",
+    "uri": "https://schema.org/hasGS1DigitalLink",
+    "label": "hasGS1DigitalLink",
+    "comment": "The <a href=\"https://www.gs1.org/standards/gs1-digital-link\">GS1 digital link</a> associated with the object. This URL should conform to the particular requirements of digital links. The link should only contain the Application Identifiers (AIs) that are relevant for the entity being annotated, for instance a Product or an Organization, and for the correct granularity. In particular, for products:<ul><li>A Digital Link that contains a serial number (AI <code>21</code>) should only be present on instances of IndividualProduct</li><li>A Digital Link that contains a lot number (AI <code>10</code>) should be annotated as SomeProducts if only products from that lot are sold, or IndividualProduct if there is only a specific product.</li><li>A Digital Link that contains a global model number (AI <code>8013</code>) should be attached to a Product or a ProductModel.</li></ul> Other item types should be adapted similarly.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Offer",
+      "schema:Organization",
+      "schema:Place",
+      "schema:Product"
+    ],
+    "ranges": [
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:Offer, schema:Organization, schema:Place, schema:Product | rangeIncludes: schema:URL | subPropertyOf: schema:identifier"
+  },
+  {
+    "curie": "schema:hasMap",
+    "uri": "https://schema.org/hasMap",
+    "label": "hasMap",
+    "comment": "A URL to a map of the place.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Map",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:Map, schema:URL"
+  },
+  {
+    "curie": "schema:hasMemberProgram",
+    "uri": "https://schema.org/hasMemberProgram",
+    "label": "hasMemberProgram",
+    "comment": "MemberProgram offered by an Organization, for example an eCommerce merchant or an airline.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:MemberProgram"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:MemberProgram"
+  },
+  {
+    "curie": "schema:hasMerchantReturnPolicy",
+    "uri": "https://schema.org/hasMerchantReturnPolicy",
+    "label": "hasMerchantReturnPolicy",
+    "comment": "Specifies a MerchantReturnPolicy that may be applicable.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Offer",
+      "schema:Organization",
+      "schema:Product"
+    ],
+    "ranges": [
+      "schema:MerchantReturnPolicy"
+    ],
+    "contexto": "domainIncludes: schema:Offer, schema:Organization, schema:Product | rangeIncludes: schema:MerchantReturnPolicy"
+  },
+  {
+    "curie": "schema:hasOccupation",
+    "uri": "https://schema.org/hasOccupation",
+    "label": "hasOccupation",
+    "comment": "The Person's occupation. For past professions, use Role for expressing dates.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Occupation"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Occupation"
+  },
+  {
+    "curie": "schema:hasOfferCatalog",
+    "uri": "https://schema.org/hasOfferCatalog",
+    "label": "hasOfferCatalog",
+    "comment": "Indicates an OfferCatalog listing for this Organization, Person, or Service.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person",
+      "schema:Service"
+    ],
+    "ranges": [
+      "schema:OfferCatalog"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person, schema:Service | rangeIncludes: schema:OfferCatalog"
+  },
+  {
+    "curie": "schema:hasPOS",
+    "uri": "https://schema.org/hasPOS",
+    "label": "hasPOS",
+    "comment": "Points-of-Sales operated by the organization or person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:Place"
+  },
+  {
+    "curie": "schema:hasProductReturnPolicy",
+    "uri": "https://schema.org/hasProductReturnPolicy",
+    "label": "hasProductReturnPolicy",
+    "comment": "Indicates a ProductReturnPolicy that may be applicable.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Product"
+    ],
+    "ranges": [
+      "schema:ProductReturnPolicy"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Product | rangeIncludes: schema:ProductReturnPolicy"
+  },
+  {
+    "curie": "schema:hasShippingService",
+    "uri": "https://schema.org/hasShippingService",
+    "label": "hasShippingService",
+    "comment": "Specification of a shipping service offered by the organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:OfferShippingDetails",
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:ShippingService"
+    ],
+    "contexto": "domainIncludes: schema:OfferShippingDetails, schema:Organization | rangeIncludes: schema:ShippingService"
+  },
+  {
+    "curie": "schema:height",
+    "uri": "https://schema.org/height",
+    "label": "height",
+    "comment": "The height of the item.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MediaObject",
+      "schema:OfferShippingDetails",
+      "schema:Person",
+      "schema:Product",
+      "schema:ShippingConditions",
+      "schema:VisualArtwork"
+    ],
+    "ranges": [
+      "schema:Distance",
+      "schema:QuantitativeValue"
+    ],
+    "contexto": "domainIncludes: schema:MediaObject, schema:OfferShippingDetails, schema:Person, schema:Product, schema:ShippingConditions, schema:VisualArtwork | rangeIncludes: schema:Distance, schema:QuantitativeValue"
+  },
+  {
+    "curie": "schema:homeLocation",
+    "uri": "https://schema.org/homeLocation",
+    "label": "homeLocation",
+    "comment": "A contact location for a person's residence.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:ContactPoint",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:ContactPoint, schema:Place | subPropertyOf: schema:location"
+  },
+  {
+    "curie": "schema:honorificPrefix",
+    "uri": "https://schema.org/honorificPrefix",
+    "label": "honorificPrefix",
+    "comment": "An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:honorificSuffix",
+    "uri": "https://schema.org/honorificSuffix",
+    "label": "honorificSuffix",
+    "comment": "An honorific suffix following a Person's name such as M.D./PhD/MSCSW.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:interactionStatistic",
+    "uri": "https://schema.org/interactionStatistic",
+    "label": "interactionStatistic",
+    "comment": "The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:CreativeWork",
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:InteractionCounter"
+    ],
+    "contexto": "domainIncludes: schema:CreativeWork, schema:Organization, schema:Person | rangeIncludes: schema:InteractionCounter"
+  },
+  {
+    "curie": "schema:interestRate",
+    "uri": "https://schema.org/interestRate",
+    "label": "interestRate",
+    "comment": "The interest rate, charged or paid, applicable to the financial product. Note: This is different from the calculated annualPercentageRate.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:FinancialProduct"
+    ],
+    "ranges": [
+      "schema:Number",
+      "schema:QuantitativeValue"
+    ],
+    "contexto": "domainIncludes: schema:FinancialProduct | rangeIncludes: schema:Number, schema:QuantitativeValue"
+  },
+  {
+    "curie": "schema:isAccessibleForFree",
+    "uri": "https://schema.org/isAccessibleForFree",
+    "label": "isAccessibleForFree",
+    "comment": "A flag to signal that the item, event, or place is accessible for free.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:CreativeWork",
+      "schema:Event",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Boolean"
+    ],
+    "contexto": "domainIncludes: schema:CreativeWork, schema:Event, schema:Place | rangeIncludes: schema:Boolean"
+  },
+  {
+    "curie": "schema:isicV4",
+    "uri": "https://schema.org/isicV4",
+    "label": "isicV4",
+    "comment": "The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person, schema:Place | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:iso6523Code",
+    "uri": "https://schema.org/iso6523Code",
+    "label": "iso6523Code",
+    "comment": "An organization identifier as defined in ISO 6523(-1). The identifier should be in the `XXXX:YYYYYY:ZZZ` or `XXXX:YYYYYY`format. Where `XXXX` is a 4 digit _ICD_ (International Code Designator), `YYYYYY` is an _OID_ (Organization Identifier) with all formatting characters (dots, dashes, spaces) removed with a maximal length of 35 characters, and `ZZZ` is an optional OPI (Organization Part Identifier) with a maximum length of 35 characters. The various components (ICD, OID, OPI) are joined with a colon character (ASCII `0x3a`). Note that many existing organization identifiers defined as attributes like leiCode (`0199`), duns (`0060`) or GLN (`0088`) can be expressed using ISO-6523. If possible, ISO-6523 codes should be preferred to populating vatID or taxID, as ISO identifiers are less ambiguous.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:jobTitle",
+    "uri": "https://schema.org/jobTitle",
+    "label": "jobTitle",
+    "comment": "The job title of the person (for example, Financial Manager).",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:DefinedTerm",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:DefinedTerm, schema:Text"
+  },
+  {
+    "curie": "schema:keywords",
+    "uri": "https://schema.org/keywords",
+    "label": "keywords",
+    "comment": "Keywords or tags used to describe some item. Multiple textual entries in a keywords list are typically delimited by commas, or by repeating the property.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:CreativeWork",
+      "schema:Event",
+      "schema:Organization",
+      "schema:Place",
+      "schema:Product"
+    ],
+    "ranges": [
+      "schema:DefinedTerm",
+      "schema:Text",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:CreativeWork, schema:Event, schema:Organization, schema:Place, schema:Product | rangeIncludes: schema:DefinedTerm, schema:Text, schema:URL"
+  },
+  {
+    "curie": "schema:knows",
+    "uri": "https://schema.org/knows",
+    "label": "knows",
+    "comment": "The most generic bi-directional social/work relation.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:knowsAbout",
+    "uri": "https://schema.org/knowsAbout",
+    "label": "knowsAbout",
+    "comment": "Of a Person, and less typically of an Organization, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or JobPosting descriptions.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Text",
+      "schema:Thing",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:Text, schema:Thing, schema:URL"
+  },
+  {
+    "curie": "schema:knowsLanguage",
+    "uri": "https://schema.org/knowsLanguage",
+    "label": "knowsLanguage",
+    "comment": "Of a Person, and less typically of an Organization, to indicate a known language. We do not distinguish skill levels or reading/writing/speaking/signing here. Use language codes from the IETF BCP 47 standard.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Language",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:Language, schema:Text"
+  },
+  {
+    "curie": "schema:latitude",
+    "uri": "https://schema.org/latitude",
+    "label": "latitude",
+    "comment": "The latitude of a location. For example ```37.42242``` (WGS 84).",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeoCoordinates",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Number",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:GeoCoordinates, schema:Place | rangeIncludes: schema:Number, schema:Text"
+  },
+  {
+    "curie": "schema:legalAddress",
+    "uri": "https://schema.org/legalAddress",
+    "label": "legalAddress",
+    "comment": "The legal address of an organization which acts as the officially registered address used for legal and tax purposes. The legal address can be different from the place of operations of a business and other addresses can be part of an organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:PostalAddress"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:PostalAddress"
+  },
+  {
+    "curie": "schema:legalName",
+    "uri": "https://schema.org/legalName",
+    "label": "legalName",
+    "comment": "The official name of the organization, e.g. the registered company name.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:legalRepresentative",
+    "uri": "https://schema.org/legalRepresentative",
+    "label": "legalRepresentative",
+    "comment": "One or multiple persons who represent this organization legally such as CEO or sole administrator.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:legalStatus",
+    "uri": "https://schema.org/legalStatus",
+    "label": "legalStatus",
+    "comment": "The drug or supplement's legal status, including any controlled substance schedules that apply.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:DietarySupplement",
+      "schema:Drug",
+      "schema:MedicalEntity"
+    ],
+    "ranges": [
+      "schema:DrugLegalStatus",
+      "schema:MedicalEnumeration",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:DietarySupplement, schema:Drug, schema:MedicalEntity | rangeIncludes: schema:DrugLegalStatus, schema:MedicalEnumeration, schema:Text"
+  },
+  {
+    "curie": "schema:leiCode",
+    "uri": "https://schema.org/leiCode",
+    "label": "leiCode",
+    "comment": "An organization identifier that uniquely identifies a legal entity as defined in ISO 17442.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Text | subPropertyOf: schema:identifier"
+  },
+  {
+    "curie": "schema:lifeEvent",
+    "uri": "https://schema.org/lifeEvent",
+    "label": "lifeEvent",
+    "comment": "A life event like baptism, communions, Bar Mitzvahs, Aqiqah, Namakarana, Miyamairi, burial, ....",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Event"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Event"
+  },
+  {
+    "curie": "schema:loanPaymentAmount",
+    "uri": "https://schema.org/loanPaymentAmount",
+    "label": "loanPaymentAmount",
+    "comment": "The amount of money to pay in a single payment.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:RepaymentSpecification"
+    ],
+    "ranges": [
+      "schema:MonetaryAmount"
+    ],
+    "contexto": "domainIncludes: schema:RepaymentSpecification | rangeIncludes: schema:MonetaryAmount"
+  },
+  {
+    "curie": "schema:loanPaymentFrequency",
+    "uri": "https://schema.org/loanPaymentFrequency",
+    "label": "loanPaymentFrequency",
+    "comment": "Frequency of payments due, i.e. number of months between payments. This is defined as a frequency, i.e. the reciprocal of a period of time.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:RepaymentSpecification"
+    ],
+    "ranges": [
+      "schema:Number"
+    ],
+    "contexto": "domainIncludes: schema:RepaymentSpecification | rangeIncludes: schema:Number"
+  },
+  {
+    "curie": "schema:loanRepaymentForm",
+    "uri": "https://schema.org/loanRepaymentForm",
+    "label": "loanRepaymentForm",
+    "comment": "A form of paying back money previously borrowed from a lender. Repayment usually takes the form of periodic payments that normally include part principal plus interest in each payment.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:LoanOrCredit"
+    ],
+    "ranges": [
+      "schema:RepaymentSpecification"
+    ],
+    "contexto": "domainIncludes: schema:LoanOrCredit | rangeIncludes: schema:RepaymentSpecification"
+  },
+  {
+    "curie": "schema:loanTerm",
+    "uri": "https://schema.org/loanTerm",
+    "label": "loanTerm",
+    "comment": "The duration of the loan or credit agreement.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:LoanOrCredit"
+    ],
+    "ranges": [
+      "schema:QuantitativeValue"
+    ],
+    "contexto": "domainIncludes: schema:LoanOrCredit | rangeIncludes: schema:QuantitativeValue | subPropertyOf: schema:duration"
+  },
+  {
+    "curie": "schema:loanType",
+    "uri": "https://schema.org/loanType",
+    "label": "loanType",
+    "comment": "The type of a loan or credit.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:LoanOrCredit"
+    ],
+    "ranges": [
+      "schema:Text",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:LoanOrCredit | rangeIncludes: schema:Text, schema:URL"
+  },
+  {
+    "curie": "schema:location",
+    "uri": "https://schema.org/location",
+    "label": "location",
+    "comment": "The location of, for example, where an event is happening, where an organization is located, or where an action takes place.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Action",
+      "schema:Event",
+      "schema:InteractionCounter",
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Place",
+      "schema:PostalAddress",
+      "schema:Text",
+      "schema:VirtualLocation"
+    ],
+    "contexto": "domainIncludes: schema:Action, schema:Event, schema:InteractionCounter, schema:Organization | rangeIncludes: schema:Place, schema:PostalAddress, schema:Text, schema:VirtualLocation"
+  },
+  {
+    "curie": "schema:logo",
+    "uri": "https://schema.org/logo",
+    "label": "logo",
+    "comment": "An associated logo.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Brand",
+      "schema:Certification",
+      "schema:Organization",
+      "schema:Place",
+      "schema:Product",
+      "schema:Service"
+    ],
+    "ranges": [
+      "schema:ImageObject",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:Brand, schema:Certification, schema:Organization, schema:Place, schema:Product, schema:Service | rangeIncludes: schema:ImageObject, schema:URL | subPropertyOf: schema:image"
+  },
+  {
+    "curie": "schema:longitude",
+    "uri": "https://schema.org/longitude",
+    "label": "longitude",
+    "comment": "The longitude of a location. For example ```-122.08585``` (WGS 84).",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:GeoCoordinates",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Number",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:GeoCoordinates, schema:Place | rangeIncludes: schema:Number, schema:Text"
+  },
+  {
+    "curie": "schema:makesOffer",
+    "uri": "https://schema.org/makesOffer",
+    "label": "makesOffer",
+    "comment": "A pointer to products or services offered by the organization or person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Offer"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:Offer"
+  },
+  {
+    "curie": "schema:map",
+    "uri": "https://schema.org/map",
+    "label": "map",
+    "comment": "A URL to a map of the place.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:URL"
+  },
+  {
+    "curie": "schema:maps",
+    "uri": "https://schema.org/maps",
+    "label": "maps",
+    "comment": "A URL to a map of the place.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:URL"
+  },
+  {
+    "curie": "schema:maxValue",
+    "uri": "https://schema.org/maxValue",
+    "label": "maxValue",
+    "comment": "The upper value of some characteristic or property.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MonetaryAmount",
+      "schema:PropertyValue",
+      "schema:PropertyValueSpecification",
+      "schema:QuantitativeValue"
+    ],
+    "ranges": [
+      "schema:Number"
+    ],
+    "contexto": "domainIncludes: schema:MonetaryAmount, schema:PropertyValue, schema:PropertyValueSpecification, schema:QuantitativeValue | rangeIncludes: schema:Number"
+  },
+  {
+    "curie": "schema:maximumAttendeeCapacity",
+    "uri": "https://schema.org/maximumAttendeeCapacity",
+    "label": "maximumAttendeeCapacity",
+    "comment": "The total number of individuals that may attend an event or venue.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Event",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Integer"
+    ],
+    "contexto": "domainIncludes: schema:Event, schema:Place | rangeIncludes: schema:Integer"
+  },
+  {
+    "curie": "schema:medicineSystem",
+    "uri": "https://schema.org/medicineSystem",
+    "label": "medicineSystem",
+    "comment": "The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalEntity"
+    ],
+    "ranges": [
+      "schema:MedicineSystem"
+    ],
+    "contexto": "domainIncludes: schema:MedicalEntity | rangeIncludes: schema:MedicineSystem"
+  },
+  {
+    "curie": "schema:member",
+    "uri": "https://schema.org/member",
+    "label": "member",
+    "comment": "A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:ProgramMembership"
+    ],
+    "ranges": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:ProgramMembership | rangeIncludes: schema:Organization, schema:Person"
+  },
+  {
+    "curie": "schema:memberOf",
+    "uri": "https://schema.org/memberOf",
+    "label": "memberOf",
+    "comment": "An Organization (or ProgramMembership) to which this Person or Organization belongs.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:MemberProgramTier",
+      "schema:Organization",
+      "schema:ProgramMembership"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:MemberProgramTier, schema:Organization, schema:ProgramMembership"
+  },
+  {
+    "curie": "schema:members",
+    "uri": "https://schema.org/members",
+    "label": "members",
+    "comment": "A member of this organization.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:ProgramMembership"
+    ],
+    "ranges": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:ProgramMembership | rangeIncludes: schema:Organization, schema:Person"
+  },
+  {
+    "curie": "schema:messageAttachment",
+    "uri": "https://schema.org/messageAttachment",
+    "label": "messageAttachment",
+    "comment": "A CreativeWork attached to the message.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Message"
+    ],
+    "ranges": [
+      "schema:CreativeWork"
+    ],
+    "contexto": "domainIncludes: schema:Message | rangeIncludes: schema:CreativeWork"
+  },
+  {
+    "curie": "schema:minValue",
+    "uri": "https://schema.org/minValue",
+    "label": "minValue",
+    "comment": "The lower value of some characteristic or property.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MonetaryAmount",
+      "schema:PropertyValue",
+      "schema:PropertyValueSpecification",
+      "schema:QuantitativeValue"
+    ],
+    "ranges": [
+      "schema:Number"
+    ],
+    "contexto": "domainIncludes: schema:MonetaryAmount, schema:PropertyValue, schema:PropertyValueSpecification, schema:QuantitativeValue | rangeIncludes: schema:Number"
+  },
+  {
+    "curie": "schema:monthlyMinimumRepaymentAmount",
+    "uri": "https://schema.org/monthlyMinimumRepaymentAmount",
+    "label": "monthlyMinimumRepaymentAmount",
+    "comment": "The minimum payment is the lowest amount of money that one is required to pay on a credit card statement each month.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:PaymentCard"
+    ],
+    "ranges": [
+      "schema:MonetaryAmount",
+      "schema:Number"
+    ],
+    "contexto": "domainIncludes: schema:PaymentCard | rangeIncludes: schema:MonetaryAmount, schema:Number"
+  },
+  {
+    "curie": "schema:monthsOfExperience",
+    "uri": "https://schema.org/monthsOfExperience",
+    "label": "monthsOfExperience",
+    "comment": "Indicates the minimal number of months of experience required for a position.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:OccupationalExperienceRequirements"
+    ],
+    "ranges": [
+      "schema:Number"
+    ],
+    "contexto": "domainIncludes: schema:OccupationalExperienceRequirements | rangeIncludes: schema:Number"
+  },
+  {
+    "curie": "schema:naics",
+    "uri": "https://schema.org/naics",
+    "label": "naics",
+    "comment": "The North American Industry Classification System (NAICS) code for a particular organization or business person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:nationality",
+    "uri": "https://schema.org/nationality",
+    "label": "nationality",
+    "comment": "Nationality of the person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Country"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Country"
+  },
+  {
+    "curie": "schema:naturalProgression",
+    "uri": "https://schema.org/naturalProgression",
+    "label": "naturalProgression",
+    "comment": "The expected progression of the condition if it is not treated and allowed to progress naturally.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:netWorth",
+    "uri": "https://schema.org/netWorth",
+    "label": "netWorth",
+    "comment": "The total financial value of the person as calculated by subtracting the total value of liabilities from the total value of assets.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:MonetaryAmount",
+      "schema:PriceSpecification"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:MonetaryAmount, schema:PriceSpecification"
+  },
+  {
+    "curie": "schema:nonprofitStatus",
+    "uri": "https://schema.org/nonprofitStatus",
+    "label": "nonprofitStatus",
+    "comment": "nonprofitStatus indicates the legal status of a non-profit organization in its primary place of business.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:NonprofitType"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:NonprofitType"
+  },
+  {
+    "curie": "schema:numberOfEmployees",
+    "uri": "https://schema.org/numberOfEmployees",
+    "label": "numberOfEmployees",
+    "comment": "The number of employees in an organization, e.g. business.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:BusinessAudience",
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:QuantitativeValue"
+    ],
+    "contexto": "domainIncludes: schema:BusinessAudience, schema:Organization | rangeIncludes: schema:QuantitativeValue"
+  },
+  {
+    "curie": "schema:numberOfLoanPayments",
+    "uri": "https://schema.org/numberOfLoanPayments",
+    "label": "numberOfLoanPayments",
+    "comment": "The number of payments contractually required at origination to repay the loan. For monthly paying loans this is the number of months from the contractual first payment date to the maturity date.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:RepaymentSpecification"
+    ],
+    "ranges": [
+      "schema:Number"
+    ],
+    "contexto": "domainIncludes: schema:RepaymentSpecification | rangeIncludes: schema:Number"
+  },
+  {
+    "curie": "schema:occupationLocation",
+    "uri": "https://schema.org/occupationLocation",
+    "label": "occupationLocation",
+    "comment": "The region/country for which this occupational description is appropriate. Note that educational requirements and qualifications can vary between jurisdictions.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Occupation"
+    ],
+    "ranges": [
+      "schema:AdministrativeArea"
+    ],
+    "contexto": "domainIncludes: schema:Occupation | rangeIncludes: schema:AdministrativeArea"
+  },
+  {
+    "curie": "schema:openingHoursSpecification",
+    "uri": "https://schema.org/openingHoursSpecification",
+    "label": "openingHoursSpecification",
+    "comment": "The opening hours of a certain place.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:OpeningHoursSpecification"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:OpeningHoursSpecification"
+  },
+  {
+    "curie": "schema:ownershipFundingInfo",
+    "uri": "https://schema.org/ownershipFundingInfo",
+    "label": "ownershipFundingInfo",
+    "comment": "For an Organization (often but not necessarily a NewsMediaOrganization), a description of organizational ownership structure; funding and grants. In a news/media setting, this is with particular reference to editorial independence. Note that the funder is also available and can be used to make basic funder information machine-readable.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:NewsMediaOrganization",
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:AboutPage",
+      "schema:CreativeWork",
+      "schema:Text",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:NewsMediaOrganization, schema:Organization | rangeIncludes: schema:AboutPage, schema:CreativeWork, schema:Text, schema:URL | subPropertyOf: schema:publishingPrinciples"
+  },
+  {
+    "curie": "schema:owns",
+    "uri": "https://schema.org/owns",
+    "label": "owns",
+    "comment": "Things owned by the organization or person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Thing"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:Thing"
+  },
+  {
+    "curie": "schema:parent",
+    "uri": "https://schema.org/parent",
+    "label": "parent",
+    "comment": "A parent of this person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:parentOrganization",
+    "uri": "https://schema.org/parentOrganization",
+    "label": "parentOrganization",
+    "comment": "The larger organization that this organization is a subOrganization of, if any.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Organization"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Organization"
+  },
+  {
+    "curie": "schema:parents",
+    "uri": "https://schema.org/parents",
+    "label": "parents",
+    "comment": "A parents of the person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:pathophysiology",
+    "uri": "https://schema.org/pathophysiology",
+    "label": "pathophysiology",
+    "comment": "Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition",
+      "schema:PhysicalActivity"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition, schema:PhysicalActivity | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:performerIn",
+    "uri": "https://schema.org/performerIn",
+    "label": "performerIn",
+    "comment": "Event that this person is a performer or participant in.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Event"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Event"
+  },
+  {
+    "curie": "schema:photo",
+    "uri": "https://schema.org/photo",
+    "label": "photo",
+    "comment": "A photograph of this place.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:ImageObject",
+      "schema:Photograph"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:ImageObject, schema:Photograph | subPropertyOf: schema:image"
+  },
+  {
+    "curie": "schema:photos",
+    "uri": "https://schema.org/photos",
+    "label": "photos",
+    "comment": "Photographs of this place.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:ImageObject",
+      "schema:Photograph"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:ImageObject, schema:Photograph"
+  },
+  {
+    "curie": "schema:possibleComplication",
+    "uri": "https://schema.org/possibleComplication",
+    "label": "possibleComplication",
+    "comment": "A possible unexpected and unfavorable evolution of a medical condition. Complications may include worsening of the signs or symptoms of the disease, extension of the condition to other organ systems, etc.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:possibleTreatment",
+    "uri": "https://schema.org/possibleTreatment",
+    "label": "possibleTreatment",
+    "comment": "A possible treatment to address this condition, sign or symptom.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition",
+      "schema:MedicalSignOrSymptom"
+    ],
+    "ranges": [
+      "schema:Drug",
+      "schema:DrugClass",
+      "schema:LifestyleModification",
+      "schema:MedicalTherapy"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition, schema:MedicalSignOrSymptom | rangeIncludes: schema:Drug, schema:DrugClass, schema:LifestyleModification, schema:MedicalTherapy"
+  },
+  {
+    "curie": "schema:postOfficeBoxNumber",
+    "uri": "https://schema.org/postOfficeBoxNumber",
+    "label": "postOfficeBoxNumber",
+    "comment": "The post office box number for PO box addresses.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:PostalAddress"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:PostalAddress | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:postalCode",
+    "uri": "https://schema.org/postalCode",
+    "label": "postalCode",
+    "comment": "The postal code. For example, 94043.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:DefinedRegion",
+      "schema:GeoCoordinates",
+      "schema:GeoShape",
+      "schema:PostalAddress"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:DefinedRegion, schema:GeoCoordinates, schema:GeoShape, schema:PostalAddress | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:primaryPrevention",
+    "uri": "https://schema.org/primaryPrevention",
+    "label": "primaryPrevention",
+    "comment": "A preventative therapy used to prevent an initial occurrence of the medical condition, such as vaccination.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition"
+    ],
+    "ranges": [
+      "schema:MedicalTherapy"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition | rangeIncludes: schema:MedicalTherapy"
+  },
+  {
+    "curie": "schema:publicAccess",
+    "uri": "https://schema.org/publicAccess",
+    "label": "publicAccess",
+    "comment": "A flag to signal that the Place is open to public visitors. If this property is omitted there is no assumed default boolean value.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Boolean"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:Boolean"
+  },
+  {
+    "curie": "schema:qualifications",
+    "uri": "https://schema.org/qualifications",
+    "label": "qualifications",
+    "comment": "Specific qualifications required for this role or Occupation.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:JobPosting",
+      "schema:Occupation"
+    ],
+    "ranges": [
+      "schema:Credential",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:JobPosting, schema:Occupation | rangeIncludes: schema:Credential, schema:Text"
+  },
+  {
+    "curie": "schema:recipient",
+    "uri": "https://schema.org/recipient",
+    "label": "recipient",
+    "comment": "A sub property of participant. The participant who is at the receiving end of the action.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:AuthorizeAction",
+      "schema:CommunicateAction",
+      "schema:DonateAction",
+      "schema:GiveAction",
+      "schema:Message",
+      "schema:PayAction",
+      "schema:ReturnAction",
+      "schema:SendAction",
+      "schema:TipAction"
+    ],
+    "ranges": [
+      "schema:Audience",
+      "schema:ContactPoint",
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:AuthorizeAction, schema:CommunicateAction, schema:DonateAction, schema:GiveAction, schema:Message, schema:PayAction, schema:ReturnAction, schema:SendAction, schema:TipAction | rangeIncludes: schema:Audience, schema:ContactPoint, schema:Organization, schema:Person | subPropertyOf: schema:participant"
+  },
+  {
+    "curie": "schema:recognizingAuthority",
+    "uri": "https://schema.org/recognizingAuthority",
+    "label": "recognizingAuthority",
+    "comment": "If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalEntity"
+    ],
+    "ranges": [
+      "schema:Organization"
+    ],
+    "contexto": "domainIncludes: schema:MedicalEntity | rangeIncludes: schema:Organization"
+  },
+  {
+    "curie": "schema:recourseLoan",
+    "uri": "https://schema.org/recourseLoan",
+    "label": "recourseLoan",
+    "comment": "The only way you get the money back in the event of default is the security. Recourse is where you still have the opportunity to go back to the borrower for the rest of the money.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:LoanOrCredit"
+    ],
+    "ranges": [
+      "schema:Boolean"
+    ],
+    "contexto": "domainIncludes: schema:LoanOrCredit | rangeIncludes: schema:Boolean"
+  },
+  {
+    "curie": "schema:relatedTo",
+    "uri": "https://schema.org/relatedTo",
+    "label": "relatedTo",
+    "comment": "The most generic familial relation.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:relevantSpecialty",
+    "uri": "https://schema.org/relevantSpecialty",
+    "label": "relevantSpecialty",
+    "comment": "If applicable, a medical specialty in which this entity is relevant.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalEntity"
+    ],
+    "ranges": [
+      "schema:MedicalSpecialty"
+    ],
+    "contexto": "domainIncludes: schema:MedicalEntity | rangeIncludes: schema:MedicalSpecialty"
+  },
+  {
+    "curie": "schema:renegotiableLoan",
+    "uri": "https://schema.org/renegotiableLoan",
+    "label": "renegotiableLoan",
+    "comment": "Whether the terms for payment of interest can be renegotiated during the life of the loan.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:LoanOrCredit"
+    ],
+    "ranges": [
+      "schema:Boolean"
+    ],
+    "contexto": "domainIncludes: schema:LoanOrCredit | rangeIncludes: schema:Boolean"
+  },
+  {
+    "curie": "schema:representativeOfPage",
+    "uri": "https://schema.org/representativeOfPage",
+    "label": "representativeOfPage",
+    "comment": "Indicates whether this image is representative of the content of the page.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:ImageObject"
+    ],
+    "ranges": [
+      "schema:Boolean"
+    ],
+    "contexto": "domainIncludes: schema:ImageObject | rangeIncludes: schema:Boolean"
+  },
+  {
+    "curie": "schema:requiredCollateral",
+    "uri": "https://schema.org/requiredCollateral",
+    "label": "requiredCollateral",
+    "comment": "Assets required to secure loan or credit repayments. It may take form of third party pledge, goods, financial instruments (cash, securities, etc.)",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:LoanOrCredit"
+    ],
+    "ranges": [
+      "schema:Text",
+      "schema:Thing"
+    ],
+    "contexto": "domainIncludes: schema:LoanOrCredit | rangeIncludes: schema:Text, schema:Thing"
+  },
+  {
+    "curie": "schema:responsibilities",
+    "uri": "https://schema.org/responsibilities",
+    "label": "responsibilities",
+    "comment": "Responsibilities associated with this role or Occupation.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:JobPosting",
+      "schema:Occupation"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:JobPosting, schema:Occupation | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:review",
+    "uri": "https://schema.org/review",
+    "label": "review",
+    "comment": "A review of the item.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Brand",
+      "schema:CreativeWork",
+      "schema:Event",
+      "schema:Offer",
+      "schema:Organization",
+      "schema:Place",
+      "schema:Product",
+      "schema:Service"
+    ],
+    "ranges": [
+      "schema:Review"
+    ],
+    "contexto": "domainIncludes: schema:Brand, schema:CreativeWork, schema:Event, schema:Offer, schema:Organization, schema:Place, schema:Product, schema:Service | rangeIncludes: schema:Review"
+  },
+  {
+    "curie": "schema:reviews",
+    "uri": "https://schema.org/reviews",
+    "label": "reviews",
+    "comment": "Review of the item.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:CreativeWork",
+      "schema:Offer",
+      "schema:Organization",
+      "schema:Place",
+      "schema:Product"
+    ],
+    "ranges": [
+      "schema:Review"
+    ],
+    "contexto": "domainIncludes: schema:CreativeWork, schema:Offer, schema:Organization, schema:Place, schema:Product | rangeIncludes: schema:Review"
+  },
+  {
+    "curie": "schema:riskFactor",
+    "uri": "https://schema.org/riskFactor",
+    "label": "riskFactor",
+    "comment": "A modifiable or non-modifiable factor that increases the risk of a patient contracting this condition, e.g. age, coexisting condition.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition"
+    ],
+    "ranges": [
+      "schema:MedicalRiskFactor"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition | rangeIncludes: schema:MedicalRiskFactor"
+  },
+  {
+    "curie": "schema:salaryCurrency",
+    "uri": "https://schema.org/salaryCurrency",
+    "label": "salaryCurrency",
+    "comment": "The currency (coded using ISO 4217) used for the main salary information in this job posting or for this employee.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:EmployeeRole",
+      "schema:JobPosting"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:EmployeeRole, schema:JobPosting | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:secondaryPrevention",
+    "uri": "https://schema.org/secondaryPrevention",
+    "label": "secondaryPrevention",
+    "comment": "A preventative therapy used to prevent reoccurrence of the medical condition after an initial episode of the condition.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition"
+    ],
+    "ranges": [
+      "schema:Drug",
+      "schema:DrugClass",
+      "schema:LifestyleModification",
+      "schema:MedicalTherapy"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition | rangeIncludes: schema:Drug, schema:DrugClass, schema:LifestyleModification, schema:MedicalTherapy"
+  },
+  {
+    "curie": "schema:seeks",
+    "uri": "https://schema.org/seeks",
+    "label": "seeks",
+    "comment": "A pointer to products or services sought by the organization or person (demand).",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Demand"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:Demand"
+  },
+  {
+    "curie": "schema:seller",
+    "uri": "https://schema.org/seller",
+    "label": "seller",
+    "comment": "An entity which offers (sells / leases / lends / loans) the services / goods. A seller may also be a provider.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:BuyAction",
+      "schema:Demand",
+      "schema:Flight",
+      "schema:Offer",
+      "schema:Order"
+    ],
+    "ranges": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:BuyAction, schema:Demand, schema:Flight, schema:Offer, schema:Order | rangeIncludes: schema:Organization, schema:Person | subPropertyOf: schema:participant"
+  },
+  {
+    "curie": "schema:sender",
+    "uri": "https://schema.org/sender",
+    "label": "sender",
+    "comment": "A sub property of participant. The participant who is at the sending end of the action.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Message",
+      "schema:ReceiveAction"
+    ],
+    "ranges": [
+      "schema:Audience",
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Message, schema:ReceiveAction | rangeIncludes: schema:Audience, schema:Organization, schema:Person | subPropertyOf: schema:participant"
+  },
+  {
+    "curie": "schema:serviceArea",
+    "uri": "https://schema.org/serviceArea",
+    "label": "serviceArea",
+    "comment": "The geographic area where the service is provided.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:ContactPoint",
+      "schema:Organization",
+      "schema:Service"
+    ],
+    "ranges": [
+      "schema:AdministrativeArea",
+      "schema:GeoShape",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:ContactPoint, schema:Organization, schema:Service | rangeIncludes: schema:AdministrativeArea, schema:GeoShape, schema:Place"
+  },
+  {
+    "curie": "schema:sharedContent",
+    "uri": "https://schema.org/sharedContent",
+    "label": "sharedContent",
+    "comment": "A CreativeWork such as an image, video, or audio clip shared as part of this posting.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Comment",
+      "schema:SocialMediaPosting"
+    ],
+    "ranges": [
+      "schema:CreativeWork"
+    ],
+    "contexto": "domainIncludes: schema:Comment, schema:SocialMediaPosting | rangeIncludes: schema:CreativeWork"
+  },
+  {
+    "curie": "schema:sibling",
+    "uri": "https://schema.org/sibling",
+    "label": "sibling",
+    "comment": "A sibling of the person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:siblings",
+    "uri": "https://schema.org/siblings",
+    "label": "siblings",
+    "comment": "A sibling of the person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:signOrSymptom",
+    "uri": "https://schema.org/signOrSymptom",
+    "label": "signOrSymptom",
+    "comment": "A sign or symptom of this condition. Signs are objective or physically observable manifestations of the medical condition while symptoms are the subjective experience of the medical condition.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition"
+    ],
+    "ranges": [
+      "schema:MedicalSignOrSymptom"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition | rangeIncludes: schema:MedicalSignOrSymptom"
+  },
+  {
+    "curie": "schema:skills",
+    "uri": "https://schema.org/skills",
+    "label": "skills",
+    "comment": "A statement of knowledge, skill, ability, task or any other assertion expressing a competency that is either claimed by a person, an organization or desired or required to fulfill a role or to work in an occupation.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:JobPosting",
+      "schema:Occupation",
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:DefinedTerm",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:JobPosting, schema:Occupation, schema:Organization, schema:Person | rangeIncludes: schema:DefinedTerm, schema:Text"
+  },
+  {
+    "curie": "schema:slogan",
+    "uri": "https://schema.org/slogan",
+    "label": "slogan",
+    "comment": "A slogan or motto associated with the item.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Brand",
+      "schema:Organization",
+      "schema:Place",
+      "schema:Product",
+      "schema:Service"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Brand, schema:Organization, schema:Place, schema:Product, schema:Service | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:smokingAllowed",
+    "uri": "https://schema.org/smokingAllowed",
+    "label": "smokingAllowed",
+    "comment": "Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Boolean"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:Boolean"
+  },
+  {
+    "curie": "schema:specialOpeningHoursSpecification",
+    "uri": "https://schema.org/specialOpeningHoursSpecification",
+    "label": "specialOpeningHoursSpecification",
+    "comment": "The special opening hours of a certain place.\\\\n\\\\nUse this to explicitly override general opening hours brought in scope by openingHoursSpecification or openingHours.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:OpeningHoursSpecification"
+    ],
+    "contexto": "domainIncludes: schema:Place | rangeIncludes: schema:OpeningHoursSpecification"
+  },
+  {
+    "curie": "schema:sponsor",
+    "uri": "https://schema.org/sponsor",
+    "label": "sponsor",
+    "comment": "A person or organization that supports a thing through a pledge, promise, or financial contribution. E.g. a sponsor of a Medical Study or a corporate sponsor of an event.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:CreativeWork",
+      "schema:Event",
+      "schema:Grant",
+      "schema:MedicalStudy",
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:CreativeWork, schema:Event, schema:Grant, schema:MedicalStudy, schema:Organization, schema:Person | rangeIncludes: schema:Organization, schema:Person"
+  },
+  {
+    "curie": "schema:spouse",
+    "uri": "https://schema.org/spouse",
+    "label": "spouse",
+    "comment": "The person's spouse.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Person"
+  },
+  {
+    "curie": "schema:stage",
+    "uri": "https://schema.org/stage",
+    "label": "stage",
+    "comment": "The stage of the condition, if applicable.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition"
+    ],
+    "ranges": [
+      "schema:MedicalConditionStage"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition | rangeIncludes: schema:MedicalConditionStage"
+  },
+  {
+    "curie": "schema:status",
+    "uri": "https://schema.org/status",
+    "label": "status",
+    "comment": "The status of the study (enumerated).",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition",
+      "schema:MedicalProcedure",
+      "schema:MedicalStudy"
+    ],
+    "ranges": [
+      "schema:EventStatusType",
+      "schema:MedicalStudyStatus",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition, schema:MedicalProcedure, schema:MedicalStudy | rangeIncludes: schema:EventStatusType, schema:MedicalStudyStatus, schema:Text"
+  },
+  {
+    "curie": "schema:streetAddress",
+    "uri": "https://schema.org/streetAddress",
+    "label": "streetAddress",
+    "comment": "The street address. For example, 1600 Amphitheatre Pkwy.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:PostalAddress"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:PostalAddress | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:study",
+    "uri": "https://schema.org/study",
+    "label": "study",
+    "comment": "A medical study or trial related to this entity.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalEntity"
+    ],
+    "ranges": [
+      "schema:MedicalStudy"
+    ],
+    "contexto": "domainIncludes: schema:MedicalEntity | rangeIncludes: schema:MedicalStudy"
+  },
+  {
+    "curie": "schema:subOrganization",
+    "uri": "https://schema.org/subOrganization",
+    "label": "subOrganization",
+    "comment": "A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:Organization"
+    ],
+    "contexto": "domainIncludes: schema:Organization | rangeIncludes: schema:Organization"
+  },
+  {
+    "curie": "schema:taxID",
+    "uri": "https://schema.org/taxID",
+    "label": "taxID",
+    "comment": "The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:Text | subPropertyOf: schema:identifier"
+  },
+  {
+    "curie": "schema:telephone",
+    "uri": "https://schema.org/telephone",
+    "label": "telephone",
+    "comment": "The telephone number.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:ContactPoint",
+      "schema:Organization",
+      "schema:Person",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:ContactPoint, schema:Organization, schema:Person, schema:Place | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:toRecipient",
+    "uri": "https://schema.org/toRecipient",
+    "label": "toRecipient",
+    "comment": "A sub property of recipient. The recipient who was directly sent the message.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Message"
+    ],
+    "ranges": [
+      "schema:Audience",
+      "schema:ContactPoint",
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:Message | rangeIncludes: schema:Audience, schema:ContactPoint, schema:Organization, schema:Person | subPropertyOf: schema:recipient"
+  },
+  {
+    "curie": "schema:tourBookingPage",
+    "uri": "https://schema.org/tourBookingPage",
+    "label": "tourBookingPage",
+    "comment": "A page providing information on how to book a tour of some Place, such as an Accommodation or ApartmentComplex in a real estate setting, as well as other kinds of tours as appropriate.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Accommodation",
+      "schema:ApartmentComplex",
+      "schema:Place"
+    ],
+    "ranges": [
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:Accommodation, schema:ApartmentComplex, schema:Place | rangeIncludes: schema:URL"
+  },
+  {
+    "curie": "schema:typicalTest",
+    "uri": "https://schema.org/typicalTest",
+    "label": "typicalTest",
+    "comment": "A medical test typically performed given this condition.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MedicalCondition"
+    ],
+    "ranges": [
+      "schema:MedicalTest"
+    ],
+    "contexto": "domainIncludes: schema:MedicalCondition | rangeIncludes: schema:MedicalTest"
+  },
+  {
+    "curie": "schema:unnamedSourcesPolicy",
+    "uri": "https://schema.org/unnamedSourcesPolicy",
+    "label": "unnamedSourcesPolicy",
+    "comment": "For an Organization (typically a NewsMediaOrganization), a statement about policy on use of unnamed sources and the decision process required.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:NewsMediaOrganization",
+      "schema:Organization"
+    ],
+    "ranges": [
+      "schema:CreativeWork",
+      "schema:URL"
+    ],
+    "contexto": "domainIncludes: schema:NewsMediaOrganization, schema:Organization | rangeIncludes: schema:CreativeWork, schema:URL | subPropertyOf: schema:publishingPrinciples"
+  },
+  {
+    "curie": "schema:validFrom",
+    "uri": "https://schema.org/validFrom",
+    "label": "validFrom",
+    "comment": "The date when the item becomes valid.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Certification",
+      "schema:Demand",
+      "schema:FinancialIncentive",
+      "schema:LocationFeatureSpecification",
+      "schema:MonetaryAmount",
+      "schema:Offer",
+      "schema:OpeningHoursSpecification",
+      "schema:Permit",
+      "schema:PriceSpecification"
+    ],
+    "ranges": [
+      "schema:Date",
+      "schema:DateTime"
+    ],
+    "contexto": "domainIncludes: schema:Certification, schema:Demand, schema:FinancialIncentive, schema:LocationFeatureSpecification, schema:MonetaryAmount, schema:Offer, schema:OpeningHoursSpecification, schema:Permit, schema:PriceSpecification | rangeIncludes: schema:Date, schema:DateTime"
+  },
+  {
+    "curie": "schema:validThrough",
+    "uri": "https://schema.org/validThrough",
+    "label": "validThrough",
+    "comment": "The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Demand",
+      "schema:FinancialIncentive",
+      "schema:JobPosting",
+      "schema:LocationFeatureSpecification",
+      "schema:MonetaryAmount",
+      "schema:Offer",
+      "schema:OpeningHoursSpecification",
+      "schema:PriceSpecification"
+    ],
+    "ranges": [
+      "schema:Date",
+      "schema:DateTime"
+    ],
+    "contexto": "domainIncludes: schema:Demand, schema:FinancialIncentive, schema:JobPosting, schema:LocationFeatureSpecification, schema:MonetaryAmount, schema:Offer, schema:OpeningHoursSpecification, schema:PriceSpecification | rangeIncludes: schema:Date, schema:DateTime"
+  },
+  {
+    "curie": "schema:value",
+    "uri": "https://schema.org/value",
+    "label": "value",
+    "comment": "The value of a QuantitativeValue (including Observation) or property value node.\\\\n\\\\n* For QuantitativeValue and MonetaryAmount, the recommended type for values is 'Number'.\\\\n* For PropertyValue, it can be 'Text', 'Number', 'Boolean', 'StructuredValue' or 'QualitativeValue'.\\\\n* Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similar Unicode symbols.\\\\n* Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:MonetaryAmount",
+      "schema:PropertyValue",
+      "schema:QuantitativeValue"
+    ],
+    "ranges": [
+      "schema:Boolean",
+      "schema:Number",
+      "schema:QualitativeValue",
+      "schema:StructuredValue",
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:MonetaryAmount, schema:PropertyValue, schema:QuantitativeValue | rangeIncludes: schema:Boolean, schema:Number, schema:QualitativeValue, schema:StructuredValue, schema:Text"
+  },
+  {
+    "curie": "schema:vatID",
+    "uri": "https://schema.org/vatID",
+    "label": "vatID",
+    "comment": "The value-added Tax ID of the organization or person with national prefix (for example IT123456789). Can also be described as iso6523Code with proper prefix.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Text"
+    ],
+    "contexto": "domainIncludes: schema:Organization, schema:Person | rangeIncludes: schema:Text"
+  },
+  {
+    "curie": "schema:vendor",
+    "uri": "https://schema.org/vendor",
+    "label": "vendor",
+    "comment": "'vendor' is an earlier term for 'seller'.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:BuyAction"
+    ],
+    "ranges": [
+      "schema:Organization",
+      "schema:Person"
+    ],
+    "contexto": "domainIncludes: schema:BuyAction | rangeIncludes: schema:Organization, schema:Person | subPropertyOf: schema:participant"
+  },
+  {
+    "curie": "schema:warrantyPromise",
+    "uri": "https://schema.org/warrantyPromise",
+    "label": "warrantyPromise",
+    "comment": "The warranty promise(s) included in the offer.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:BuyAction",
+      "schema:SellAction"
+    ],
+    "ranges": [
+      "schema:WarrantyPromise"
+    ],
+    "contexto": "domainIncludes: schema:BuyAction, schema:SellAction | rangeIncludes: schema:WarrantyPromise"
+  },
+  {
+    "curie": "schema:weight",
+    "uri": "https://schema.org/weight",
+    "label": "weight",
+    "comment": "The weight of the product or person.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:OfferShippingDetails",
+      "schema:Person",
+      "schema:Product",
+      "schema:ShippingConditions",
+      "schema:VisualArtwork"
+    ],
+    "ranges": [
+      "schema:Mass",
+      "schema:QuantitativeValue"
+    ],
+    "contexto": "domainIncludes: schema:OfferShippingDetails, schema:Person, schema:Product, schema:ShippingConditions, schema:VisualArtwork | rangeIncludes: schema:Mass, schema:QuantitativeValue"
+  },
+  {
+    "curie": "schema:workLocation",
+    "uri": "https://schema.org/workLocation",
+    "label": "workLocation",
+    "comment": "A contact location for a person's place of work.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:ContactPoint",
+      "schema:Place"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:ContactPoint, schema:Place | subPropertyOf: schema:location"
+  },
+  {
+    "curie": "schema:worksFor",
+    "uri": "https://schema.org/worksFor",
+    "label": "worksFor",
+    "comment": "Organizations that the person works for.",
+    "tipo": "Propriedade",
+    "rdf_types": [
+      "rdf:Property"
+    ],
+    "subclasses": [],
+    "domains": [
+      "schema:Person"
+    ],
+    "ranges": [
+      "schema:Organization"
+    ],
+    "contexto": "domainIncludes: schema:Person | rangeIncludes: schema:Organization"
+  }
+]

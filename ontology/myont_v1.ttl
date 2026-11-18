@@ -1,0 +1,250 @@
+@prefix : <https://ontologia.governanca.credito/myont#> .
+@prefix myont: <https://ontologia.governanca.credito/myont#> .
+@prefix schema: <https://schema.org/> .
+@prefix dpv: <https://w3id.org/dpv#> .
+@prefix fibo: <https://spec.edmcouncil.org/fibo/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://ontologia.governanca.credito/myont> rdf:type owl:Ontology ;
+    owl:versionInfo "1.0.0" ;
+    rdfs:label "MyOnt - Ontologia de Governança de Variáveis de Crédito (V1)"@pt-br ;
+    rdfs:comment "Esquema consolidado da V1 com arquitetura em duas camadas (ConceitoExterno + Variavel), separação ortogonal entre VariavelSensivel e papel de proxy (atuaComoProxyDe -> VariavelProxy), linhagem por derivação (derivadaDe) e status de curadoria jurídica."@pt-br .
+
+#################################################################
+#    1. CLASSES (Estrutura Conceitual)
+#################################################################
+
+### Camada de Governança de Crédito
+myont:Variavel rdf:type owl:Class ;
+    rdfs:subClassOf dpv:PersonalData ;
+    rdfs:label "Variável de Crédito"@pt-br ;
+    rdfs:comment "Classe central unificada que representa qualquer atributo ou feature no domínio de governança de crédito (selecionável ou vetada). Todas as instâncias têm acesso às propriedades descritivas (xsd:string) para o relatório da V1."@pt-br .
+
+myont:VariavelSensivel rdf:type owl:Class ;
+    rdfs:subClassOf myont:Variavel ,
+                    dpv:SensitivePersonalData ;
+    rdfs:label "Variável Sensível ou Protegida"@pt-br ;
+    rdfs:comment "Atributo cuja natureza é juridicamente sensível (ex.: LGPD Art. 5º, II / Art. 11) ou protegida contra discriminação (ex.: CF Art. 3º, IV / Art. 5º, I)."@pt-br .
+
+myont:VariavelProxy rdf:type owl:Class ;
+    rdfs:subClassOf myont:Variavel ;
+    owl:equivalentClass [
+        rdf:type owl:Class ;
+        owl:intersectionOf (
+            myont:Variavel
+            [ rdf:type owl:Restriction ;
+              owl:onProperty myont:atuaComoProxyDe ;
+              owl:someValuesFrom myont:Variavel
+            ]
+        )
+    ] ;
+    rdfs:label "Variável Proxy"@pt-br ;
+    rdfs:comment "Classe inferida automaticamente para toda variável que possui ao menos uma relação atuaComoProxyDe apontando para outra variável."@pt-br .
+
+### Camada de Referência Externa (Pré-processada de Schema.org, FIBO e DPV)
+myont:ConceitoExterno rdf:type owl:Class ;
+    rdfs:label "Conceito Externo de Referência"@pt-br ;
+    rdfs:comment "Representação normalizada de uma classe, propriedade ou enumeração extraída das ontologias complementares (Schema.org, FIBO, W3C DPV), preservando sua URI canônica para embasamento conceitual e busca uniforme na interface."@pt-br .
+
+### Classes de apoio semântico e governança
+myont:BaseLegal rdf:type owl:Class ;
+    rdfs:subClassOf dpv:LegalBasis ;
+    rdfs:label "Base ou Justificativa Legal"@pt-br .
+
+myont:NivelDemandaGovernanca rdf:type owl:Class ;
+    rdfs:label "Nível de Demanda de Governança"@pt-br .
+
+myont:StatusCuradoria rdf:type owl:Class ;
+    rdfs:label "Status de Curadoria Jurídica"@pt-br .
+
+
+#################################################################
+#    2. OBJECT PROPERTIES (Conexões entre Nós do Grafo)
+#################################################################
+
+myont:atuaComoProxyDe rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:Variavel ;
+    rdfs:label "atua como proxy de"@pt-br ;
+    rdfs:comment "Liga uma variável diretamente a outra variável do grafo cujas informações podem ser inferidas ou derivadas indiretamente."@pt-br .
+
+myont:derivadaDe rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:Variavel ;
+    rdfs:label "derivada de"@pt-br ;
+    rdfs:comment "Registra a linhagem de engenharia de atributos (feature engineering), ligando uma variável derivada às variáveis de origem para propagação preventiva de alertas."@pt-br .
+
+myont:mapeadaParaConceitoExterno rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:ConceitoExterno ;
+    rdfs:label "mapeada para conceito externo"@pt-br ;
+    rdfs:comment "Conecta a variável a um conceito padronizado da camada ConceitoExterno (Schema.org / FIBO / DPV)."@pt-br .
+
+myont:equivalenteAConceitoExterno rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf myont:mapeadaParaConceitoExterno ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:ConceitoExterno ;
+    rdfs:label "equivalente a conceito externo"@pt-br ;
+    rdfs:comment "Indica correspondência conceitual direta com o termo externo."@pt-br .
+
+myont:baseadaEmConceitoExterno rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf myont:mapeadaParaConceitoExterno ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:ConceitoExterno ;
+    rdfs:label "baseada em conceito externo"@pt-br ;
+    rdfs:comment "Indica adaptação ou especialização de negócio a partir do termo externo."@pt-br .
+
+myont:temBaseLegal rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:BaseLegal ;
+    rdfs:label "tem base legal"@pt-br .
+
+myont:temNivelGovernanca rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:NivelDemandaGovernanca ;
+    rdfs:label "tem nível de governança"@pt-br .
+
+myont:temStatusCuradoria rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:StatusCuradoria ;
+    rdfs:label "tem status de curadoria"@pt-br .
+
+
+#################################################################
+#    3. DATATYPE PROPERTIES
+#################################################################
+
+### Textos do Advogado para Relatório V1 (myont:Variavel)
+myont:descricaoOrigem rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "1. Origem Sugerida (Texto)"@pt-br .
+
+myont:descricaoJustificativaLegal rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "2. Justificativa Legal (Texto)"@pt-br .
+
+myont:descricaoRiscoEtico rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "3. Possíveis Vieses e Riscos Éticos (Texto)"@pt-br .
+
+myont:descricaoDemandaGovernanca rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "4. Demanda de Governança (Texto)"@pt-br .
+
+myont:descricaoExplicabilidade rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "5. Explicabilidade Necessária (Texto)"@pt-br .
+
+myont:descricaoImplicacaoLegal rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "6. Implicações Legais (Texto)"@pt-br .
+
+myont:descricaoAtuacaoProxy rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "7. Atuação como Proxy (Texto)"@pt-br .
+
+### Metadados uniformes para busca na interface (myont:ConceitoExterno)
+myont:ontologiaOrigem rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:ConceitoExterno ;
+    rdfs:range xsd:string ;
+    rdfs:label "Ontologia de Origem"@pt-br .
+
+myont:tipoTermoExterno rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:ConceitoExterno ;
+    rdfs:range xsd:string ;
+    rdfs:label "Tipo do Termo Externo (Classe / Propriedade / Enumeração)"@pt-br .
+
+myont:contextoExterno rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:ConceitoExterno ;
+    rdfs:range xsd:string ;
+    rdfs:label "Contexto Hierárquico / Domínio Externo"@pt-br .
+
+
+#################################################################
+#    4. VOCABULÁRIO CONTROLADO COMPARTILHADO
+#################################################################
+
+### Bases Legais
+myont:LGPD_Art7_X_ProtecaoCredito rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "LGPD Art. 7º, X - Proteção ao Crédito"@pt-br .
+
+myont:LGPD_Art7_V_ExecucaoContrato rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "LGPD Art. 7º, V - Execução de Contrato"@pt-br .
+
+myont:LGPD_Art7_IX_InteresseLegitimo rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "LGPD Art. 7º, IX - Interesse Legítimo"@pt-br .
+
+myont:LGPD_Art7_I_Consentimento rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "LGPD Art. 7º, I - Consentimento"@pt-br .
+
+myont:LGPD_Art7_II_ObrigacaoLegal rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "LGPD Art. 7º, II - Cumprimento de Obrigação Legal"@pt-br .
+
+myont:LGPD_Art6_I_Finalidade rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "LGPD Art. 6º, I - Princípio da Finalidade"@pt-br .
+
+myont:LGPD_Art11_DadosSensiveis rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "LGPD Art. 11 - Tratamento de Dados Pessoais Sensíveis"@pt-br .
+
+myont:Lei_14181_2021_Superendividamento rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Lei 14.181/2021 (Art. 54-D) - Prevenção ao Superendividamento"@pt-br .
+
+myont:Res_CMN_4966_2021 rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Resolução CMN nº 4.966/2021"@pt-br .
+
+myont:Normas_BACEN rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Normas de Flexibilização de Crédito (BACEN)"@pt-br .
+
+myont:CodigoCivil_Geral rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Código Civil Brasileiro"@pt-br .
+
+myont:CodigoCivil_Garantias rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Código Civil (Arts. 1.419 a 1.510) - Garantias"@pt-br .
+
+myont:CF_Art3_IV_VedacaoDiscriminacao rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Constituição Federal Art. 3º, IV - Vedação à Discriminação"@pt-br .
+
+myont:CF_Art5_I_IgualdadeGenero rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Constituição Federal Art. 5º, I - Igualdade de Gênero"@pt-br .
+
+myont:CF_Art5_PrivacidadeSigilo rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Constituição Federal Art. 5º (IV, X, XII) - Privacidade e Sigilo"@pt-br .
+
+myont:CF_Art5_XV_LiberdadeLocomocao rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Constituição Federal Art. 5º, XV - Liberdade de Locomoção"@pt-br .
+
+myont:MarcoCivil_Internet rdf:type owl:NamedIndividual , myont:BaseLegal ;
+    rdfs:label "Marco Civil da Internet (Lei 12.965/2014)"@pt-br .
+
+### Níveis de Governança
+myont:Governanca_Veto rdf:type owl:NamedIndividual , myont:NivelDemandaGovernanca ;
+    rdfs:label "Veto / Uso Inviável na Tomada de Decisão"@pt-br .
+
+myont:Governanca_Maxima rdf:type owl:NamedIndividual , myont:NivelDemandaGovernanca ;
+    rdfs:label "Demanda de Governança Máxima"@pt-br .
+
+myont:Governanca_Alta rdf:type owl:NamedIndividual , myont:NivelDemandaGovernanca ;
+    rdfs:label "Demanda de Governança Alta"@pt-br .
+
+myont:Governanca_Media rdf:type owl:NamedIndividual , myont:NivelDemandaGovernanca ;
+    rdfs:label "Demanda de Governança Média"@pt-br .
+
+myont:Governanca_Baixa rdf:type owl:NamedIndividual , myont:NivelDemandaGovernanca ;
+    rdfs:label "Demanda de Governança Baixa"@pt-br .
+
+### Status de Curadoria
+myont:Status_Auditada rdf:type owl:NamedIndividual , myont:StatusCuradoria ;
+    rdfs:label "Auditada pelo Jurídico"@pt-br .
+
+myont:Status_PendenteRevisaoJuridica rdf:type owl:NamedIndividual , myont:StatusCuradoria ;
+    rdfs:label "Pendente de Revisão Jurídica"@pt-br .
