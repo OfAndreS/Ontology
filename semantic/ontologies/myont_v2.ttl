@@ -1,0 +1,391 @@
+@prefix : <https://ontologia.governanca.credito/myont#> .
+@prefix myont: <https://ontologia.governanca.credito/myont#> .
+@prefix schema: <https://schema.org/> .
+@prefix dpv: <https://w3id.org/dpv#> .
+@prefix fibo: <https://spec.edmcouncil.org/fibo/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://ontologia.governanca.credito/myont> rdf:type owl:Ontology ;
+    owl:versionIRI <https://ontologia.governanca.credito/myont/2.0.0> ;
+    owl:versionInfo "2.0.0" ;
+    rdfs:label "MyOnt - Ontologia de Governança Preventiva de Variáveis de Crédito (V2)"@pt-br ;
+    rdfs:comment "Esquema evoluído conforme Decisões 05, 06 e 07: desmembra myont:Risco (com NivelRisco, demanda de governança e implicação legal por risco), separa bases legais autorizadoras (na Variavel) de bases legais acionadas/restringidas (no Risco) e estrutura myont:BaseLegal em InstrumentoNormativo e DispositivoLegal."@pt-br .
+
+
+#################################################################
+#    1. CLASSES (Estrutura Conceitual)
+#################################################################
+
+### Camada de Governança de Crédito
+myont:Variavel rdf:type owl:Class ;
+    rdfs:subClassOf dpv:PersonalData ;
+    rdfs:label "Variável de Crédito"@pt-br ;
+    rdfs:comment "Classe central unificada que representa qualquer atributo ou feature no domínio de governança de crédito (selecionável ou vetada). Mantém descrição de origem, justificativa legal geral de uso, explicabilidade e atuação como proxy."@pt-br .
+
+myont:VariavelSensivel rdf:type owl:Class ;
+    rdfs:subClassOf myont:Variavel ,
+                    dpv:SensitivePersonalData ;
+    rdfs:label "Variável Sensível ou Protegida"@pt-br ;
+    rdfs:comment "Atributo cuja natureza é juridicamente sensível (ex.: LGPD Art. 5º, II / Art. 11) ou protegida contra discriminação (ex.: CF Art. 3º, IV / Art. 5º, I)."@pt-br .
+
+myont:VariavelProxy rdf:type owl:Class ;
+    rdfs:subClassOf myont:Variavel ;
+    owl:equivalentClass [
+        rdf:type owl:Class ;
+        owl:intersectionOf (
+            myont:Variavel
+            [ rdf:type owl:Restriction ;
+              owl:onProperty myont:atuaComoProxyDe ;
+              owl:someValuesFrom myont:Variavel
+            ]
+        )
+    ] ;
+    rdfs:label "Variável Proxy"@pt-br ;
+    rdfs:comment "Classe inferida automaticamente para toda variável que possui ao menos uma relação atuaComoProxyDe apontando para outra variável."@pt-br .
+
+### Camada de Riscos, Severidade e Controles (Decisão 05)
+myont:Risco rdf:type owl:Class ;
+    rdfs:label "Risco (Ético, Discriminatório ou Regulatório)"@pt-br ;
+    rdfs:comment "Nó desmembrado da variável para representar um risco específico associado ao uso de uma ou mais variáveis. Concentra seu próprio nível de severidade, demanda de governança mitigadora, implicação legal e normas jurídicas acionadas ou restringidas."@pt-br .
+
+myont:NivelRisco rdf:type owl:Class ;
+    rdfs:label "Nível de Risco"@pt-br ;
+    rdfs:comment "Classificação de severidade associada a cada myont:Risco (Baixo, Médio, Alto, Máximo ou Veto). O nível consolidado de uma variável é derivado a partir de seus riscos."@pt-br .
+
+### Camada Normativa / Jurídica (Decisão 06)
+myont:BaseLegal rdf:type owl:Class ;
+    rdfs:subClassOf dpv:LegalBasis ;
+    rdfs:label "Base Legal (Abstrata)"@pt-br ;
+    rdfs:comment "Superclasse abstrata que abrange qualquer referência normativa citável (um instrumento normativo inteiro ou um dispositivo legal específico), podendo atuar como autorização na Variavel ou como restrição/implicação no Risco."@pt-br .
+
+myont:InstrumentoNormativo rdf:type owl:Class ;
+    rdfs:subClassOf myont:BaseLegal ;
+    rdfs:label "Instrumento Normativo"@pt-br ;
+    rdfs:comment "Fonte normativa ou diploma jurídico completo: Constituição Federal, Lei Ordinária/Complementar, Decreto, Resolução (CMN/BACEN), Súmula/Jurisprudência, Guia ANPD ou Código de Autorregulação."@pt-br .
+
+myont:DispositivoLegal rdf:type owl:Class ;
+    rdfs:subClassOf myont:BaseLegal ;
+    rdfs:label "Dispositivo Legal"@pt-br ;
+    rdfs:comment "Unidade citável dentro de um InstrumentoNormativo: Artigo, Parágrafo, Inciso, Alínea, Enunciado ou Princípio jurídico."@pt-br .
+
+### Camada de Referência Externa (Pré-processada de Schema.org, extensível a FIBO e DPV)
+myont:ConceitoExterno rdf:type owl:Class ;
+    rdfs:label "Conceito Externo de Referência"@pt-br ;
+    rdfs:comment "Representação normalizada de uma classe, propriedade ou enumeração extraída das ontologias complementares (Schema.org na V1/V2 inicial, extensível a FIBO e W3C DPV), preservando sua URI canônica para ancoragem semântica 1:N."@pt-br .
+
+### Apoio de Curadoria
+myont:StatusCuradoria rdf:type owl:Class ;
+    rdfs:label "Status de Curadoria Jurídica"@pt-br .
+
+
+#################################################################
+#    2. OBJECT PROPERTIES (Conexões entre Nós do Grafo)
+#################################################################
+
+### Relações entre Variáveis
+myont:atuaComoProxyDe rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:Variavel ;
+    rdfs:label "atua como proxy de"@pt-br ;
+    rdfs:comment "Liga uma variável diretamente a outra variável do grafo cujas informações podem ser inferidas ou derivadas indiretamente."@pt-br .
+
+myont:derivadaDe rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:Variavel ;
+    rdfs:label "derivada de"@pt-br ;
+    rdfs:comment "Registra a linhagem de engenharia de atributos (feature engineering), ligando uma variável derivada às variáveis de origem para propagação preventiva de alertas."@pt-br .
+
+### Relações Variável -> Risco -> Nível e Normas (Decisões 05 e 06)
+myont:possuiRisco rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:Risco ;
+    rdfs:label "possui risco"@pt-br ;
+    rdfs:comment "Associa uma variável a um ou mais riscos éticos, discriminatórios ou regulatórios (relação N:M)."@pt-br .
+
+myont:temNivelRisco rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Risco ;
+    rdfs:range myont:NivelRisco ;
+    rdfs:label "tem nível de risco"@pt-br ;
+    rdfs:comment "Define o grau de severidade de um risco específico."@pt-br .
+
+myont:autorizadaPorBaseLegal rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:BaseLegal ;
+    rdfs:label "autorizada por base legal"@pt-br ;
+    rdfs:comment "Liga a variável às normas ou dispositivos legais que autorizam/legitimam sua coleta ou uso."@pt-br .
+
+myont:acionaBaseLegal rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Risco ;
+    rdfs:range myont:BaseLegal ;
+    rdfs:label "aciona base legal"@pt-br ;
+    rdfs:comment "Liga um risco às normas ou dispositivos legais que o restringem, vedam ou geram implicação jurídica caso o risco se concretize."@pt-br .
+
+### Estruturação Interna da Camada Normativa (Decisão 06)
+myont:pertenceAInstrumento rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:DispositivoLegal ;
+    rdfs:range myont:InstrumentoNormativo ;
+    rdfs:label "pertence ao instrumento normativo"@pt-br ;
+    rdfs:comment "Conecta um dispositivo citável (artigo, inciso, parágrafo, súmula) ao seu instrumento normativo de origem."@pt-br .
+
+myont:parteDeDispositivo rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:DispositivoLegal ;
+    rdfs:range myont:DispositivoLegal ;
+    rdfs:label "parte de dispositivo"@pt-br ;
+    rdfs:comment "Relação hierárquica opcional entre dispositivos (ex.: inciso ligado ao artigo correspondente)."@pt-br .
+
+### Relações com Conceitos Externos
+myont:mapeadaParaConceitoExterno rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:ConceitoExterno ;
+    rdfs:label "mapeada para conceito externo"@pt-br ;
+    rdfs:comment "Conecta a variável a conceitos padronizados da camada ConceitoExterno (relação 1:N)."@pt-br .
+
+myont:equivalenteAConceitoExterno rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf myont:mapeadaParaConceitoExterno ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:ConceitoExterno ;
+    rdfs:label "equivalente a conceito externo"@pt-br ;
+    rdfs:comment "Indica correspondência conceitual direta com o termo externo."@pt-br .
+
+myont:baseadaEmConceitoExterno rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf myont:mapeadaParaConceitoExterno ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:ConceitoExterno ;
+    rdfs:label "baseada em conceito externo"@pt-br ;
+    rdfs:comment "Indica adaptação ou especialização de negócio a partir do termo externo."@pt-br .
+
+### Curadoria
+myont:temStatusCuradoria rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:StatusCuradoria ;
+    rdfs:label "tem status de curadoria"@pt-br .
+
+
+#################################################################
+#    3. DATATYPE PROPERTIES
+#################################################################
+
+### Textos na myont:Variavel (Decisão 07)
+myont:descricaoOrigem rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "Origem Sugerida (Texto)"@pt-br .
+
+myont:descricaoJustificativaLegal rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "Justificativa Legal de Uso (Texto)"@pt-br .
+
+myont:descricaoExplicabilidade rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "Explicabilidade Necessária (Texto)"@pt-br .
+
+myont:descricaoAtuacaoProxy rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range xsd:string ;
+    rdfs:label "Atuação como Proxy (Texto)"@pt-br .
+
+### Textos e Metadados em myont:Risco (Decisão 05)
+myont:descricaoRisco rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Risco ;
+    rdfs:range xsd:string ;
+    rdfs:label "Descrição do Risco (Texto)"@pt-br .
+
+myont:descricaoDemandaGovernanca rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Risco ;
+    rdfs:range xsd:string ;
+    rdfs:label "Demanda de Governança Mitigadora (Texto)"@pt-br .
+
+myont:descricaoImplicacaoLegal rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Risco ;
+    rdfs:range xsd:string ;
+    rdfs:label "Implicação Legal do Risco (Texto)"@pt-br .
+
+### Metadados da Camada Normativa (Decisão 06)
+myont:tipoInstrumento rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:InstrumentoNormativo ;
+    rdfs:range xsd:string ;
+    rdfs:label "Tipo de Instrumento Normativo"@pt-br ;
+    rdfs:comment "Ex.: Constituição, Lei, Resolução, Súmula/Jurisprudência, Guia/Autorregulação."@pt-br .
+
+myont:tipoDispositivo rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:DispositivoLegal ;
+    rdfs:range xsd:string ;
+    rdfs:label "Tipo de Dispositivo Legal"@pt-br ;
+    rdfs:comment "Ex.: Artigo, Parágrafo, Inciso, Alínea, Enunciado, Princípio."@pt-br .
+
+myont:descricaoNorma rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:BaseLegal ;
+    rdfs:range xsd:string ;
+    rdfs:label "Descrição / Ementa da Base Legal"@pt-br .
+
+myont:urlFonteNorma rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:InstrumentoNormativo ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "URL Oficial do Instrumento Normativo"@pt-br .
+
+myont:dataPublicacaoNorma rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:InstrumentoNormativo ;
+    rdfs:range xsd:string ;
+    rdfs:label "Data de Publicação da Norma"@pt-br .
+
+### Metadados uniformes para busca na interface (myont:ConceitoExterno)
+myont:ontologiaOrigem rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:ConceitoExterno ;
+    rdfs:range xsd:string ;
+    rdfs:label "Ontologia de Origem"@pt-br .
+
+myont:tipoTermoExterno rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:ConceitoExterno ;
+    rdfs:range xsd:string ;
+    rdfs:label "Tipo do Termo Externo (Classe / Propriedade / Enumeração)"@pt-br .
+
+myont:contextoExterno rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:ConceitoExterno ;
+    rdfs:range xsd:string ;
+    rdfs:label "Contexto Hierárquico / Domínio Externo"@pt-br .
+
+
+#################################################################
+#    4. VOCABULÁRIO CONTROLADO COMPARTILHADO
+#################################################################
+
+### Níveis de Risco (substitui NivelDemandaGovernanca)
+myont:Risco_Veto rdf:type owl:NamedIndividual , myont:NivelRisco ;
+    rdfs:label "Veto / Uso Inviável na Tomada de Decisão"@pt-br .
+
+myont:Risco_Maximo rdf:type owl:NamedIndividual , myont:NivelRisco ;
+    rdfs:label "Risco Máximo"@pt-br .
+
+myont:Risco_Alto rdf:type owl:NamedIndividual , myont:NivelRisco ;
+    rdfs:label "Risco Alto"@pt-br .
+
+myont:Risco_Medio rdf:type owl:NamedIndividual , myont:NivelRisco ;
+    rdfs:label "Risco Médio"@pt-br .
+
+myont:Risco_Baixo rdf:type owl:NamedIndividual , myont:NivelRisco ;
+    rdfs:label "Risco Baixo"@pt-br .
+
+### Status de Curadoria
+myont:Status_Auditada rdf:type owl:NamedIndividual , myont:StatusCuradoria ;
+    rdfs:label "Auditada pelo Jurídico"@pt-br .
+
+myont:Status_PendenteRevisaoJuridica rdf:type owl:NamedIndividual , myont:StatusCuradoria ;
+    rdfs:label "Pendente de Revisão Jurídica"@pt-br .
+
+
+#################################################################
+#    5. INSTRUMENTOS NORMATIVOS E DISPOSITIVOS INICIAIS
+#################################################################
+
+### Constituição Federal de 1988
+myont:Norma_CF88 rdf:type owl:NamedIndividual , myont:InstrumentoNormativo ;
+    rdfs:label "Constituição da República Federativa do Brasil (1988)"@pt-br ;
+    myont:tipoInstrumento "Constituição" .
+
+myont:CF_Art3_IV_VedacaoDiscriminacao rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "CF/88 Art. 3º, IV - Vedação à Discriminação"@pt-br ;
+    myont:tipoDispositivo "Inciso" ;
+    myont:pertenceAInstrumento myont:Norma_CF88 .
+
+myont:CF_Art5_I_IgualdadeGenero rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "CF/88 Art. 5º, I - Igualdade de Gênero"@pt-br ;
+    myont:tipoDispositivo "Inciso" ;
+    myont:pertenceAInstrumento myont:Norma_CF88 .
+
+myont:CF_Art5_PrivacidadeSigilo rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "CF/88 Art. 5º (IV, X, XII) - Privacidade e Sigilo"@pt-br ;
+    myont:tipoDispositivo "Inciso" ;
+    myont:pertenceAInstrumento myont:Norma_CF88 .
+
+myont:CF_Art5_XV_LiberdadeLocomocao rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "CF/88 Art. 5º, XV - Liberdade de Locomoção"@pt-br ;
+    myont:tipoDispositivo "Inciso" ;
+    myont:pertenceAInstrumento myont:Norma_CF88 .
+
+### LGPD (Lei nº 13.709/2018)
+myont:Norma_LGPD rdf:type owl:NamedIndividual , myont:InstrumentoNormativo ;
+    rdfs:label "LGPD - Lei Geral de Proteção de Dados (Lei nº 13.709/2018)"@pt-br ;
+    myont:tipoInstrumento "Lei" .
+
+myont:LGPD_Art6_I_Finalidade rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "LGPD Art. 6º, I - Princípio da Finalidade"@pt-br ;
+    myont:tipoDispositivo "Inciso" ;
+    myont:pertenceAInstrumento myont:Norma_LGPD .
+
+myont:LGPD_Art7_I_Consentimento rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "LGPD Art. 7º, I - Consentimento"@pt-br ;
+    myont:tipoDispositivo "Inciso" ;
+    myont:pertenceAInstrumento myont:Norma_LGPD .
+
+myont:LGPD_Art7_II_ObrigacaoLegal rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "LGPD Art. 7º, II - Cumprimento de Obrigação Legal"@pt-br ;
+    myont:tipoDispositivo "Inciso" ;
+    myont:pertenceAInstrumento myont:Norma_LGPD .
+
+myont:LGPD_Art7_V_ExecucaoContrato rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "LGPD Art. 7º, V - Execução de Contrato"@pt-br ;
+    myont:tipoDispositivo "Inciso" ;
+    myont:pertenceAInstrumento myont:Norma_LGPD .
+
+myont:LGPD_Art7_IX_InteresseLegitimo rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "LGPD Art. 7º, IX - Interesse Legítimo"@pt-br ;
+    myont:tipoDispositivo "Inciso" ;
+    myont:pertenceAInstrumento myont:Norma_LGPD .
+
+myont:LGPD_Art7_X_ProtecaoCredito rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "LGPD Art. 7º, X - Proteção ao Crédito"@pt-br ;
+    myont:tipoDispositivo "Inciso" ;
+    myont:pertenceAInstrumento myont:Norma_LGPD .
+
+myont:LGPD_Art11_DadosSensiveis rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "LGPD Art. 11 - Tratamento de Dados Pessoais Sensíveis"@pt-br ;
+    myont:tipoDispositivo "Artigo" ;
+    myont:pertenceAInstrumento myont:Norma_LGPD .
+
+### Lei do Superendividamento (Lei nº 14.181/2021)
+myont:Norma_Lei14181_2021 rdf:type owl:NamedIndividual , myont:InstrumentoNormativo ;
+    rdfs:label "Lei do Superendividamento (Lei nº 14.181/2021)"@pt-br ;
+    myont:tipoInstrumento "Lei" .
+
+myont:Lei_14181_2021_Superendividamento rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "Lei 14.181/2021 (Art. 54-D) - Prevenção ao Superendividamento"@pt-br ;
+    myont:tipoDispositivo "Artigo" ;
+    myont:pertenceAInstrumento myont:Norma_Lei14181_2021 .
+
+### Código Civil (Lei nº 10.406/2002)
+myont:Norma_CodigoCivil rdf:type owl:NamedIndividual , myont:InstrumentoNormativo ;
+    rdfs:label "Código Civil Brasileiro (Lei nº 10.406/2002)"@pt-br ;
+    myont:tipoInstrumento "Lei" .
+
+myont:CodigoCivil_Geral rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "Código Civil - Capacidade Civil e Disposições Gerais"@pt-br ;
+    myont:tipoDispositivo "Artigo" ;
+    myont:pertenceAInstrumento myont:Norma_CodigoCivil .
+
+myont:CodigoCivil_Garantias rdf:type owl:NamedIndividual , myont:DispositivoLegal ;
+    rdfs:label "Código Civil (Arts. 1.419 a 1.510) - Garantias"@pt-br ;
+    myont:tipoDispositivo "Artigo" ;
+    myont:pertenceAInstrumento myont:Norma_CodigoCivil .
+
+### Regulação Financeira (CMN / BACEN)
+myont:Res_CMN_4966_2021 rdf:type owl:NamedIndividual , myont:InstrumentoNormativo ;
+    rdfs:label "Resolução CMN nº 4.966/2021"@pt-br ;
+    myont:tipoInstrumento "Resolução" .
+
+myont:Normas_BACEN rdf:type owl:NamedIndividual , myont:InstrumentoNormativo ;
+    rdfs:label "Normas de Flexibilização de Crédito (BACEN)"@pt-br ;
+    myont:tipoInstrumento "Regulação Setorial" .
+
+### Marco Civil da Internet e Estatuto da Pessoa Idosa
+myont:MarcoCivil_Internet rdf:type owl:NamedIndividual , myont:InstrumentoNormativo ;
+    rdfs:label "Marco Civil da Internet (Lei nº 12.965/2014)"@pt-br ;
+    myont:tipoInstrumento "Lei" .
+
+myont:Estatuto_PessoaIdosa rdf:type owl:NamedIndividual , myont:InstrumentoNormativo ;
+    rdfs:label "Estatuto da Pessoa Idosa (Lei nº 10.741/2003)"@pt-br ;
+    myont:tipoInstrumento "Lei" .

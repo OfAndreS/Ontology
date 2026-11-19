@@ -1,0 +1,23 @@
+# Diretório de referência do projeto ICTI (mantido com seu próprio Git intocado)
+ICTI/
+
+# Dependências e builds JS/TS
+node_modules/
+dist/
+.tanstack/
+
+# Ambientes e caches Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Variáveis de ambiente e segredos
+.env
+.env.local
+.env.*.local
+
+# Sistema e IDE
+.DS_Store
+*.log

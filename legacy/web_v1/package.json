@@ -1,0 +1,39 @@
+{
+  "name": "myont-credit-governance-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c cyan,yellow \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "tsx watch server/index.ts",
+    "dev:web": "vite --port 5173",
+    "build": "vite build",
+    "start": "tsx server/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.90.0",
+    "clsx": "^2.1.1",
+    "express": "^5.1.0",
+    "lucide-react": "^0.575.0",
+    "n3": "^1.26.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.0",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.1",
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.16.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "concurrently": "^9.2.1",
+    "tailwindcss": "^4.2.1",
+    "tsx": "^4.20.6",
+    "tw-animate-css": "^1.3.4",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,717 @@
+@prefix myont: <https://ontologia.governanca.credito/myont#> .
+@prefix schema: <https://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################################
+#    CATÁLOGO V2 (VARIÁVEIS + NÓS myont:Risco DESMEMBRADOS)
+#################################################################
+
+myont:Income rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Income"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:LGPD_Art7_V_ExecucaoContrato , myont:Lei_14181_2021_Superendividamento ;
+    myont:possuiRisco myont:Risco_Income_1 ;
+    myont:baseadaEmConceitoExterno schema:MonetaryAmount , schema:baseSalary ;
+    myont:descricaoOrigem "Titular / SCR / Bureaus"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7, X), Execução de Contrato e Lei 14.181/2021 (Art. 54-D)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: Fundamental para justificar o cálculo de comprometimento de renda."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy com viéses de exclusão de renda não comprovada formalmente, podendo excluir população de baixa renda mesmo com capacidade de pagamento real, mas não documental."^^xsd:string .
+
+myont:Risco_Income_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Ignorar renda informal ou sazonal pode gerar viés de exclusão contra autônomos."@pt-br ;
+    myont:descricaoRisco "Ignorar renda informal ou sazonal pode gerar viés de exclusão contra autônomos."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:acionaBaseLegal myont:Lei_14181_2021_Superendividamento ;
+    myont:descricaoDemandaGovernanca "Alta: Monitoramento de consistência entre renda declarada e renda movimentada (Open Finance)."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Base para defesas em casos de superendividamento."^^xsd:string .
+
+myont:FamilyIncome rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Family income"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:LGPD_Art7_V_ExecucaoContrato , myont:Lei_14181_2021_Superendividamento ;
+    myont:possuiRisco myont:Risco_FamilyIncome_1 ;
+    myont:baseadaEmConceitoExterno schema:MonetaryAmount ;
+    myont:descricaoOrigem "Titular / Parceiro / Open Finance"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7, X), Execução de Contrato, Lei 14.181/2021 (Art. 54-D)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: O cliente deve entender claramente como sua renda impacta o limite aprovado."^^xsd:string .
+
+myont:Risco_FamilyIncome_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Reforço de desigualdade por penalizar rendas variáveis/informais; elitismo."@pt-br ;
+    myont:descricaoRisco "Reforço de desigualdade por penalizar rendas variáveis/informais; elitismo."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:descricaoDemandaGovernanca "Alta: Verificar comprovação documental para evitar fraude e gaantir precisão na capacidade de pagamento."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Risco de exclusão econômica injustificada se a renda informal não for considerada."^^xsd:string .
+
+myont:ParentsIncome rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Parents’ income"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:CodigoCivil_Geral ;
+    myont:possuiRisco myont:Risco_ParentsIncome_1 , myont:Risco_ParentsIncome_2 ;
+    myont:baseadaEmConceitoExterno schema:MonetaryAmount , schema:parent ;
+    myont:descricaoOrigem "Titular / Parceiro / Bureaus"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7, X) e Código Civil (Fiança, Aval)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Baixa: Irrelevante para o risco do titular, salvo garantia."^^xsd:string .
+
+myont:Risco_ParentsIncome_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Baixa mobilidade social"@pt-br ;
+    myont:descricaoRisco "Baixa mobilidade social"^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Baixo ;
+    myont:descricaoDemandaGovernanca "Baixa: Apenas relevante se os pais forem garantidores solidários."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Reforço de desigualdade intergeracional."^^xsd:string .
+
+myont:Risco_ParentsIncome_2 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Favorecimento de herdeiros."@pt-br ;
+    myont:descricaoRisco "Favorecimento de herdeiros."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Baixo ;
+    myont:descricaoDemandaGovernanca "Baixa: Apenas relevante se os pais forem garantidores solidários."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Reforço de desigualdade intergeracional."^^xsd:string .
+
+myont:Wealth rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Wealth"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:CodigoCivil_Garantias ;
+    myont:possuiRisco myont:Risco_Wealth_1 , myont:Risco_Wealth_2 ;
+    myont:equivalenteAConceitoExterno schema:netWorth ;
+    myont:baseadaEmConceitoExterno schema:MonetaryAmount ;
+    myont:descricaoOrigem "Titular"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7, X) e Garantias - Código Civil (Art. 391)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Média: Explicar como ativos entram como redutores de risco."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Reforço de determinadas desigualdades, principalmente para quem tem renda, mas não possui ativos acumulados."^^xsd:string .
+
+myont:Risco_Wealth_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Favorecimento de classes alta"@pt-br ;
+    myont:descricaoRisco "Favorecimento de classes alta"^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:descricaoDemandaGovernanca "Média: Validação de liquidez dos ativos declarados."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Reforço de desiguldades patrimoniais estruturais."^^xsd:string .
+
+myont:Risco_Wealth_2 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Viés de acumulação histórica"@pt-br ;
+    myont:descricaoRisco "Viés de acumulação histórica"^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:descricaoDemandaGovernanca "Média: Validação de liquidez dos ativos declarados."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Reforço de desiguldades patrimoniais estruturais."^^xsd:string .
+
+myont:TotalFinancialAssets rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Total financial assets"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito ;
+    myont:possuiRisco myont:Risco_TotalFinancialAssets_1 ;
+    myont:baseadaEmConceitoExterno schema:netWorth , schema:MonetaryAmount ;
+    myont:descricaoOrigem "Institucional / Open Finance"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7º, X)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Média: Ativos como mitigadores de risco."^^xsd:string .
+
+myont:Risco_TotalFinancialAssets_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Favorecimento de clientes de alta renda."@pt-br ;
+    myont:descricaoRisco "Favorecimento de clientes de alta renda."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:descricaoDemandaGovernanca "Alta: Validação de liquidez dos ativos para recuperação de crédito."^^xsd:string .
+
+myont:HomeOwnership rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Home ownership"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:CodigoCivil_Garantias ;
+    myont:possuiRisco myont:Risco_HomeOwnership_1 ;
+    myont:baseadaEmConceitoExterno schema:Residence , schema:homeLocation ;
+    myont:descricaoOrigem "Titular / Cartórios"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7, X) e Garantias, Código Civil (Arts. 1.419 a 1.510)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Média: Demonstrar nexo entre estabilidade de moradia e risco."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de raça e classe, considerando populações marginalizadas que vivem em áreas informais ou de aluguel. Exclusão de grupos raciais ou de periferias."^^xsd:string .
+
+myont:Risco_HomeOwnership_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Penalização de quem paga aluguel ou vive em áreas informais (sem escritura)"@pt-br ;
+    myont:descricaoRisco "Penalização de quem paga aluguel ou vive em áreas informais (sem escritura)"^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:descricaoDemandaGovernanca "Média: Verificar se a posse do imóvel tem correlação real com adimplência no modelo."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Potencial discriminação indireta baseada em CEP ou regularização fundiária."^^xsd:string .
+
+myont:Occupation rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Occupation"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Res_CMN_4966_2021 ;
+    myont:possuiRisco myont:Risco_Occupation_1 ;
+    myont:equivalenteAConceitoExterno schema:Occupation , schema:hasOccupation ;
+    myont:atuaComoProxyDe myont:Gender ;
+    myont:descricaoOrigem "Titular"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7, X) e Res. CMN 4.966/2021 (Art. 51)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: Cliente deve entender como a estabilidade da profissão afeta o risco."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de gênero e classe, considerando que determinadas profissões podem estar mais relacionadas a determinado gênro ou raça, assim como à desigualdades estruturais de classe."^^xsd:string .
+
+myont:Risco_Occupation_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Discriminação de profissões estigmatizadas ou informais."@pt-br ;
+    myont:descricaoRisco "Discriminação de profissões estigmatizadas ou informais."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:descricaoDemandaGovernanca "Alta: Monitorar se certas profissões estão sendo bloqueadas indevidamente."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Risco de discriminação laboral."^^xsd:string .
+
+myont:EmploymentStatus rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Employment status"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Res_CMN_4966_2021 ;
+    myont:possuiRisco myont:Risco_EmploymentStatus_1 ;
+    myont:baseadaEmConceitoExterno schema:employmentType , schema:EmployeeRole ;
+    myont:atuaComoProxyDe myont:Gender ;
+    myont:descricaoOrigem "Titular / Institucional (Cadastro)"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7, X) e Res. CMN 4.966/2021 (Art. 51)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: Justificar o peso da \"estabilidade\" no score."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de gênero e classe, considerando que determinadas profissões podem estar mais relacionadas a determinado gênro ou raça, assim como à desigualdades estruturais de classe."^^xsd:string .
+
+myont:Risco_EmploymentStatus_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Penalização de desempregados ou autônomos momentâneos."@pt-br ;
+    myont:descricaoRisco "Penalização de desempregados ou autônomos momentâneos."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:descricaoDemandaGovernanca "Alta: Considerar a volatilidade da renda, não apenas o vínculo formal."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Exclusão de trabalhadores da economia gig (uberização)."^^xsd:string .
+
+myont:LengthOfEmployment rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Length of employment"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Res_CMN_4966_2021 ;
+    myont:possuiRisco myont:Risco_LengthOfEmployment_1 ;
+    myont:baseadaEmConceitoExterno schema:monthsOfExperience ;
+    myont:atuaComoProxyDe myont:Age , myont:PhysicalHealthStatus , myont:Gender ;
+    myont:descricaoOrigem "Titular / Institucional (Cadastro)"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7, X) e Res. CMN 4.966/2021 (Consistência da capacidade financeira)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Média: Pode possuir correlação com economias diretas do cliente, incluindo fluxo de caixa."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de idade, saúde e gênero por penalizar jovens, pausas na carreira por motivos de saúde ou de maternidade."^^xsd:string .
+
+myont:Risco_LengthOfEmployment_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Viés contra jovens ou profissionais em transição de carreira frequente."@pt-br ;
+    myont:descricaoRisco "Viés contra jovens ou profissionais em transição de carreira frequente."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:descricaoDemandaGovernanca "Média: Avaliar estabilidade vs. empregabilidade."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Pode afetar desproporcionalmente gerações mais novas."^^xsd:string .
+
+myont:Education rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Education"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_IX_InteresseLegitimo , myont:Res_CMN_4966_2021 ;
+    myont:possuiRisco myont:Risco_Education_1 , myont:Risco_Education_2 ;
+    myont:equivalenteAConceitoExterno schema:educationalLevel ;
+    myont:baseadaEmConceitoExterno schema:EducationalOccupationalCredential , schema:alumniOf ;
+    myont:atuaComoProxyDe myont:Income ;
+    myont:descricaoOrigem "Titular / Parceiro / Institucional (Cadastro)"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Interesse Legítimo (com cautela) e Res. CMN 4.966/2021"^^xsd:string ;
+    myont:descricaoExplicabilidade "Média: Nexo entre formação e empregabilidade futura."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de raça e de renda graças ao acesso desigual à educação por pessoas PPI ou de baixa renda."^^xsd:string .
+
+myont:Risco_Education_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Alto Risco: Atuar como proxy de renda ou classe social"@pt-br ;
+    myont:descricaoRisco "Alto Risco: Atuar como proxy de renda ou classe social"^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:descricaoDemandaGovernanca "Média: Monitorar estritamente para garantir que não substitua a análise de renda real"^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Reforço de desigualdades de acesso à educação; potencial discriminação indireta."^^xsd:string .
+
+myont:Risco_Education_2 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Elitismo acadêmico"@pt-br ;
+    myont:descricaoRisco "Elitismo acadêmico"^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:descricaoDemandaGovernanca "Média: Monitorar estritamente para garantir que não substitua a análise de renda real"^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Reforço de desigualdades de acesso à educação; potencial discriminação indireta."^^xsd:string .
+
+myont:NumberOfChildrenDependents rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Number of children/dependents"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Lei_14181_2021_Superendividamento ;
+    myont:possuiRisco myont:Risco_NumberOfChildrenDependents_1 , myont:Risco_NumberOfChildrenDependents_2 ;
+    myont:baseadaEmConceitoExterno schema:children ;
+    myont:descricaoOrigem "Titular"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Cálculo de renda residual) e Lei 14.181/2021"^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: Explicar impacto no comprometimento da renda."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de religião ou culura, considerando que certas religiões ou culturas tradicionais podem se relacionar diretamente com a organização e padrões familiares."^^xsd:string .
+
+myont:Risco_NumberOfChildrenDependents_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Penalização de famílias numerosas"@pt-br ;
+    myont:descricaoRisco "Penalização de famílias numerosas"^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:descricaoDemandaGovernanca "Média: Uso estrito para cálculo de renda disponível (residual)."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Risco de discriminação familiar ou de gênero (indireta)."^^xsd:string .
+
+myont:Risco_NumberOfChildrenDependents_2 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Potencial viés contra mulheres (maternidade)."@pt-br ;
+    myont:descricaoRisco "Potencial viés contra mulheres (maternidade)."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:descricaoDemandaGovernanca "Média: Uso estrito para cálculo de renda disponível (residual)."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Risco de discriminação familiar ou de gênero (indireta)."^^xsd:string .
+
+myont:Age rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Age"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Res_CMN_4966_2021 , myont:CodigoCivil_Geral ;
+    myont:possuiRisco myont:Risco_Age_1 ;
+    myont:baseadaEmConceitoExterno schema:birthDate ;
+    myont:atuaComoProxyDe myont:PhysicalHealthStatus ;
+    myont:descricaoOrigem "Institucional (Cadastro)"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Código Civil (Arts. 3º e 4º sobre capacidade civil), Proteção ao Crédito (Art. 7, X) e Res. CMN 4.966/2021 (expectativa de vida e provisão da operação)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: Explicar restrições baseadas em expectativa de vida, como a inviabilidade de empréstimos a serem pagos em longos períodos. Falta de movimentação/histórico financeiro (por idade)"^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de etarismo e classificador de saúde. Pode ser utilizado como uma negativa não declarada relacionada à saúde."^^xsd:string .
+
+myont:Risco_Age_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Discriminação contra idosos (risco de saúde ou de vida) ou de jovens (falta de histórico)"@pt-br ;
+    myont:descricaoRisco "Discriminação contra idosos (risco de saúde ou de vida) ou de jovens (falta de histórico)"^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:acionaBaseLegal myont:Estatuto_PessoaIdosa ;
+    myont:descricaoDemandaGovernanca "Média: Validar curvas de risco para não penalizar indevidamente faixas etárias específicas."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Discriminação etária (Estatuto do Idoso); vedação de discriminação abusiva."^^xsd:string .
+
+myont:Gender rdf:type owl:NamedIndividual , myont:Variavel , myont:VariavelSensivel ;
+    rdfs:label "Gender"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_II_ObrigacaoLegal ;
+    myont:possuiRisco myont:Risco_Gender_1 , myont:Risco_Gender_2 ;
+    myont:equivalenteAConceitoExterno schema:gender ;
+    myont:baseadaEmConceitoExterno schema:GenderType ;
+    myont:atuaComoProxyDe myont:Income ;
+    myont:descricaoOrigem "Institucional (Cadastro)"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Cumprimento de Obrigação Legal (Identificação do cliente). Não deve ser utilizado como fato para distinção (Constituição Federal, Art. 5º, I). Somente para ações afirmativas."^^xsd:string ;
+    myont:descricaoExplicabilidade "N/A: Uso apenas regulatório e que não deve ser incluído para a tomada de decisão."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de renda se associado à estátistica de mulheres receberem menos e penalizar mulheres indevidamente."^^xsd:string .
+
+myont:Risco_Gender_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Discriminação de gênero"@pt-br ;
+    myont:descricaoRisco "Discriminação de gênero"^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Veto ;
+    myont:acionaBaseLegal myont:LGPD_Art11_DadosSensiveis , myont:CF_Art5_I_IgualdadeGenero ;
+    myont:descricaoDemandaGovernanca "Baixa: Uso improvável para decisão. Não recomendado."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Discriminação de gênero direta. Proibido utilizar como fato de decisão de crédito."^^xsd:string .
+
+myont:Risco_Gender_2 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Aplicação de padrões de taxas distintos a depender do gênero. Apesar de a LGPD não classificar como dado sensível (por ser um dado público), é um dado que carrega uma vulnerabilidade implícita."@pt-br ;
+    myont:descricaoRisco "Aplicação de padrões de taxas distintos a depender do gênero. Apesar de a LGPD não classificar como dado sensível (por ser um dado público), é um dado que carrega uma vulnerabilidade implícita."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Veto ;
+    myont:acionaBaseLegal myont:LGPD_Art11_DadosSensiveis , myont:CF_Art5_I_IgualdadeGenero ;
+    myont:descricaoDemandaGovernanca "Baixa: Uso improvável para decisão. Não recomendado."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Discriminação de gênero direta. Proibido utilizar como fato de decisão de crédito."^^xsd:string .
+
+myont:MaritalStatus rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Marital status"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:CodigoCivil_Geral ;
+    myont:possuiRisco myont:Risco_MaritalStatus_1 ;
+    myont:baseadaEmConceitoExterno schema:spouse ;
+    myont:descricaoOrigem "Institucional (Cadastro)"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Necessário verificar regime de bens) e Código Civil (art. 1.647)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Média: Relevância apenas para informações sobre composição de renda e de garantias."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Pode afetar pessoas solteiras e divorciadas a depender de como a variável é utilizada."^^xsd:string .
+
+myont:Risco_MaritalStatus_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Possível viés contra determinados estados civis com base em garantias e patrimônio (solteiros, divorciados) e correlação com estabilidade."@pt-br ;
+    myont:descricaoRisco "Possível viés contra determinados estados civis com base em garantias e patrimônio (solteiros, divorciados) e correlação com estabilidade."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Baixo ;
+    myont:acionaBaseLegal myont:CodigoCivil_Garantias ;
+    myont:descricaoDemandaGovernanca "Baixa: É um dado relevante para garantias e composição de renda."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Possível discriminação com base em status familiar."^^xsd:string .
+
+myont:Nationality rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Nationality / Foreign Worker Status (Nacionalidade)"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_II_ObrigacaoLegal ;
+    myont:possuiRisco myont:Risco_Nationality_1 ;
+    myont:equivalenteAConceitoExterno schema:nationality ;
+    myont:atuaComoProxyDe myont:GeographicalLocations ;
+    myont:descricaoOrigem "Institucional (Cadastro)/ Documentos"^^xsd:string ;
+    myont:descricaoJustificativaLegal "LGPD: Cumprimento de Obrigação Legal."^^xsd:string ;
+    myont:descricaoExplicabilidade "Média: A recusa deve ser explicada pela \"falta de histórico local de crédito\" e não pela origem do indivíduo."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de raça/etnia e origem geográfica."^^xsd:string .
+
+myont:Risco_Nationality_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Xenofobia. Dificuldade de modelar histórico para imigrantes ou refugiados recém-chegados, gerando exclusão sistêmica do sistema financeiro."@pt-br ;
+    myont:descricaoRisco "Xenofobia. Dificuldade de modelar histórico para imigrantes ou refugiados recém-chegados, gerando exclusão sistêmica do sistema financeiro."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:descricaoDemandaGovernanca "Alta: Garantir que o modelo não bloqueie ou cobre taxas maiores de clientes apenas por serem estrangeiros residentes."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Violação do Art. 5º da CF, que garante direitos iguais a brasileiros e estrangeiros residentes no país."^^xsd:string .
+
+myont:AccountBalance rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Account balance"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:LGPD_Art7_V_ExecucaoContrato ;
+    myont:possuiRisco myont:Risco_AccountBalance_1 ;
+    myont:baseadaEmConceitoExterno schema:BankAccount , schema:MonetaryAmount ;
+    myont:descricaoOrigem "Institucional (Interna)"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7, X) e Execução de Contrato"^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: Correlação direta com capacidade de pagamento imediata."^^xsd:string .
+
+myont:Risco_AccountBalance_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Exclusão de quem movimenta dinheiro em espécie ou outros bancos (se não houver Open Finance)."@pt-br ;
+    myont:descricaoRisco "Exclusão de quem movimenta dinheiro em espécie ou outros bancos (se não houver Open Finance)."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:descricaoDemandaGovernanca "Alta: Monitorar volatilidade do saldo."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Falso negativo para clientes com recursos em outras instituições."^^xsd:string .
+
+myont:NumberOfBankAccounts rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Number of bank accounts"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Res_CMN_4966_2021 ;
+    myont:possuiRisco myont:Risco_NumberOfBankAccounts_1 ;
+    myont:baseadaEmConceitoExterno schema:BankAccount ;
+    myont:descricaoOrigem "SCR / Open Finance"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7º, X) e Res. CMN 4.966/2021"^^xsd:string ;
+    myont:descricaoExplicabilidade "Baixa: Baixa relevância isolada."^^xsd:string .
+
+myont:Risco_NumberOfBankAccounts_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Interpretação ambígua: pode sinalizar diversificação ou desorganização financeira."@pt-br ;
+    myont:descricaoRisco "Interpretação ambígua: pode sinalizar diversificação ou desorganização financeira."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:descricaoDemandaGovernanca "Média: Avaliar se múltiplas contas indicam risco ou apenas comportamento multicanal."^^xsd:string .
+
+myont:CreditLimit rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Credit limit"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito ;
+    myont:possuiRisco myont:Risco_CreditLimit_1 ;
+    myont:baseadaEmConceitoExterno schema:accountOverdraftLimit , schema:MonetaryAmount ;
+    myont:descricaoOrigem "Institucional"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7º, X)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: Limite deve ser compatível com renda."^^xsd:string .
+
+myont:Risco_CreditLimit_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Risco operacional ou de conformidade associado ao uso do atributo"@pt-br ;
+    myont:descricaoRisco "Risco operacional ou de conformidade associado ao uso do atributo"^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:descricaoDemandaGovernanca "Alta: Gestão de exposição ao risco."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Indução ao endividamento excessivo."^^xsd:string .
+
+myont:NumberOfCreditCards rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Number of credit cards"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Res_CMN_4966_2021 ;
+    myont:possuiRisco myont:Risco_NumberOfCreditCards_1 , myont:Risco_NumberOfCreditCards_2 ;
+    myont:baseadaEmConceitoExterno schema:CreditCard , schema:PaymentCard ;
+    myont:descricaoOrigem "SCR"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Proteção ao Crédito (Art. 7º, X) e Res. CMN 4.966/2021"^^xsd:string ;
+    myont:descricaoExplicabilidade "Média: Explicar risco de crédito rotativo latente."^^xsd:string .
+
+myont:Risco_NumberOfCreditCards_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "\"Fome de crédito\""@pt-br ;
+    myont:descricaoRisco "\"Fome de crédito\""^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:descricaoDemandaGovernanca "Média: Analisar uso vs. quantidade ociosa."^^xsd:string .
+
+myont:Risco_NumberOfCreditCards_2 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Risco de alavancagem excessiva."@pt-br ;
+    myont:descricaoRisco "Risco de alavancagem excessiva."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:descricaoDemandaGovernanca "Média: Analisar uso vs. quantidade ociosa."^^xsd:string .
+
+myont:LoanAmount rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Loan amount"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_V_ExecucaoContrato ;
+    myont:possuiRisco myont:Risco_LoanAmount_1 ;
+    myont:baseadaEmConceitoExterno schema:amount , schema:LoanOrCredit , schema:MonetaryAmount ;
+    myont:descricaoOrigem "Institucional"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Execução de Contrato"^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: Relação direta com o risco da operação."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Risco de adequação, sendo necessário oferecer prazos e valores compatíveis com dados para não cometer prática abusiva sob o CDC."^^xsd:string .
+
+myont:Risco_LoanAmount_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Risco operacional ou de conformidade associado ao uso do atributo"@pt-br ;
+    myont:descricaoRisco "Risco operacional ou de conformidade associado ao uso do atributo"^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:descricaoDemandaGovernanca "Alta: Validar adequação do valor à capacidade de pagamento."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Empréstimo predatório se o valor for incompatível com a renda."^^xsd:string .
+
+myont:LoanDuration rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Loan duration"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_V_ExecucaoContrato ;
+    myont:possuiRisco myont:Risco_LoanDuration_1 ;
+    myont:equivalenteAConceitoExterno schema:loanTerm ;
+    myont:baseadaEmConceitoExterno schema:LoanOrCredit ;
+    myont:descricaoOrigem "Institucional"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Execução de Contrato"^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: Explicar custo do dinheiro no tempo."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Risco de adequação, sendo necessário oferecer prazos e valores compatíveis com dados para não cometer prática abusiva sob o CDC."^^xsd:string .
+
+myont:Risco_LoanDuration_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Risco operacional ou de conformidade associado ao uso do atributo"@pt-br ;
+    myont:descricaoRisco "Risco operacional ou de conformidade associado ao uso do atributo"^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:descricaoDemandaGovernanca "Alta: Impacto direto na probabilidade de inadimplência (aumenta com o tempo)"^^xsd:string .
+
+myont:PurposeOfLoan rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Purpose of loan"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_V_ExecucaoContrato ;
+    myont:possuiRisco myont:Risco_PurposeOfLoan_1 ;
+    myont:baseadaEmConceitoExterno schema:loanType , schema:LoanOrCredit ;
+    myont:descricaoOrigem "Institucional"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Execução de Contrato"^^xsd:string ;
+    myont:descricaoExplicabilidade "Média: Taxas podem variar conforme o propósito."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Risco de adequação, sendo necessário oferecer prazos e valores compatíveis com dados para não cometer prática abusiva sob o CDC."^^xsd:string .
+
+myont:Risco_PurposeOfLoan_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Riscos variados por finalidade (ex: investimento vs. consumo emergencial)."@pt-br ;
+    myont:descricaoRisco "Riscos variados por finalidade (ex: investimento vs. consumo emergencial)."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:descricaoDemandaGovernanca "Média: Categorização correta do destino do recurso."^^xsd:string .
+
+myont:ParentFacilitation rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Parent facilitation"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_IX_InteresseLegitimo ;
+    myont:possuiRisco myont:Risco_ParentFacilitation_1 ;
+    myont:baseadaEmConceitoExterno schema:parent ;
+    myont:descricaoOrigem "Parceiros / Questionários"^^xsd:string ;
+    myont:descricaoJustificativaLegal "LGPD: Interesse Legítimo."^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: Baixo nexo de causalidade para modelos IRB."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Pode penalizar arranjos familiares atípicos ou de baixa renda."^^xsd:string .
+
+myont:Risco_ParentFacilitation_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Imposição de métricas baseadas em dinâmicas e facilidades familiares específicas."@pt-br ;
+    myont:descricaoRisco "Imposição de métricas baseadas em dinâmicas e facilidades familiares específicas."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:acionaBaseLegal myont:LGPD_Art6_I_Finalidade ;
+    myont:descricaoDemandaGovernanca "Alta: Risco reputacional por invasão da esfera familiar."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Afronta ao princípio da Finalidade e Necessidade (Art. 6º, I e III, LGPD) ao usar dados de terceiros (pais)."^^xsd:string .
+
+myont:ConsumerBehavior rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Consumer behavior"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_IX_InteresseLegitimo , myont:LGPD_Art7_I_Consentimento , myont:Lei_14181_2021_Superendividamento ;
+    myont:possuiRisco myont:Risco_ConsumerBehavior_1 ;
+    myont:baseadaEmConceitoExterno schema:BuyAction , schema:PayAction ;
+    myont:descricaoOrigem "Open Finance / Faturas Institucionais"^^xsd:string ;
+    myont:descricaoJustificativaLegal "LGPD: Interesse Legítimo ou Consentimento. Lei 14.181/2021."^^xsd:string ;
+    myont:descricaoExplicabilidade "Média: Explicar a relação do padrão de consumo com o risco de crédito."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Pode indiretamente captar orientação sexual, religião ou classe."^^xsd:string .
+
+myont:Risco_ConsumerBehavior_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Intrusividade. Punição baseada em escolhas legítimas e legais de consumo do indivíduo."@pt-br ;
+    myont:descricaoRisco "Intrusividade. Punição baseada em escolhas legítimas e legais de consumo do indivíduo."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:descricaoDemandaGovernanca "Média: Necessidade de limitar o uso a predição real de risco, sem julgamento moral."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Risco de Prática Abusiva (CDC Art. 39) se o banco recusa crédito por não concordar com as escolhas de consumo legais."^^xsd:string .
+
+myont:LevelOfExpenditure rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Level of expenditure (spending pattern)"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_IX_InteresseLegitimo ;
+    myont:possuiRisco myont:Risco_LevelOfExpenditure_1 ;
+    myont:baseadaEmConceitoExterno schema:PayAction , schema:MonetaryAmount ;
+    myont:atuaComoProxyDe myont:GeographicalLocations ;
+    myont:descricaoOrigem "Open Finance / Faturas Institucionais"^^xsd:string ;
+    myont:descricaoJustificativaLegal "LGPD: Interesse Legítimo."^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: Cliente tem o direito de contestar bloqueios via algoritmo."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Indica onde a pessoa vive e o que frequenta."^^xsd:string .
+
+myont:Risco_LevelOfExpenditure_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Invasão da esfera íntima para traçar perfil diário. Pode penalizar consumidores focados em bens não duráveis."@pt-br ;
+    myont:descricaoRisco "Invasão da esfera íntima para traçar perfil diário. Pode penalizar consumidores focados em bens não duráveis."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:acionaBaseLegal myont:CF_Art5_PrivacidadeSigilo ;
+    myont:descricaoDemandaGovernanca "Alta: Risco do modelo focar na categoria dos gastos (viés) em vez do volume x renda."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Violação da Privacidade e Intimidade (Art. 5º, X, CF) se a granularidade do gasto for excessiva."^^xsd:string .
+
+myont:AdverseLifeEvents rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Adverse life events or life-altering events"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Normas_BACEN ;
+    myont:possuiRisco myont:Risco_AdverseLifeEvents_1 ;
+    myont:baseadaEmConceitoExterno schema:lifeEvent ;
+    myont:descricaoOrigem "Titular / Atrasos Atípicos (Ex: Luto, Desastre)"^^xsd:string ;
+    myont:descricaoJustificativaLegal "LGPD: Proteção ao Crédito. Normas de flexibilização de crédito (BACEN)."^^xsd:string ;
+    myont:descricaoExplicabilidade "Alta: Diferenciar matematicamente um default comum de uma força maior temporal."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Pode afetar populações inteiras de áreas sob desastres, ex: Rio Grande do Sul."^^xsd:string .
+
+myont:Risco_AdverseLifeEvents_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Falta de empatia algorítmica. Penaliza clientes historicamente bons devido a choques súbitos incontroláveis."@pt-br ;
+    myont:descricaoRisco "Falta de empatia algorítmica. Penaliza clientes historicamente bons devido a choques súbitos incontroláveis."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Medio ;
+    myont:acionaBaseLegal myont:Lei_14181_2021_Superendividamento ;
+    myont:descricaoDemandaGovernanca "Média: Necessidade vital de Human-in-the-loop (revisão por humano) para remover o viés temporário."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Violação da boa-fé objetiva exigida no CDC e necessidade de renegociação sob a Lei do Superendividamento."^^xsd:string .
+
+myont:PhysicalHealthStatus rdf:type owl:NamedIndividual , myont:Variavel , myont:VariavelSensivel ;
+    rdfs:label "Physical health status"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:possuiRisco myont:Risco_PhysicalHealthStatus_1 ;
+    myont:baseadaEmConceitoExterno schema:MedicalCondition , schema:MedicalEntity ;
+    myont:atuaComoProxyDe myont:Age ;
+    myont:descricaoOrigem "N/A"^^xsd:string ;
+    myont:descricaoJustificativaLegal "LGPD: Art. 11 (Sensível)."^^xsd:string ;
+    myont:descricaoExplicabilidade "N/A"^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de Idade (Idosos) e Deficiência (PCD)."^^xsd:string .
+
+myont:Risco_PhysicalHealthStatus_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Criar exclusão financeira e castas baseadas em doenças crônicas ou morbidades."@pt-br ;
+    myont:descricaoRisco "Criar exclusão financeira e castas baseadas em doenças crônicas ou morbidades."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Veto ;
+    myont:acionaBaseLegal myont:LGPD_Art11_DadosSensiveis ;
+    myont:descricaoDemandaGovernanca "Crítico: Impossível de ser aprovado na governança."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Crime de Discriminação (Lei 13.146/2015 - Estatuto da PCD). Ofensa à Constituição Federal."^^xsd:string .
+
+myont:PostingPatterns rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Posting patterns"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:CF_Art5_PrivacidadeSigilo ;
+    myont:possuiRisco myont:Risco_PostingPatterns_1 ;
+    myont:baseadaEmConceitoExterno schema:SocialMediaPosting ;
+    myont:atuaComoProxyDe myont:Education , myont:GeographicalLocations ;
+    myont:descricaoOrigem "Redes Sociais"^^xsd:string ;
+    myont:descricaoJustificativaLegal "CF (Art. 5º, IV e X)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Impossível."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy Cultural e de Classe: O uso de linguagem capta dialetos, escolaridade e região de origem."^^xsd:string .
+
+myont:Risco_PostingPatterns_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Penalização baseada em opiniões, gírias regionais ou na forma de o indivíduo se expressar."@pt-br ;
+    myont:descricaoRisco "Penalização baseada em opiniões, gírias regionais ou na forma de o indivíduo se expressar."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Veto ;
+    myont:descricaoDemandaGovernanca "Máxima: Proibir o uso de algoritmos de Processamento de Linguagem Natural (NLP) sobre textos do cliente para análise de risco."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Prática abusiva sob o Código de Defesa do Consumidor (CDC) por estipular métricas desconexas com a relação de consumo."^^xsd:string .
+
+myont:UsageOfPhotoForPosts rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Usage of photo for posts"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:possuiRisco myont:Risco_UsageOfPhotoForPosts_1 ;
+    myont:baseadaEmConceitoExterno schema:Photograph , schema:ImageObject , schema:SocialMediaPosting ;
+    myont:atuaComoProxyDe myont:Gender , myont:Age ;
+    myont:descricaoOrigem "Visão Computacional sobre Imagens"^^xsd:string ;
+    myont:descricaoJustificativaLegal "LGPD (Art. 11)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Impossível."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Raça/Cor, Gênero e Idade."^^xsd:string .
+
+myont:Risco_UsageOfPhotoForPosts_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Racismo algorítmico. Se a máquina extrair cor de pele, fenótipo ou estética da face a partir dos pixels para modular o risco."@pt-br ;
+    myont:descricaoRisco "Racismo algorítmico. Se a máquina extrair cor de pele, fenótipo ou estética da face a partir dos pixels para modular o risco."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Maximo ;
+    myont:acionaBaseLegal myont:LGPD_Art6_I_Finalidade , myont:LGPD_Art11_DadosSensiveis ;
+    myont:descricaoDemandaGovernanca "Máxima: Auditoria estrita para impedir que APIs de visão computacional sejam usadas fora do escopo exclusivo de prevenção à fraude (biometria facial)."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Crime de Discriminação (Lei 7.716/89) e violação do Princípio da Não-Discriminação (Art. 6º, IX, LGPD)."^^xsd:string .
+
+myont:MajorThingsInPeoplesLives rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Major things in people’s lives"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:CF_Art5_PrivacidadeSigilo ;
+    myont:possuiRisco myont:Risco_MajorThingsInPeoplesLives_1 ;
+    myont:equivalenteAConceitoExterno schema:lifeEvent ;
+    myont:atuaComoProxyDe myont:MaritalStatus , myont:PhysicalHealthStatus ;
+    myont:descricaoOrigem "Mineração de Textos em Redes"^^xsd:string ;
+    myont:descricaoJustificativaLegal "CF (Art. 5º, X)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Nula: O modelo perderia completamente o rigor financeiro exigido pelo BACEN."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de Estado Civil, Saúde (Luto/Doença) e Religião."^^xsd:string .
+
+myont:Risco_MajorThingsInPeoplesLives_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Penalizar clientes que expuseram publicamente divórcios, luto ou demissões."@pt-br ;
+    myont:descricaoRisco "Penalizar clientes que expuseram publicamente divórcios, luto ou demissões."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Maximo ;
+    myont:acionaBaseLegal myont:CodigoCivil_Geral ;
+    myont:descricaoDemandaGovernanca "Máxima: Impedir a coleta oportunista de eventos de vida extraídos fora do ambiente bancário formal."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Ofensa ao princípio da Boa-Fé Objetiva do Código Civil."^^xsd:string .
+
+myont:PostingTime rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Posting time"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:CF_Art5_PrivacidadeSigilo ;
+    myont:possuiRisco myont:Risco_PostingTime_1 ;
+    myont:baseadaEmConceitoExterno schema:SocialMediaPosting ;
+    myont:atuaComoProxyDe myont:Occupation ;
+    myont:descricaoOrigem "Metadados de rede"^^xsd:string ;
+    myont:descricaoJustificativaLegal "CF (Art. 5º, X)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Nula."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de Profissão (trabalhadores de turno/noturnos) e Saúde Mental (Insônia/Ansiedade)."^^xsd:string .
+
+myont:Risco_PostingTime_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Inferir desorganização financeira, desemprego ou problemas de sono a partir dos horários em que a pessoa interage online."@pt-br ;
+    myont:descricaoRisco "Inferir desorganização financeira, desemprego ou problemas de sono a partir dos horários em que a pessoa interage online."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:descricaoDemandaGovernanca "Alta: Impedir o uso de carimbos de data/hora (timestamps) não relacionados a transações bancárias."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Potencial infração ao princípio da Não-Discriminação Laboral."^^xsd:string .
+
+myont:NumberOfFollowers rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Number of followers"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:LGPD_Art6_I_Finalidade ;
+    myont:possuiRisco myont:Risco_NumberOfFollowers_1 ;
+    myont:baseadaEmConceitoExterno schema:follows , schema:FollowAction ;
+    myont:atuaComoProxyDe myont:Age ;
+    myont:descricaoOrigem "Redes Sociais"^^xsd:string ;
+    myont:descricaoJustificativaLegal "LGPD (Art. 6º, I)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Nula."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de Idade e Classe."^^xsd:string .
+
+myont:Risco_NumberOfFollowers_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Gamificação do acesso à cidadania financeira."@pt-br ;
+    myont:descricaoRisco "Gamificação do acesso à cidadania financeira."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Alto ;
+    myont:descricaoDemandaGovernanca "Alta: Garantir que o algoritmo não confunda influência digital com capacidade de pagamento (Willingness to pay)."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Infração administrativa à LGPD por coleta excessiva."^^xsd:string .
+
+myont:Friends rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Friends"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:CodigoCivil_Geral ;
+    myont:possuiRisco myont:Risco_Friends_1 ;
+    myont:equivalenteAConceitoExterno schema:knows ;
+    myont:baseadaEmConceitoExterno schema:BefriendAction ;
+    myont:descricaoOrigem "Grafos de Amizade"^^xsd:string ;
+    myont:descricaoJustificativaLegal "Código Civil: Incomunicabilidade de obrigações sem fiança formal."^^xsd:string ;
+    myont:descricaoExplicabilidade "Impossível: O IFRS 9 exige cálculo individual da Expected Credit Loss (ECL)."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Redlining Estrutural (Mapeia e pune comunidades mais pobres e periféricas)."^^xsd:string .
+
+myont:Risco_Friends_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Julgamento do indivíduo pelo histórico financeiro e inadimplência de seus amigos ou moradores do mesmo bairro."@pt-br ;
+    myont:descricaoRisco "Julgamento do indivíduo pelo histórico financeiro e inadimplência de seus amigos ou moradores do mesmo bairro."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Veto ;
+    myont:descricaoDemandaGovernanca "Máxima: Veto a técnicas de Graph Convolutional Networks para inferência de risco baseada em conexões pessoais."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Punição abusiva por atos de terceiros (CDC)."^^xsd:string .
+
+myont:NumberOfMessages rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Number of messages"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:CF_Art5_PrivacidadeSigilo ;
+    myont:possuiRisco myont:Risco_NumberOfMessages_1 ;
+    myont:baseadaEmConceitoExterno schema:Message ;
+    myont:atuaComoProxyDe myont:Age ;
+    myont:descricaoOrigem "Metadados do Celular"^^xsd:string ;
+    myont:descricaoJustificativaLegal "CF (Art. 5º, XII)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Impossível."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de Idade (Gerações jovens mandam exponencialmente mais mensagens)."^^xsd:string .
+
+myont:Risco_NumberOfMessages_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Buscar correlações estatísticas ilógicas associando uso intenso do WhatsApp/SMS com impulsividade de consumo."@pt-br ;
+    myont:descricaoRisco "Buscar correlações estatísticas ilógicas associando uso intenso do WhatsApp/SMS com impulsividade de consumo."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Veto ;
+    myont:descricaoDemandaGovernanca "Máxima: Veto por falta total de embasamento na Resolução CMN 4.966/2021."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Coleta desproporcional e ilegal."^^xsd:string .
+
+myont:SmsSendingPattern rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "SMS sending pattern"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:CF_Art5_PrivacidadeSigilo , myont:MarcoCivil_Internet ;
+    myont:possuiRisco myont:Risco_SmsSendingPattern_1 ;
+    myont:baseadaEmConceitoExterno schema:Message ;
+    myont:descricaoOrigem "Permissão intrusiva no App"^^xsd:string ;
+    myont:descricaoJustificativaLegal "CF (Art. 5º, XII) e Marco Civil da Internet"^^xsd:string ;
+    myont:descricaoExplicabilidade "Impossível."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "Proxy de Comportamento Financeiro não autorizado."^^xsd:string .
+
+myont:Risco_SmsSendingPattern_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Raspagem invasiva dos SMS para capturar recibos de compras, faturas de outros bancos e mensagens pessoais."@pt-br ;
+    myont:descricaoRisco "Raspagem invasiva dos SMS para capturar recibos de compras, faturas de outros bancos e mensagens pessoais."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Maximo ;
+    myont:descricaoDemandaGovernanca "Máxima: Desativar captura de SMS pelo app do banco, limitando-se estritamente à leitura de tokens (MFA) via APIs nativas do celular."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Quebra Ilegal de Sigilo de Telecomunicações."^^xsd:string .
+
+myont:GeographicalLocations rdf:type owl:NamedIndividual , myont:Variavel ;
+    rdfs:label "Geographical locations"@en ;
+    myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:autorizadaPorBaseLegal myont:CF_Art5_XV_LiberdadeLocomocao ;
+    myont:possuiRisco myont:Risco_GeographicalLocations_1 ;
+    myont:equivalenteAConceitoExterno schema:GeoCoordinates ;
+    myont:baseadaEmConceitoExterno schema:PostalAddress , schema:address ;
+    myont:descricaoOrigem "Tracking do GPS pelo App do Banco"^^xsd:string ;
+    myont:descricaoJustificativaLegal "CF (Art. 5º, XV)"^^xsd:string ;
+    myont:descricaoExplicabilidade "Impossível: Injustificável negar crédito baseado nos locais lícitos que a pessoa frequenta."^^xsd:string ;
+    myont:descricaoAtuacaoProxy "O território urbano brasileiro é profundamente segregado; o CEP/GPS é o proxy número 1 para Raça e Classe Social."^^xsd:string .
+
+myont:Risco_GeographicalLocations_1 rdf:type owl:NamedIndividual , myont:Risco ;
+    rdfs:label "Rastrear a rotina física do cidadão. Pune com taxas de juros maiores quem dorme ou trabalha em áreas de risco, periferias ou favelas (Redlining Geográfico)."@pt-br ;
+    myont:descricaoRisco "Rastrear a rotina física do cidadão. Pune com taxas de juros maiores quem dorme ou trabalha em áreas de risco, periferias ou favelas (Redlining Geográfico)."^^xsd:string ;
+    myont:temNivelRisco myont:Risco_Maximo ;
+    myont:descricaoDemandaGovernanca "Máxima: Segregação de Dados (Ring-Fencing). O GPS coletado pelo App do banco só pode ser usado momentaneamente pelo Motor Antifraude, nunca guardado para treinar modelos IRB de risco de crédito."^^xsd:string ;
+    myont:descricaoImplicacaoLegal "Infração ao Princípio da Não-Discriminação (LGPD) e passível de graves Danos Morais Coletivos por discriminação territorial."^^xsd:string .
