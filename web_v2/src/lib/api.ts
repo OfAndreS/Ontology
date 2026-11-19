@@ -117,37 +117,6 @@ export interface ReportResponse {
   };
 }
 
-export interface OntologyOverview {
-  version: string;
-  label: string;
-  comment: string;
-  stats: {
-    classes: number;
-    objectProperties: number;
-    datatypeProperties: number;
-    variaveis: number;
-    riscos: number;
-    instrumentos: number;
-    dispositivos: number;
-    conceitosExternos: number;
-  };
-  classes: Array<{ id: string; label: string; comment: string; parent: string }>;
-  objectProperties: Array<{
-    id: string;
-    label: string;
-    domain: string;
-    range: string;
-    comment: string;
-  }>;
-  datatypeProperties: Array<{ id: string; label: string; domain: string; range: string }>;
-  instrumentos: Array<{
-    id: string;
-    label: string;
-    tipo: string;
-    dispositivos: Array<{ id: string; label: string; tipo: string }>;
-  }>;
-}
-
 async function request<T>(url: string, options?: RequestInit): Promise<T> {
   const res = await fetch(url, {
     headers: { "Content-Type": "application/json" },
@@ -162,7 +131,6 @@ async function request<T>(url: string, options?: RequestInit): Promise<T> {
 
 export const api = {
   getVocabularies: () => request<Vocabularies>("/api/vocabularies"),
-  getOntologyOverview: () => request<OntologyOverview>("/api/ontology-overview"),
   getConcepts: () => request<ExternalConcept[]>("/api/concepts"),
   getVariables: () => request<VariableRecord[]>("/api/variables"),
   getVariable: (id: string) => request<VariableRecord>(`/api/variables/${encodeURIComponent(id)}`),

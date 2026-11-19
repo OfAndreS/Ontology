@@ -4,7 +4,6 @@ import { Toaster } from "sonner";
 import { AppLayout } from "@/components/AppLayout";
 import { CatalogPage } from "@/pages/CatalogPage";
 import { ConceptsPage } from "@/pages/ConceptsPage";
-import { OntologyPage } from "@/pages/OntologyPage";
 import { ReportPage } from "@/pages/ReportPage";
 import { VariableDetailPage } from "@/pages/VariableDetailPage";
 import { VariableFormPage } from "@/pages/VariableFormPage";
@@ -25,7 +24,6 @@ export function App() {
         <AppLayout>
           <Routes>
             <Route path="/" element={<CatalogPage />} />
-            <Route path="/ontology" element={<OntologyPage />} />
             <Route path="/concepts" element={<ConceptsPage />} />
             <Route path="/variables/new" element={<VariableFormPage />} />
             <Route path="/variables/:id" element={<VariableDetailPage />} />

@@ -14,10 +14,6 @@ export const XSD_NS = "http://www.w3.org/2001/XMLSchema#";
 
 const RDF_TYPE = namedNode(`${RDF_NS}type`);
 const RDFS_LABEL = namedNode(`${RDFS_NS}label`);
-const RDFS_COMMENT = namedNode(`${RDFS_NS}comment`);
-const RDFS_SUBCLASS_OF = namedNode(`${RDFS_NS}subClassOf`);
-const RDFS_DOMAIN = namedNode(`${RDFS_NS}domain`);
-const RDFS_RANGE = namedNode(`${RDFS_NS}range`);
 const OWL_NAMED_INDIVIDUAL = namedNode(`${OWL_NS}NamedIndividual`);
 
 const __filename = fileURLToPath(import.meta.url);
@@ -141,31 +137,6 @@ export interface LegalBaseVocabItem extends VocabItem {
   tipoDetalhe: string;
   instrumentoId?: string;
   instrumentoLabel?: string;
-}
-
-export interface OntologyOverview {
-  version: string;
-  label: string;
-  comment: string;
-  stats: {
-    classes: number;
-    objectProperties: number;
-    datatypeProperties: number;
-    variaveis: number;
-    riscos: number;
-    instrumentos: number;
-    dispositivos: number;
-    conceitosExternos: number;
-  };
-  classes: Array<{ id: string; label: string; comment: string; parent: string }>;
-  objectProperties: Array<{ id: string; label: string; domain: string; range: string; comment: string }>;
-  datatypeProperties: Array<{ id: string; label: string; domain: string; range: string }>;
-  instrumentos: Array<{
-    id: string;
-    label: string;
-    tipo: string;
-    dispositivos: Array<{ id: string; label: string; tipo: string }>;
-  }>;
 }
 
 function localName(uri: string): string {
@@ -314,137 +285,6 @@ export class OntologyService {
       basesLegais,
       niveisRisco,
       statusCuradoria,
-    };
-  }
-
-  getOntologyOverview(): OntologyOverview {
-    const ontologyUri = "https://ontologia.governanca.credito/myont";
-    const version = this.singleLiteral(ontologyUri, `${OWL_NS}versionInfo`) || "2.0.0";
-    const label = this.labelOf(ontologyUri);
-    const comment = this.singleLiteral(ontologyUri, `${RDFS_NS}comment`);
-
-    const classes = this.store
-      .getSubjects(RDF_TYPE, namedNode(`${OWL_NS}Class`), null)
-      .filter((s) => s.termType === "NamedNode" && s.value.startsWith(MYONT_NS))
-      .map((s) => {
-        const parent = this.store
-          .getObjects(s, RDFS_SUBCLASS_OF, null)
-          .filter((o) => o.termType === "NamedNode")
-          .map((o) => toCurie(o.value))
-          .join(", ");
-        return {
-          id: localName(s.value),
-          label: this.labelOf(s.value),
-          comment: this.singleLiteral(s.value, `${RDFS_NS}comment`),
-          parent: parent || "owl:Thing",
-        };
-      })
-      .sort((a, b) => a.id.localeCompare(b.id, "pt-BR"));
-
-    const objectProperties = this.store
-      .getSubjects(RDF_TYPE, namedNode(`${OWL_NS}ObjectProperty`), null)
-      .filter((s) => s.termType === "NamedNode" && s.value.startsWith(MYONT_NS))
-      .map((s) => {
-        const domain = this.store
-          .getObjects(s, RDFS_DOMAIN, null)
-          .filter((o) => o.termType === "NamedNode")
-          .map((o) => localName(o.value))
-          .join(", ");
-        const range = this.store
-          .getObjects(s, RDFS_RANGE, null)
-          .filter((o) => o.termType === "NamedNode")
-          .map((o) => localName(o.value))
-          .join(", ");
-        return {
-          id: localName(s.value),
-          label: this.labelOf(s.value),
-          domain: domain || "—",
-          range: range || "—",
-          comment: this.singleLiteral(s.value, `${RDFS_NS}comment`),
-        };
-      })
-      .sort((a, b) => a.id.localeCompare(b.id, "pt-BR"));
-
-    const datatypeProperties = this.store
-      .getSubjects(RDF_TYPE, namedNode(`${OWL_NS}DatatypeProperty`), null)
-      .filter((s) => s.termType === "NamedNode" && s.value.startsWith(MYONT_NS))
-      .map((s) => {
-        const domain = this.store
-          .getObjects(s, RDFS_DOMAIN, null)
-          .filter((o) => o.termType === "NamedNode")
-          .map((o) => localName(o.value))
-          .join(", ");
-        const range = this.store
-          .getObjects(s, RDFS_RANGE, null)
-          .filter((o) => o.termType === "NamedNode")
-          .map((o) => localName(o.value))
-          .join(", ");
-        return {
-          id: localName(s.value),
-          label: this.labelOf(s.value),
-          domain: domain || "—",
-          range: range || "xsd:string",
-        };
-      })
-      .sort((a, b) => a.domain.localeCompare(b.domain, "pt-BR") || a.id.localeCompare(b.id, "pt-BR"));
-
-    const vocab = this.getVocabularies();
-    const instMap = new Map<
-      string,
-      { id: string; label: string; tipo: string; dispositivos: Array<{ id: string; label: string; tipo: string }> }
-    >();
-
-    for (const item of vocab.basesLegais) {
-      if (item.kind === "InstrumentoNormativo") {
-        instMap.set(item.id, {
-          id: item.id,
-          label: item.label,
-          tipo: item.tipoDetalhe,
-          dispositivos: [],
-        });
-      }
-    }
-    for (const item of vocab.basesLegais) {
-      if (item.kind === "DispositivoLegal" && item.instrumentoId) {
-        const parent = instMap.get(item.instrumentoId);
-        if (parent) {
-          parent.dispositivos.push({
-            id: item.id,
-            label: item.label,
-            tipo: item.tipoDetalhe,
-          });
-        }
-      }
-    }
-
-    const varsCount = this.listVariables().length;
-    const risksCount = this.store.getSubjects(RDF_TYPE, namedNode(`${MYONT_NS}Risco`), null).length;
-    const conceptsCount = this.store.getSubjects(
-      RDF_TYPE,
-      namedNode(`${MYONT_NS}ConceitoExterno`),
-      null,
-    ).length;
-
-    return {
-      version,
-      label,
-      comment,
-      stats: {
-        classes: classes.length,
-        objectProperties: objectProperties.length,
-        datatypeProperties: datatypeProperties.length,
-        variaveis: varsCount,
-        riscos: risksCount,
-        instrumentos: instMap.size,
-        dispositivos: vocab.basesLegais.filter((b) => b.kind === "DispositivoLegal").length,
-        conceitosExternos: conceptsCount,
-      },
-      classes,
-      objectProperties,
-      datatypeProperties,
-      instrumentos: Array.from(instMap.values()).sort((a, b) =>
-        a.label.localeCompare(b.label, "pt-BR"),
-      ),
     };
   }
 

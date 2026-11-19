@@ -20,10 +20,6 @@ app.get("/api/vocabularies", (_req, res) => {
   res.json(service.getVocabularies());
 });
 
-app.get("/api/ontology-overview", (_req, res) => {
-  res.json(service.getOntologyOverview());
-});
-
 app.get("/api/concepts", (_req, res) => {
   res.json(service.listExternalConcepts());
 });

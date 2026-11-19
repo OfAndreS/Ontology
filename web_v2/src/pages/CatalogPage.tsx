@@ -8,7 +8,6 @@ import {
   Loader2,
   PlusCircle,
   Search,
-  Share2,
   ShieldAlert,
   SlidersHorizontal,
   X,
@@ -116,7 +115,7 @@ export function CatalogPage() {
   if (varsQ.isError) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center text-destructive">
-        <p>Não foi possível conectar ao backend Node.js da ontologia V2.</p>
+        <p>Não foi possível conectar ao servidor da plataforma.</p>
       </div>
     );
   }
@@ -140,22 +139,13 @@ export function CatalogPage() {
                 Repositório semântico de variáveis para modelos de crédito.
               </h1>
               <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
-                <strong>{counts.all}</strong> variáveis e <strong>{counts.totalRiscos}</strong>{" "}
-                riscos desmembrados na{" "}
-                <code className="rounded bg-surface-muted px-1.5 py-0.5 font-mono text-xs">
-                  MyOnt V2
-                </code>{" "}
-                — <strong>{counts.sensiveis}</strong> sensíveis/protegidas e{" "}
-                <strong>{counts.proxies}</strong> com atuação como proxy mapeada.
+                <strong>{counts.all}</strong> variáveis catalogadas e{" "}
+                <strong>{counts.totalRiscos}</strong> riscos mapeados —{" "}
+                <strong>{counts.sensiveis}</strong> sensíveis/protegidas e{" "}
+                <strong>{counts.proxies}</strong> com atuação como proxy.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <Link
-                to="/ontology"
-                className="inline-flex items-center gap-2 rounded-md border border-rule bg-surface px-4 py-2 text-sm font-medium text-foreground hover:bg-surface-muted"
-              >
-                <Share2 className="h-4 w-4 text-primary" /> Modelo V2
-              </Link>
               <Link
                 to="/concepts"
                 className="inline-flex items-center gap-2 rounded-md border border-rule bg-surface px-4 py-2 text-sm font-medium text-foreground hover:bg-surface-muted"
@@ -259,14 +249,14 @@ export function CatalogPage() {
             <div className="mt-4 grid gap-4 rounded-lg border border-rule bg-background p-4 sm:grid-cols-2">
               <label className="space-y-1.5">
                 <span className="block text-[0.7rem] uppercase tracking-wider text-muted-foreground">
-                  Contém Risco de Nível
+                  Nível de Risco
                 </span>
                 <select
                   value={riskFilter}
                   onChange={(e) => setRiskFilter(e.target.value)}
                   className="w-full rounded-md border border-rule bg-surface px-3 py-2 text-sm outline-none focus:border-primary"
                 >
-                  <option value="">Qualquer nível de risco</option>
+                  <option value="">Qualquer nível</option>
                   {(vocabQ.data?.niveisRisco ?? []).map((n) => (
                     <option key={n.id} value={n.id}>
                       {n.label}
@@ -301,7 +291,7 @@ export function CatalogPage() {
         <div className="grid gap-8 lg:grid-cols-[240px_1fr]">
           <aside className="lg:sticky lg:top-16 lg:self-start">
             <p className="mb-3 text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">
-              Visões do Grafo
+              Visões do Catálogo
             </p>
             <ul className="space-y-1">
               {bucketItems.map((item) => (
@@ -325,12 +315,11 @@ export function CatalogPage() {
             <div className="mt-8 rounded-lg border border-rule bg-surface-muted p-4">
               <div className="flex items-center gap-2 text-sm font-medium">
                 <BookOpen className="h-4 w-4 text-primary" />
-                Novidade da MyOnt V2
+                Como funciona
               </div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                Cada variável agora pode possuir múltiplos nós de <code className="font-mono">Risco</code>{" "}
-                com níveis e demandas próprias, separando normas que{" "}
-                <strong>autorizam o uso</strong> das que <strong>restringem riscos</strong>.
+                Cada variável reúne suas bases legais de autorização e seus riscos específicos com
+                nível, mitigação e normas restritivas próprias.
               </p>
             </div>
           </aside>
@@ -384,32 +373,25 @@ function VariableRow({
         className="block px-5 py-4 transition-colors hover:bg-surface-muted"
       >
         <div className="flex flex-wrap items-center gap-2">
-          <code className="rounded bg-surface-muted px-1.5 py-0.5 font-mono text-sm font-semibold text-foreground">
-            {variable.label}
-          </code>
-          <span className="feature-chip">{variable.id}</span>
+          <span className="text-base font-semibold text-foreground">{variable.label}</span>
 
           <span
             className={`rounded px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider ${riskBadgeClass(
               variable.nivelRiscoMaximo,
             )}`}
           >
-            risco máx: {riskShortLabel(variable.nivelRiscoMaximo)}
-          </span>
-
-          <span className="rounded border border-rule bg-surface-muted px-2 py-0.5 font-mono text-[0.65rem] text-muted-foreground">
-            {variable.riscos.length} risco{variable.riscos.length === 1 ? "" : "s"}
+            Risco: {riskShortLabel(variable.nivelRiscoMaximo)}
           </span>
 
           {variable.sensivel && (
             <span className="inline-flex items-center gap-1 rounded-full bg-[oklch(0.94_0.08_30)] px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-[oklch(0.4_0.15_30)]">
-              <ShieldAlert className="h-3 w-3" /> sensível
+              <ShieldAlert className="h-3 w-3" /> Sensível
             </span>
           )}
 
           {variable.isProxy && (
             <span className="inline-flex items-center gap-1 rounded-full bg-accent px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-accent-foreground">
-              <GitBranch className="h-3 w-3" /> proxy ({proxyNames.join(", ")})
+              <GitBranch className="h-3 w-3" /> Proxy ({proxyNames.join(", ")})
             </span>
           )}
 
@@ -422,23 +404,32 @@ function VariableRow({
           </span>
         </div>
 
-        <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
+        <p className="mt-1.5 line-clamp-2 text-sm text-muted-foreground">
           {firstRisk?.descricao ||
             variable.descricoes.justificativa_legal ||
             "Sem riscos ou justificativas cadastradas ainda."}
         </p>
 
-        <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
+        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
           <span>
-            Schema.org:{" "}
-            <span className="font-mono text-foreground/80">
-              {concepts.length > 0 ? concepts.join(", ") : "—"}
-            </span>
+            {variable.riscos.length} risco{variable.riscos.length === 1 ? "" : "s"}
           </span>
-          <span>autorizadoras: {variable.basesAutorizadoras.length}</span>
-          <span>restringidas (nos riscos): {variable.basesRestringidas.length}</span>
+          <span>·</span>
+          <span>
+            {variable.basesAutorizadoras.length}{" "}
+            {variable.basesAutorizadoras.length === 1 ? "base autorizadora" : "bases autorizadoras"}
+          </span>
+          {concepts.length > 0 && (
+            <>
+              <span>·</span>
+              <span className="font-mono text-foreground/75">{concepts.join(", ")}</span>
+            </>
+          )}
           {variable.derivadaDe.length > 0 && (
-            <span>derivada de: {variable.derivadaDe.join(", ")}</span>
+            <>
+              <span>·</span>
+              <span>derivada de {variable.derivadaDe.join(", ")}</span>
+            </>
           )}
         </div>
       </Link>

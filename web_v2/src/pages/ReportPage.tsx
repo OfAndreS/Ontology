@@ -83,12 +83,12 @@ export function ReportPage() {
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <h1 className="text-3xl font-semibold">
-                Relatório Preventivo de Governança (MyOnt V2)
+                Relatório Preventivo de Governança
               </h1>
               <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-                Selecione as variáveis (*features*) do modelo para consolidar bases legais
-                autorizadoras, múltiplos riscos desmembrados (<code className="font-mono text-xs">myont:Risco</code>),
-                normas restringidas, alertas de *proxy* e lastro no Schema.org.
+                Selecione as variáveis do modelo preditivo para consolidar bases legais
+                autorizadoras, riscos mapeados, demandas de controle, alertas de proxy e
+                referências no Schema.org.
               </p>
             </div>
 
@@ -403,10 +403,12 @@ function ReportVariableCard({
           <div className="space-y-2">
             {v.riscos.map((r) => (
               <div key={r.id} className="rounded-lg border border-rule bg-background p-3 text-xs space-y-1">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="font-semibold text-foreground">{r.descricao}</span>
+                <div className="flex items-start justify-between gap-3">
+                  <span className="min-w-0 flex-1 font-semibold leading-relaxed text-foreground">
+                    {r.descricao}
+                  </span>
                   <span
-                    className={`rounded px-2 py-0.5 text-[0.65rem] font-bold uppercase ${riskBadgeClass(
+                    className={`shrink-0 rounded px-2 py-0.5 text-[0.65rem] font-bold uppercase ${riskBadgeClass(
                       r.nivelRisco,
                     )}`}
                   >
