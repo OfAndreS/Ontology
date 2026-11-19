@@ -267,37 +267,35 @@ export function VariableFormPage() {
               </label>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="block space-y-1.5">
-                <span className="block text-xs font-medium text-muted-foreground">
-                  Origem Sugerida
-                </span>
-                <textarea
-                  rows={2}
-                  value={descricoes.origem}
-                  onChange={(e) =>
-                    setDescricoes((prev) => ({ ...prev, origem: e.target.value }))
-                  }
-                  placeholder="Ex.: Titular / SCR / Bureaus / Open Finance"
-                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus:border-primary"
-                />
-              </label>
+            <label className="block space-y-1.5">
+              <span className="block text-xs font-medium text-muted-foreground">
+                Origem Sugerida
+              </span>
+              <textarea
+                rows={4}
+                value={descricoes.origem}
+                onChange={(e) =>
+                  setDescricoes((prev) => ({ ...prev, origem: e.target.value }))
+                }
+                placeholder="Ex.: Titular / SCR / Bureaus / Open Finance"
+                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus:border-primary"
+              />
+            </label>
 
-              <label className="block space-y-1.5">
-                <span className="block text-xs font-medium text-muted-foreground">
-                  Explicabilidade Necessária
-                </span>
-                <textarea
-                  rows={2}
-                  value={descricoes.explicabilidade}
-                  onChange={(e) =>
-                    setDescricoes((prev) => ({ ...prev, explicabilidade: e.target.value }))
-                  }
-                  placeholder="Como justificar o impacto dessa variável na decisão..."
-                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus:border-primary"
-                />
-              </label>
-            </div>
+            <label className="block space-y-1.5">
+              <span className="block text-xs font-medium text-muted-foreground">
+                Explicabilidade Necessária
+              </span>
+              <textarea
+                rows={4}
+                value={descricoes.explicabilidade}
+                onChange={(e) =>
+                  setDescricoes((prev) => ({ ...prev, explicabilidade: e.target.value }))
+                }
+                placeholder="Como justificar o impacto dessa variável na decisão..."
+                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus:border-primary"
+              />
+            </label>
 
             <label className="flex items-center gap-2.5 pt-1 text-sm">
               <input
@@ -453,11 +451,17 @@ export function VariableFormPage() {
               ))}
           </section>
 
-          {/* 3. Linhagem e Atuação como Proxy */}
-          <section className="rounded-xl border border-rule bg-surface p-6 shadow-xs space-y-5">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">
-              3. Linhagem e Relações de Proxy
-            </h2>
+          {/* 3. Linhagem (Derivada de) */}
+          <section className="rounded-xl border border-rule bg-surface p-6 shadow-xs space-y-4">
+            <div>
+              <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">
+                3. Linhagem (Derivada de)
+              </h2>
+              <p className="mt-0.5 text-xs text-muted-foreground">
+                Para variáveis criadas por engenharia de atributos, pesquise e vincule as
+                variáveis de origem para herdar alertas preventivos.
+              </p>
+            </div>
 
             {liveInheritedAlerts.length > 0 && (
               <div className="rounded-lg border border-[oklch(0.85_0.12_45)] bg-accent/40 p-4">
@@ -473,23 +477,34 @@ export function VariableFormPage() {
               </div>
             )}
 
-            <div className="grid gap-5 md:grid-cols-2">
-              <VariableMultiPicker
-                title="Derivada de (Feature Engineering)"
-                variables={otherVariables}
-                selectedIds={derivadaDe}
-                onChange={setDerivadaDe}
-                placeholder="Buscar variável de origem..."
-              />
+            <VariableMultiPicker
+              variables={otherVariables}
+              selectedIds={derivadaDe}
+              onChange={setDerivadaDe}
+              placeholder={`Pesquisar entre ${otherVariables.length} variáveis de origem (ex.: Income, NumberOfDebts)…`}
+              actionLabel="Vincular origem"
+            />
+          </section>
 
-              <VariableMultiPicker
-                title="Atua como Proxy de"
-                variables={otherVariables}
-                selectedIds={proxyDe}
-                onChange={setProxyDe}
-                placeholder="Buscar variável representada..."
-              />
+          {/* 4. Relações de Proxy */}
+          <section className="rounded-xl border border-rule bg-surface p-6 shadow-xs space-y-4">
+            <div>
+              <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">
+                4. Relações de Proxy
+              </h2>
+              <p className="mt-0.5 text-xs text-muted-foreground">
+                Pesquise e vincule atributos sensíveis ou protegidos que esta variável pode
+                representar indiretamente.
+              </p>
             </div>
+
+            <VariableMultiPicker
+              variables={otherVariables}
+              selectedIds={proxyDe}
+              onChange={setProxyDe}
+              placeholder={`Pesquisar entre ${otherVariables.length} variáveis (ex.: Gender, Ethnicity, Age)…`}
+              actionLabel="Atua como proxy"
+            />
 
             <label className="block space-y-1.5">
               <span className="block text-xs font-medium text-muted-foreground">
@@ -507,11 +522,11 @@ export function VariableFormPage() {
             </label>
           </section>
 
-          {/* 4. Autorização Legal e Riscos Mapeados */}
+          {/* 5. Autorização Legal e Riscos Mapeados */}
           <section className="rounded-xl border border-rule bg-surface p-6 shadow-xs space-y-6">
             <div>
               <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">
-                4. Avaliação Jurídica e Riscos
+                5. Avaliação Jurídica e Riscos
               </h2>
               <p className="mt-0.5 text-xs text-muted-foreground">
                 Opcional quando a variável estiver sendo proposta como pendente de revisão jurídica.
