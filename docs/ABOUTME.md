@@ -41,10 +41,10 @@ Esta seção documenta as escolhas estruturais consolidadas durante a concepçã
 
 ### 4.2 Escopo Funcional Inicial por Relatório Consolidado (Decisão 02)
 
-* **Data:** 17 nov. 2026.
+* **Data:** 17 nov. 2026 (atualizada em 19 nov. 2026).
 * **Status:** Aprovada.
-* **Decisão:** Implementação inicial focada na seleção de variáveis e emissão de relatório descritivo automatizado.
-* **Detalhamento:** A primeira versão recupera as descrições jurídicas e demandas de governança alocadas às variáveis selecionadas pelo cientista de dados, consolidando-as em um relatório de auditoria.
+* **Decisão:** Implementação focada na seleção de variáveis e emissão automatizada de relatório consolidado em **Markdown (`.md`)** e em **PDF executivo (`Manual de Governança`)**.
+* **Detalhamento:** A plataforma recupera as descrições jurídicas, riscos, vínculos de *proxy*, linhagem e bases legais alocadas às variáveis selecionadas pelo cientista de dados, consolidando-as tanto em formato textual Markdown quanto em um manual visual paginado em A4 (com matriz de status `APROVADO` / `RESTRITO` / `ADAPTADO` / `VETADO` por categoria temática, metas de conformidade regulatória, métricas de equidade e técnicas de mitigação de viés no pipeline).
 
 ### 4.3 Arquitetura em Duas Camadas e Índice Pré-processado de Ontologias de Suporte (Decisão 03)
 

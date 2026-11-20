@@ -75,6 +75,12 @@ Este documento registra o planejamento, as decisões arquiteturais e o acompanha
 
 ## 3. DIÁRIO CRONOLÓGICO
 
+### 19 nov. 2026 — Refinamento do Login & Geração do Manual de Governança em PDF
+* **Interface de Login (`frontend/src/pages/LoginPage.tsx`):** simplificada visualmente para seguir o padrão editorial de cards do restante da aplicação (`bg-surface`, `border-rule`, sem textos técnicos ou parágrafos redundantes).
+* **Geração de Relatório em PDF (`backend/app/services/report_pdf_service.py`, `backend/app/routers/catalog_meta.py`):** implementado o endpoint `POST /api/report/pdf` com **ReportLab**, gerando o manual executivo paginado em A4 inspirado em [Manual_Governança.pdf](assets/Manual_Governança.pdf) (capa institucional, sumário dinâmico, divisores *Parte I* e *Parte II*, matrizes de variáveis agrupadas por categoria temática com badges `APROVADO` / `RESTRITO` / `ADAPTADO` / `VETADO`, metas de conformidade regulatória, métricas de auditoria de equidade e técnicas de mitigação de viés no pipeline).
+* **Pré-visualização Visual no Front-end (`frontend/src/components/GovernanceManualPreview.tsx`, `frontend/src/pages/ReportPage.tsx`):** adicionada visualização interativa das páginas do Manual diretamente na tela de Relatório Preventivo (alternável com a visão em Markdown `.md`) e botão **Baixar PDF**.
+* **Testes (`backend/tests/test_api.py`):** incluída verificação automatizada do endpoint `POST /api/report/pdf`.
+
 ### 19 nov. 2026 — Etapa 5 Concluída: Implementação & Validação
 * **Camada semântica (`semantic/`):** adicionadas `myont:Categoria`, `myont:pertenceACategoria`, `myont:descricaoCategoria` e `myont:slugCategoria` em [myont_v2.ttl](../semantic/ontologies/myont_v2.ttl); atualizado [build_v2_catalog.py](../semantic/scripts/build_v2_catalog.py) e regenerado o catálogo (11 categorias temáticas, 36 variáveis e 42 nós de risco).
 * **Infraestrutura (`docker-compose.yml`, `infra/fuseki/`):** configurado ambiente com PostgreSQL 16, Apache Jena Fuseki 5.1 (TDB2 + `unionDefaultGraph`), FastAPI e React/Nginx.
