@@ -2,7 +2,6 @@ import { useState, type FormEvent } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import ictiLogo from "@/assets/icti-logo.svg";
 import { useAuth } from "@/context/auth";
 
 export function LoginPage() {
@@ -37,9 +36,11 @@ export function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="w-full max-w-sm rounded-xl border border-rule bg-surface p-7 shadow-xs">
-        <div className="flex flex-col items-center border-b border-rule pb-5 text-center">
-          <img src={ictiLogo} alt="ICTi" className="h-10 w-auto" />
-          <h1 className="mt-3 text-lg font-bold text-foreground">Governança de Variáveis</h1>
+        <div className="border-b border-rule pb-5 text-center">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">
+            ICTi
+          </p>
+          <h1 className="mt-1.5 text-lg font-bold text-foreground">Governança de Variáveis</h1>
         </div>
 
         <form onSubmit={handleSubmit} className="mt-5 space-y-4">

@@ -22,9 +22,55 @@ export const RISK_BADGE: Record<string, string> = {
     "bg-[oklch(0.92_0.10_25)] text-[oklch(0.38_0.20_25)] border border-[oklch(0.84_0.12_25)]",
 };
 
+export const RISK_HEADER: Record<
+  string,
+  { container: string; title: string; label: string }
+> = {
+  Risco_Baixo: {
+    container: "border-[oklch(0.86_0.08_140)] bg-[oklch(0.95_0.05_140)]",
+    title: "text-[oklch(0.32_0.12_140)]",
+    label: "text-[oklch(0.28_0.12_140)]",
+  },
+  Risco_Medio: {
+    container: "border-[oklch(0.86_0.09_80)] bg-[oklch(0.95_0.07_80)]",
+    title: "text-[oklch(0.35_0.13_70)]",
+    label: "text-[oklch(0.30_0.13_70)]",
+  },
+  Risco_Alto: {
+    container: "border-[oklch(0.86_0.10_45)] bg-[oklch(0.94_0.08_45)]",
+    title: "text-[oklch(0.42_0.16_40)]",
+    label: "text-[oklch(0.36_0.16_40)]",
+  },
+  Risco_Maximo: {
+    container: "border-[oklch(0.90_0.07_30)] bg-[oklch(0.96_0.05_30)]",
+    title: "text-[oklch(0.40_0.13_30)]",
+    label: "text-[oklch(0.40_0.15_30)]",
+  },
+  Risco_Veto: {
+    container: "border-[oklch(0.88_0.09_25)] bg-[oklch(0.95_0.06_25)]",
+    title: "text-[oklch(0.38_0.16_25)]",
+    label: "text-[oklch(0.38_0.20_25)]",
+  },
+};
+
+const DEFAULT_RISK_HEADER = {
+  container: "border-rule bg-surface-muted",
+  title: "text-muted-foreground",
+  label: "text-foreground",
+};
+
 export function riskBadgeClass(riskId?: string | null): string {
   if (!riskId) return "bg-surface-muted text-muted-foreground";
   return RISK_BADGE[riskId] ?? "bg-surface-muted text-muted-foreground";
+}
+
+export function riskHeaderStyle(riskId?: string | null): {
+  container: string;
+  title: string;
+  label: string;
+} {
+  if (!riskId) return DEFAULT_RISK_HEADER;
+  return RISK_HEADER[riskId] ?? DEFAULT_RISK_HEADER;
 }
 
 export function riskShortLabel(riskId?: string | null): string {

@@ -683,10 +683,10 @@ export function VariableFormPage() {
                         </label>
                       </div>
 
-                      <div className="grid gap-3 sm:grid-cols-2">
-                        <label className="space-y-1">
+                      <div className="space-y-3">
+                        <label className="block space-y-1">
                           <span className="block text-xs font-medium text-muted-foreground">
-                            Mitigação / Governança
+                            Governança
                           </span>
                           <textarea
                             rows={2}
@@ -699,7 +699,7 @@ export function VariableFormPage() {
                           />
                         </label>
 
-                        <label className="space-y-1">
+                        <label className="block space-y-1">
                           <span className="block text-xs font-medium text-muted-foreground">
                             Implicação Legal
                           </span>

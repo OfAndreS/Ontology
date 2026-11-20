@@ -42,7 +42,7 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(
-    title="MyOnt Governança de Variáveis — API Unificada",
+    title="ICTi: Feature Governance — API",
     version="2.0.0",
     lifespan=lifespan,
 )

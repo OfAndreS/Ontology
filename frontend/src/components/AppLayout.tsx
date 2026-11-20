@@ -13,7 +13,6 @@ import {
   Scale,
   X,
 } from "lucide-react";
-import ictiLogo from "@/assets/icti-logo.svg";
 import { useAuth } from "@/context/auth";
 import { api } from "@/lib/api";
 import { cn } from "@/lib/utils";
@@ -125,15 +124,14 @@ export function AppLayout({ children }: { children: ReactNode }) {
           onClick={() => setMobileOpen(false)}
           className={cn("flex items-center gap-3 px-1 py-1", compact && "mx-auto")}
         >
-          <img
-            src={ictiLogo}
-            alt="ICTi"
-            className={cn("shrink-0 object-contain", compact ? "h-8 w-8" : "h-9 w-auto")}
-          />
-          {!compact && (
+          {compact ? (
+            <span className="flex h-8 items-center justify-center rounded-md bg-primary px-1.5 text-[0.65rem] font-bold tracking-wider text-primary-foreground">
+              ICTi
+            </span>
+          ) : (
             <div className="flex min-w-0 flex-col leading-tight">
               <span className="text-[0.65rem] tracking-[0.18em] text-sidebar-foreground/60">
-                ICTi · MyOnt V2
+                ICTi
               </span>
               <span className="truncate text-sm font-semibold text-sidebar-foreground">
                 Feature Governance
@@ -221,7 +219,6 @@ export function AppLayout({ children }: { children: ReactNode }) {
       {/* Barra superior apenas em telas pequenas */}
       <div className="no-print flex items-center justify-between border-b border-sidebar-border bg-sidebar px-4 py-2.5 text-sidebar-foreground md:hidden">
         <Link to="/" className="flex items-center gap-2.5">
-          <img src={ictiLogo} alt="ICTi" className="h-7 w-auto" />
           <span className="text-sm font-semibold">Feature Governance</span>
         </Link>
         <button

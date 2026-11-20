@@ -4,7 +4,6 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   AlertTriangle,
   ArrowLeft,
-  ArrowRight,
   Check,
   CheckCircle2,
   ChevronRight,
@@ -25,7 +24,12 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { api, DESC_FIELDS } from "@/lib/api";
-import { riskBadgeClass, riskShortLabel, statusBadgeClass } from "@/lib/levels";
+import {
+  riskBadgeClass,
+  riskHeaderStyle,
+  riskShortLabel,
+  statusBadgeClass,
+} from "@/lib/levels";
 
 const FIELD_ICON = {
   origem: Tag,
@@ -34,84 +38,98 @@ const FIELD_ICON = {
   atuacao_proxy: GitBranch,
 } as const;
 
-function RelationFlowRow({
-  title,
+function VerticalRelationPipeline({
+  topTitle,
+  topItems,
+  centerTitle = "2. Variável em Análise",
   centerLabel,
-  leftTitle,
-  leftItems,
-  leftEmpty,
-  rightTitle,
-  rightItems,
-  rightEmpty,
-  highlightRight = false,
+  centerChip,
+  bottomTitle,
+  bottomItems,
+  highlightBottom = false,
 }: {
-  title: string;
+  topTitle: string;
+  topItems: Array<{ id: string; label: string }>;
+  centerTitle?: string;
   centerLabel: string;
-  leftTitle: string;
-  leftItems: Array<{ id: string; label: string }>;
-  leftEmpty: string;
-  rightTitle: string;
-  rightItems: Array<{ id: string; label: string }>;
-  rightEmpty: string;
-  highlightRight?: boolean;
+  centerChip?: string;
+  bottomTitle: string;
+  bottomItems: Array<{ id: string; label: string }>;
+  highlightBottom?: boolean;
 }) {
   return (
-    <div className="rounded-lg border border-rule bg-background p-4">
-      <p className="mb-3 text-[0.7rem] font-bold uppercase tracking-wider text-muted-foreground">
-        {title}
-      </p>
-      <div className="grid items-center gap-3 md:grid-cols-[1fr_auto_auto_auto_1fr]">
-        <div className="space-y-1.5">
-          <span className="block text-[0.7rem] font-medium text-muted-foreground">{leftTitle}</span>
-          {leftItems.length > 0 ? (
-            <div className="flex flex-wrap gap-1.5">
-              {leftItems.map((item) => (
-                <Link
-                  key={item.id}
-                  to={`/variables/${encodeURIComponent(item.id)}`}
-                  className="rounded-md border border-rule bg-surface px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <span className="text-xs text-muted-foreground">{leftEmpty}</span>
+    <div className="relative space-y-5 pl-6 before:absolute before:top-2 before:bottom-2 before:left-[7px] before:w-0.5 before:bg-rule">
+      <div className="relative">
+        <span className="absolute -left-6 top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-rule bg-surface">
+          <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground" />
+        </span>
+        <p
+          className={`${
+            topItems.length > 0 ? "mb-1.5 " : ""
+          }text-xs font-semibold uppercase tracking-wider text-muted-foreground`}
+        >
+          {topTitle}
+        </p>
+        {topItems.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {topItems.map((item) => (
+              <Link
+                key={item.id}
+                to={`/variables/${encodeURIComponent(item.id)}`}
+                className="rounded-md border border-rule bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="relative">
+        <span className="absolute -left-6 top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-primary bg-surface">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+        </span>
+        <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
+          {centerTitle}
+        </p>
+        <div className="inline-flex flex-wrap items-center gap-2 rounded-lg border border-primary/35 bg-primary/8 px-3 py-1.5">
+          <span className="text-xs font-bold text-foreground">{centerLabel}</span>
+          {centerChip && (
+            <span className="rounded-full bg-accent px-2 py-0.5 text-[0.65rem] font-semibold text-accent-foreground">
+              {centerChip}
+            </span>
           )}
         </div>
+      </div>
 
-        <ArrowRight className="hidden h-4 w-4 text-muted-foreground/60 md:block" />
-
-        <div className="inline-flex items-center justify-center rounded-lg border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary">
-          {centerLabel}
-        </div>
-
-        <ArrowRight className="hidden h-4 w-4 text-muted-foreground/60 md:block" />
-
-        <div className="space-y-1.5 md:text-right">
-          <span className="block text-[0.7rem] font-medium text-muted-foreground">
-            {rightTitle}
-          </span>
-          {rightItems.length > 0 ? (
-            <div className="flex flex-wrap gap-1.5 md:justify-end">
-              {rightItems.map((item) => (
-                <Link
-                  key={item.id}
-                  to={`/variables/${encodeURIComponent(item.id)}`}
-                  className={
-                    highlightRight
-                      ? "rounded-md border border-primary/30 bg-accent/60 px-2.5 py-1 text-xs font-medium text-accent-foreground hover:border-primary"
-                      : "rounded-md border border-rule bg-surface px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
-                  }
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <span className="text-xs text-muted-foreground">{rightEmpty}</span>
-          )}
-        </div>
+      <div className="relative">
+        <span className="absolute -left-6 top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-rule bg-surface">
+          <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground" />
+        </span>
+        <p
+          className={`${
+            bottomItems.length > 0 ? "mb-1.5 " : ""
+          }text-xs font-semibold uppercase tracking-wider text-muted-foreground`}
+        >
+          {bottomTitle}
+        </p>
+        {bottomItems.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {bottomItems.map((item) => (
+              <Link
+                key={item.id}
+                to={`/variables/${encodeURIComponent(item.id)}`}
+                className={
+                  highlightBottom
+                    ? "rounded-md border border-primary/30 bg-accent/60 px-2.5 py-1 text-xs font-medium text-accent-foreground hover:border-primary"
+                    : "rounded-md border border-rule bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
+                }
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -195,6 +213,7 @@ export function VariableDetailPage() {
   const v = varQ.data;
   const reverseProxies = v.reverse_proxies ?? [];
   const derivedChildren = v.derived_children ?? [];
+  const hasLineage = v.derivada_de.length > 0 || derivedChildren.length > 0;
   const totalConceitos = v.conceitos_equivalentes.length + v.conceitos_baseados.length;
 
   const copyName = () => {
@@ -350,7 +369,7 @@ export function VariableDetailPage() {
           )}
 
           {v.descricoes.justificativa_legal && (
-            <p className="border-t border-rule pt-3 text-sm leading-relaxed text-muted-foreground">
+            <p className="whitespace-pre-line border-t border-rule pt-3 text-sm leading-relaxed text-muted-foreground">
               {v.descricoes.justificativa_legal}
             </p>
           )}
@@ -373,7 +392,9 @@ export function VariableDetailPage() {
                   <span>{field.title}</span>
                 </div>
                 {val ? (
-                  <p className="text-sm leading-relaxed text-muted-foreground">{val}</p>
+                  <p className="whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
+                    {val}
+                  </p>
                 ) : (
                   <p className="text-xs text-muted-foreground">Não informado ainda.</p>
                 )}
@@ -395,73 +416,79 @@ export function VariableDetailPage() {
             </p>
           ) : (
             <div className="space-y-4">
-              {v.riscos.map((risk, idx) => (
-                <div
-                  key={risk.id}
-                  className="space-y-4 rounded-xl border border-rule bg-background p-5"
-                >
-                  <div className="space-y-1.5">
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              {v.riscos.map((risk, idx) => {
+                const headerStyle = riskHeaderStyle(risk.nivel_risco);
+
+                return (
+                  <div
+                    key={risk.id}
+                    className="overflow-hidden rounded-xl border border-rule bg-background"
+                  >
+                    <div
+                      className={`grid items-center gap-1.5 border-b px-5 py-3 sm:grid-cols-[1fr_auto_1fr] sm:gap-3 ${headerStyle.container}`}
+                    >
+                      <span
+                        className={`justify-self-start text-xs font-bold uppercase tracking-wider ${headerStyle.title}`}
+                      >
                         Risco {idx + 1}
                       </span>
                       <span
-                        className={`shrink-0 rounded-full px-2.5 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider ${riskBadgeClass(
-                          risk.nivel_risco,
-                        )}`}
+                        className={`text-xs font-bold uppercase tracking-wider sm:text-center ${headerStyle.label}`}
                       >
                         {risk.nivel_label}
                       </span>
-                    </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {risk.descricao}
-                    </p>
-                  </div>
-
-                  <div className="grid gap-4 border-t border-rule pt-3 sm:grid-cols-2">
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                        Mitigação / Governança
-                      </p>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                        {risk.demanda_governanca || "Não informada."}
-                      </p>
+                      <span className="hidden sm:block" aria-hidden="true" />
                     </div>
 
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                        Implicação Legal
+                    <div className="space-y-4 px-5 pt-4 pb-5">
+                      <p className="whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
+                        {risk.descricao}
                       </p>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                        {risk.implicacao_legal || "Não informada."}
-                      </p>
-                    </div>
-                  </div>
 
-                  <div className="border-t border-rule pt-3">
-                    <p className="mb-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Normas acionadas
-                    </p>
-                    {risk.bases_acionadas.length > 0 ? (
-                      <div className="flex flex-wrap gap-1.5">
-                        {risk.bases_acionadas.map((bid, bIdx) => (
-                          <Link
-                            key={bid}
-                            to={getLawRoute(bid)}
-                            className="rounded-full border border-[oklch(0.85_0.10_30)] bg-[oklch(0.95_0.04_30)] px-2.5 py-0.5 text-xs font-medium text-[oklch(0.38_0.16_30)] hover:opacity-85"
-                          >
-                            {risk.bases_acionadas_labels[bIdx] ?? bid}
-                          </Link>
-                        ))}
+                      <div className="border-t border-rule pt-3">
+                        <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                          Governança
+                        </p>
+                        <p className="mt-1 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
+                          {risk.demanda_governanca || "Não informada."}
+                        </p>
                       </div>
-                    ) : (
-                      <p className="text-xs text-muted-foreground">
-                        Nenhuma norma específica vinculada a este risco.
-                      </p>
-                    )}
+
+                      <div className="border-t border-rule pt-3">
+                        <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                          Implicação Legal
+                        </p>
+                        <p className="mt-1 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
+                          {risk.implicacao_legal || "Não informada."}
+                        </p>
+                      </div>
+
+                      <div className="border-t border-rule pt-3">
+                        <p className="mb-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                          Normas acionadas
+                        </p>
+                        {risk.bases_acionadas.length > 0 ? (
+                          <div className="flex flex-wrap gap-1.5">
+                            {risk.bases_acionadas.map((bid, bIdx) => (
+                              <Link
+                                key={bid}
+                                to={getLawRoute(bid)}
+                                className="rounded-full border border-[oklch(0.85_0.10_30)] bg-[oklch(0.95_0.04_30)] px-2.5 py-0.5 text-xs font-medium text-[oklch(0.38_0.16_30)] hover:opacity-85"
+                              >
+                                {risk.bases_acionadas_labels[bIdx] ?? bid}
+                              </Link>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="text-xs text-muted-foreground">
+                            Nenhuma norma específica vinculada a este risco.
+                          </p>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </section>
@@ -529,25 +556,27 @@ export function VariableDetailPage() {
         </section>
 
         {/* Relações de Proxy + Observações */}
-        <section className="space-y-4 rounded-xl border border-rule bg-surface p-6 shadow-xs">
-          <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-            <GitBranch className="h-4 w-4 text-primary" />
-            <span>Relações de Proxy</span>
+        <section className="space-y-5 rounded-xl border border-rule bg-surface p-6 shadow-xs">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+              <GitBranch className="h-4 w-4 text-primary" />
+              <span>Relações de Proxy</span>
+            </div>
+            <span className="text-[0.7rem] font-bold uppercase tracking-wider text-muted-foreground">
+              Direção de Proxy
+            </span>
           </div>
 
-          <RelationFlowRow
-            title="Direção de Proxy"
+          <VerticalRelationPipeline
+            topTitle="1. Atuam como proxy desta"
+            topItems={reverseProxies}
             centerLabel={v.label}
-            leftTitle="Proxies desta"
-            leftItems={reverseProxies}
-            leftEmpty="Nenhuma registrada"
-            rightTitle="Atua como proxy de"
-            rightItems={v.proxy_de.map((pid) => ({
+            bottomTitle="3. Atua como proxy de"
+            bottomItems={v.proxy_de.map((pid) => ({
               id: pid,
               label: byId.get(pid)?.label ?? pid,
             }))}
-            rightEmpty="Nenhuma ligação direta"
-            highlightRight
+            highlightBottom
           />
 
           <div className="border-t border-rule pt-4">
@@ -555,7 +584,7 @@ export function VariableDetailPage() {
               Observações
             </p>
             {v.descricoes.atuacao_proxy ? (
-              <p className="text-sm leading-relaxed text-muted-foreground">
+              <p className="whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
                 {v.descricoes.atuacao_proxy}
               </p>
             ) : (
@@ -565,89 +594,37 @@ export function VariableDetailPage() {
         </section>
 
         {/* Linhagem — Pipeline Vertical */}
-        <section className="rounded-xl border border-rule bg-surface p-6 shadow-xs">
-          <div className="mb-5 flex items-center justify-between gap-2">
-            <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-              <Layers className="h-4 w-4 text-primary" />
-              <span>Linhagem</span>
-            </div>
-            <span className="feature-chip">
-              {v.derivada_de.length === 0 ? "Atributo primário" : `${v.derivada_de.length} origem(ns)`}
-            </span>
-          </div>
-
-          <div className="relative space-y-5 pl-6 before:absolute before:top-2 before:bottom-2 before:left-[7px] before:w-0.5 before:bg-rule">
-            {/* Nível 1: Origens */}
-            <div className="relative">
-              <span className="absolute -left-6 top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-rule bg-surface">
-                <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground" />
-              </span>
-              <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                1. Origens
-              </p>
-              {v.derivada_de.length > 0 ? (
-                <div className="flex flex-wrap gap-2">
-                  {v.derivada_de.map((did) => (
-                    <Link
-                      key={did}
-                      to={`/variables/${encodeURIComponent(did)}`}
-                      className="rounded-md border border-rule bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
-                    >
-                      {byId.get(did)?.label ?? did}
-                    </Link>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-xs text-muted-foreground">
-                  Variável primária (não calculada a partir de outras variáveis).
-                </p>
-              )}
-            </div>
-
-            {/* Nível 2: Variável Atual */}
-            <div className="relative">
-              <span className="absolute -left-6 top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-primary bg-surface">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              </span>
-              <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-                2. Variável em Análise
-              </p>
-              <div className="inline-flex flex-wrap items-center gap-2 rounded-lg border border-primary/35 bg-primary/8 px-3 py-1.5">
-                <span className="text-xs font-bold text-foreground">{v.label}</span>
-                {v.inherited_alerts.length > 0 && (
-                  <span className="rounded-full bg-accent px-2 py-0.5 text-[0.65rem] font-semibold text-accent-foreground">
-                    {v.inherited_alerts.length} alerta(s) herdado(s)
-                  </span>
-                )}
+        {hasLineage && (
+          <section className="rounded-xl border border-rule bg-surface p-6 shadow-xs">
+            <div className="mb-5 flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+                <Layers className="h-4 w-4 text-primary" />
+                <span>Linhagem</span>
               </div>
+              <span className="feature-chip">
+                {v.derivada_de.length === 0
+                  ? "Atributo primário"
+                  : `${v.derivada_de.length} origem(ns)`}
+              </span>
             </div>
 
-            {/* Nível 3: Derivadas */}
-            <div className="relative">
-              <span className="absolute -left-6 top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-rule bg-surface">
-                <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground" />
-              </span>
-              <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                3. Derivadas desta
-              </p>
-              {derivedChildren.length > 0 ? (
-                <div className="flex flex-wrap gap-2">
-                  {derivedChildren.map((ch) => (
-                    <Link
-                      key={ch.id}
-                      to={`/variables/${encodeURIComponent(ch.id)}`}
-                      className="rounded-md border border-rule bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
-                    >
-                      {ch.label}
-                    </Link>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-xs text-muted-foreground">Nenhuma variável derivada cadastrada.</p>
-              )}
-            </div>
-          </div>
-        </section>
+            <VerticalRelationPipeline
+              topTitle="1. Origens"
+              topItems={v.derivada_de.map((did) => ({
+                id: did,
+                label: byId.get(did)?.label ?? did,
+              }))}
+              centerLabel={v.label}
+              centerChip={
+                v.inherited_alerts.length > 0
+                  ? `${v.inherited_alerts.length} alerta(s) herdado(s)`
+                  : undefined
+              }
+              bottomTitle="3. Derivadas desta"
+              bottomItems={derivedChildren}
+            />
+          </section>
+        )}
 
         {/* Histórico de Alterações */}
         {v.history && v.history.length > 0 ? (
