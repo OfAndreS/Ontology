@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { Loader2, Lock } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import ictiLogo from "@/assets/icti-logo.svg";
 import { useAuth } from "@/context/auth";
@@ -36,30 +36,21 @@ export function LoginPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="w-full max-w-md rounded-2xl border border-rule bg-surface p-8 shadow-sm">
-        <div className="flex items-center gap-3">
-          <img src={ictiLogo} alt="ICTi" className="h-11 w-auto" />
-          <div>
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-primary">
-              ICTi · MyOnt V2
-            </p>
-            <h1 className="text-xl font-bold text-foreground">Governança de Variáveis</h1>
-          </div>
+      <div className="w-full max-w-sm rounded-xl border border-rule bg-surface p-7 shadow-xs">
+        <div className="flex flex-col items-center border-b border-rule pb-5 text-center">
+          <img src={ictiLogo} alt="ICTi" className="h-10 w-auto" />
+          <h1 className="mt-3 text-lg font-bold text-foreground">Governança de Variáveis</h1>
         </div>
 
-        <p className="mt-4 text-sm text-muted-foreground">
-          Acesse a plataforma para consultar o catálogo semântico de variáveis de crédito, normas e relatórios preventivos.
-        </p>
-
-        <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+        <form onSubmit={handleSubmit} className="mt-5 space-y-4">
           <label className="block space-y-1.5 text-xs">
-            <span className="font-semibold text-foreground">Usuário ou e-mail</span>
+            <span className="font-semibold text-foreground">Usuário</span>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="admin"
               autoComplete="username"
+              autoFocus
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus:border-primary"
             />
           </label>
@@ -70,7 +61,6 @@ export function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
               autoComplete="current-password"
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus:border-primary"
             />
@@ -79,9 +69,9 @@ export function LoginPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-xs hover:opacity-95 disabled:opacity-60"
+            className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-xs hover:opacity-95 disabled:opacity-60"
           >
-            {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Lock className="h-4 w-4" />}
+            {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
             Entrar
           </button>
         </form>
@@ -89,3 +79,4 @@ export function LoginPage() {
     </div>
   );
 }
+
