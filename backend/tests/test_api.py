@@ -154,7 +154,7 @@ def test_seeded_catalog_categories_and_variable_crud(client: TestClient):
     assert any("Gender" in a for a in body["inherited_alerts"])
     assert len(body["history"]) == 1
 
-    # Relatório preventivo
+    # Relatório preventivo (JSON/Markdown + PDF)
     rep = client.post(
         "/api/report",
         headers=hdr,
@@ -164,6 +164,15 @@ def test_seeded_catalog_categories_and_variable_crud(client: TestClient):
     rep_data = rep.json()
     assert rep_data["summary"]["total"] == 2
     assert "Score V2" in rep_data["markdown"]
+
+    rep_pdf = client.post(
+        "/api/report/pdf",
+        headers=hdr,
+        json={"model_name": "Score V2", "variable_ids": [body["id"], "Income"]},
+    )
+    assert rep_pdf.status_code == 200
+    assert rep_pdf.headers["content-type"] == "application/pdf"
+    assert rep_pdf.content.startswith(b"%PDF-")
 
     # Exclusão permitida
     del_resp = client.delete(f"/api/variables/{body['id']}", headers=hdr)

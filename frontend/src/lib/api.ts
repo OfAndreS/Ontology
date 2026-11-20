@@ -380,4 +380,30 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ variable_ids, model_name }),
     }),
+  downloadReportPdf: async (variable_ids: string[], model_name: string): Promise<void> => {
+    const token = getStoredToken();
+    const res = await fetch("/api/report/pdf", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: JSON.stringify({ variable_ids, model_name }),
+    });
+    if (res.status === 401) {
+      setStoredToken(null);
+      unauthorizedHandler?.();
+    }
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      throw new Error(body.detail || "Não foi possível gerar o PDF.");
+    }
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = blobUrl;
+    a.download = "manual-governanca-preventiva.pdf";
+    a.click();
+    URL.revokeObjectURL(blobUrl);
+  },
 };

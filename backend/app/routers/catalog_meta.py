@@ -3,6 +3,7 @@
 from typing import List
 
 from fastapi import APIRouter, Depends, Query
+from fastapi.responses import Response
 
 from app.models import (
     ExternalConceptRead,
@@ -13,6 +14,7 @@ from app.models import (
 )
 from app.security import get_current_user
 from app.services.ontology_service import OntologyService
+from app.services.report_pdf_service import build_governance_manual_pdf
 
 router = APIRouter(prefix="/api", tags=["catalog-meta"])
 
@@ -38,4 +40,31 @@ def generate_report(
     return OntologyService().build_report(
         variable_ids=payload.variable_ids,
         model_name=payload.model_name,
+    )
+
+
+@router.post("/report/pdf")
+def generate_report_pdf(
+    payload: ReportRequest,
+    _: User = Depends(get_current_user),
+) -> Response:
+    svc = OntologyService()
+    report = svc.build_report(
+        variable_ids=payload.variable_ids,
+        model_name=payload.model_name,
+    )
+    categories = svc.list_categories()
+    all_variables = svc.list_variables()
+    pdf_bytes = build_governance_manual_pdf(
+        report=report,
+        categories=categories,
+        all_variables=all_variables,
+        model_name=payload.model_name,
+    )
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": 'attachment; filename="manual-governanca-preventiva.pdf"'
+        },
     )

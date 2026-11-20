@@ -1,8 +1,20 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { CheckSquare, Copy, Download, FileCheck2, Search, Square } from "lucide-react";
+import {
+  BookOpen,
+  CheckSquare,
+  Copy,
+  Download,
+  FileCheck2,
+  FileCode2,
+  FileDown,
+  Loader2,
+  Search,
+  Square,
+} from "lucide-react";
 import { toast } from "sonner";
+import { GovernanceManualPreview } from "@/components/GovernanceManualPreview";
 import { api, type ReportResponse } from "@/lib/api";
 import { riskBadgeClass, riskShortLabel } from "@/lib/levels";
 
@@ -15,6 +27,8 @@ export function ReportPage() {
   );
   const [search, setSearch] = useState("");
   const [report, setReport] = useState<ReportResponse | null>(null);
+  const [viewMode, setViewMode] = useState<"manual" | "markdown">("manual");
+  const [downloadingPdf, setDownloadingPdf] = useState(false);
 
   useEffect(() => {
     if (preselected) {
@@ -23,7 +37,9 @@ export function ReportPage() {
   }, [preselected]);
 
   const varsQ = useQuery({ queryKey: ["variables"], queryFn: api.getVariables });
+  const catsQ = useQuery({ queryKey: ["categories"], queryFn: api.getCategories });
   const variables = varsQ.data ?? [];
+  const categories = catsQ.data ?? [];
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -63,6 +79,20 @@ export function ReportPage() {
     a.download = "relatorio-governanca-preventiva.md";
     a.click();
     URL.revokeObjectURL(url);
+  };
+
+  const handleDownloadPdf = async () => {
+    if (!report) return;
+    setDownloadingPdf(true);
+    try {
+      const ids = report.selected_variables.map((v) => v.id);
+      await api.downloadReportPdf(ids, modelName);
+      toast.success("PDF do Manual de Governança baixado.");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Falha ao baixar o PDF.");
+    } finally {
+      setDownloadingPdf(false);
+    }
   };
 
   return (
@@ -199,7 +229,32 @@ export function ReportPage() {
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  <div className="inline-flex rounded-md border border-rule bg-background p-0.5 text-xs">
+                    <button
+                      type="button"
+                      onClick={() => setViewMode("manual")}
+                      className={`inline-flex items-center gap-1.5 rounded-xs px-2.5 py-1 font-medium transition-colors ${
+                        viewMode === "manual"
+                          ? "bg-surface text-foreground shadow-2xs"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      <BookOpen className="h-3.5 w-3.5" /> Manual
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setViewMode("markdown")}
+                      className={`inline-flex items-center gap-1.5 rounded-xs px-2.5 py-1 font-medium transition-colors ${
+                        viewMode === "markdown"
+                          ? "bg-surface text-foreground shadow-2xs"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      <FileCode2 className="h-3.5 w-3.5" /> Markdown
+                    </button>
+                  </div>
+
                   <button
                     type="button"
                     onClick={copyMarkdown}
@@ -210,16 +265,38 @@ export function ReportPage() {
                   <button
                     type="button"
                     onClick={downloadMarkdown}
-                    className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground"
+                    className="inline-flex items-center gap-1.5 rounded-md border border-rule bg-background px-3 py-1.5 text-xs font-medium hover:bg-surface-muted"
                   >
                     <Download className="h-3.5 w-3.5" /> Baixar .md
+                  </button>
+                  <button
+                    type="button"
+                    disabled={downloadingPdf}
+                    onClick={handleDownloadPdf}
+                    className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-xs hover:opacity-95 disabled:opacity-60"
+                  >
+                    {downloadingPdf ? (
+                      <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                    ) : (
+                      <FileDown className="h-3.5 w-3.5" />
+                    )}
+                    Baixar PDF
                   </button>
                 </div>
               </div>
 
-              <pre className="max-h-[34rem] overflow-auto rounded-lg border border-rule bg-background p-4 font-mono text-xs leading-relaxed whitespace-pre-wrap text-foreground">
-                {report.markdown}
-              </pre>
+              {viewMode === "manual" ? (
+                <GovernanceManualPreview
+                  report={report}
+                  modelName={modelName}
+                  categories={categories}
+                  allVariables={variables}
+                />
+              ) : (
+                <pre className="max-h-[42rem] overflow-auto rounded-lg border border-rule bg-background p-4 font-mono text-xs leading-relaxed whitespace-pre-wrap text-foreground">
+                  {report.markdown}
+                </pre>
+              )}
             </>
           )}
         </section>
