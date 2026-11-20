@@ -14,9 +14,9 @@ Este documento registra o planejamento, as decisões arquiteturais e o acompanha
 | :--- | :--- | :--- |
 | **1. Organização dos Diretórios** | Limpeza da raiz, separação por camadas (`docs/`, `semantic/`, `backend/`, `frontend/`, `legacy/`), criação do `.gitignore` e isolamento do `ICTI/` apenas para consulta. | Concluída (19 nov. 2026) |
 | **2. Aspectos da Ontologia** | Revisão de vocabulários (Schema.org, FIBO, W3C DPV), desmembramento de `Risco` e estruturação de `BaseLegal` (`InstrumentoNormativo` e `DispositivoLegal`). Decisões registradas em [ABOUTME.md](ABOUTME.md) (Decisões 05–07). | Concluída (19 nov. 2026) |
-| **3. Escopo de Features** | Definição do que entra, do que é adaptado e do que fica de fora da mesclagem (variáveis, leis, relatórios, autenticação, busca, etc.). | Em andamento |
-| **4. Fechamento de Detalhes** | Contratos de API, modelo de dados, fluxo de sincronização grafo/banco e plano de implementação. | Pendente |
-| **5. Implementação (Código)** | Construção da plataforma unificada em `backend/` e `frontend/` e validação ponta a ponta. | Pendente |
+| **3. Escopo de Features** | Definição do que entra, do que é adaptado e do que fica de fora da mesclagem (variáveis, leis, relatórios, autenticação, busca, etc.). | Concluída (19 nov. 2026) |
+| **4. Fechamento de Detalhes** | Contratos de API, modelo de dados, fluxo de sincronização grafo/banco e plano de implementação. | Concluída (19 nov. 2026) |
+| **5. Implementação (Código)** | Construção da plataforma unificada em `backend/` e `frontend/` e validação ponta a ponta. | Concluída (19 nov. 2026) |
 
 ---
 
@@ -34,9 +34,66 @@ Este documento registra o planejamento, as decisões arquiteturais e o acompanha
   * `legacy/` — referência temporária do MVP anterior (`web_v1/`) e experimentos iniciais (`experiments/`).
   * `ICTI/` — referência de consulta (não versionada no Git raiz).
 
+### Decisão M-02 — Escopo de Features da Mesclagem (Etapa 3)
+* **Data:** 19 nov. 2026
+* **Status:** Aprovada
+* **Itens definidos:**
+  * **Núcleo do Ontology V2 (obrigatório):** catálogo de variáveis, múltiplos `myont:Risco` por variável com `NivelRisco`, separação entre autorização (`autorizadaPorBaseLegal`) e restrição (`acionaBaseLegal`), linhagem (`derivadaDe`) com alertas preventivos, proxies (`atuaComoProxyDe`), explorador `ConceitoExterno` (Schema.org) e relatório preventivo consolidado.
+  * **Autenticação simplificada e 2 papéis:** login JWT com dois perfis — **Administrador (`admin`)** e **Analista (`analista`)**, **sem** fluxo de confirmação de e-mail por SMTP.
+  * **Painel `/admin`:**
+    * *Analista:* abas *Visão Geral*, *Variáveis* e *Normas*.
+    * *Administrador:* abas *Visão Geral*, *Variáveis*, *Normas*, *Categorias* e *Usuários* (sem *Datasets* na V1).
+  * **Módulo de Normas e Dispositivos completo:** herdado do ICTI e adaptado para `InstrumentoNormativo` + `DispositivoLegal`, com URL oficial + upload/download de PDF opcional (arquivo em disco e referência no PostgreSQL) e histórico de alterações (`LawHistory`).
+  * **Categorias temáticas incluídas:** adoção das categorias das tabelas do Anexo 4 / ICTI, também representadas na ontologia (`myont:Categoria`, Decisão 08 em [ABOUTME.md](ABOUTME.md)).
+  * **Busca direta (sem Elasticsearch):** remoção do Elasticsearch da stack, utilizando busca direta sobre o grafo/banco.
+  * **Datasets e correlações estatísticas fora da V1:** mantidos fora nesta etapa conforme Decisão 07.
+* **Stack-alvo confirmada:** Front-end em **React**, Back-end em **FastAPI (Python)**, persistência semântica em **Apache Jena Fuseki** (ontologia, variáveis, riscos, categorias e normas) e persistência operacional em **PostgreSQL** (usuários/JWT, `LawHistory` e referências de PDFs em disco).
+
+### Decisão M-03 — Arquitetura dos Bancos de Dados (Etapa 4)
+* **Data:** 19 nov. 2026
+* **Status:** Aprovada
+* **Apache Jena Fuseki (dataset único com 3 Named Graphs):**
+  * `urn:graph:ontology` — esquema OWL `MyOnt` (`myont_v2.ttl` + `myont:Categoria` / `myont:pertenceACategoria`), níveis de risco e status de curadoria.
+  * `urn:graph:external` — termos `myont:ConceitoExterno` (Schema.org).
+  * `urn:graph:data` — instâncias de `Variavel`, `Risco`, `Categoria`, `InstrumentoNormativo` e `DispositivoLegal`.
+* **PostgreSQL (enxuto, ligado ao Fuseki via URI/`slug` canônico):**
+  * `auth.users` — modelo simplificado com coluna direta `role` (`admin` | `analista`), `is_active` (default `true`), sem `email_confirmed`, `invitations` ou tabelas N:N de permissões.
+  * `core.law_attachments` — referência (`pdf_name`, `pdf_path`) dos PDFs armazenados em disco (`uploads/laws/`), vinculada por `norm_uri` / `norm_slug`.
+  * `core.law_histories` — trilha de auditoria de normas vinculada por `norm_uri`.
+  * `core.variable_histories` — trilha de auditoria de variáveis vinculada por `variable_uri`.
+
+### Decisão M-04 — Contratos de API, Autenticação e Autorização (Etapa 4)
+* **Data:** 19 nov. 2026
+* **Status:** Aprovada
+* **Acesso fechado por autenticação:** toda a plataforma (front-end e rotas `/api/*`, exceto `/api/auth/login` e `/api/health`) exige usuário autenticado via JWT.
+* **Matriz de permissões:**
+  * **Analista (`analista`) e Administrador (`admin`):** leitura completa (catálogo, normas, conceitos, relatório preventivo) + criação, edição e exclusão (`POST`/`PUT`/`PATCH`/`DELETE`) de **variáveis** e **normas/dispositivos** (incluindo upload/remoção de PDF).
+  * **Exclusivo de Administrador (`admin`):** gestão de **Categorias** e **Usuários**.
+* **Sincronização Fuseki ↔ PostgreSQL:** Fuseki atua como fonte primária nas escritas de domínio (`SPARQL UPDATE` em `urn:graph:data`), seguido do registro de auditoria (`law_histories` / `variable_histories`) e anexos em disco (`law_attachments`) no PostgreSQL.
+
 ---
 
 ## 3. DIÁRIO CRONOLÓGICO
+
+### 19 nov. 2026 — Etapa 5 Concluída: Implementação & Validação
+* **Camada semântica (`semantic/`):** adicionadas `myont:Categoria`, `myont:pertenceACategoria`, `myont:descricaoCategoria` e `myont:slugCategoria` em [myont_v2.ttl](../semantic/ontologies/myont_v2.ttl); atualizado [build_v2_catalog.py](../semantic/scripts/build_v2_catalog.py) e regenerado o catálogo (11 categorias temáticas, 36 variáveis e 42 nós de risco).
+* **Infraestrutura (`docker-compose.yml`, `infra/fuseki/`):** configurado ambiente com PostgreSQL 16, Apache Jena Fuseki 5.1 (TDB2 + `unionDefaultGraph`), FastAPI e React/Nginx.
+* **Back-end (`backend/`):** implementados modelos SQLModel (`auth.users`, `core.law_attachments`, `core.law_histories`, `core.variable_histories`), autenticação JWT (`admin` / `analista`), cliente SPARQL (`FusekiClient`), seed idempotente (`bootstrap.py`), CRUD completo de variáveis/riscos, categorias, normas/dispositivos + upload/download de PDF, vocabulários, conceitos Schema.org e relatório preventivo.
+* **Front-end (`frontend/`):** implementadas telas de login, catálogo com filtro por categoria/risco, cadastro/edição de variáveis (5 blocos + categoria), módulo completo de normas/dispositivos com PDF e histórico, explorador Schema.org, relatório preventivo e painel `/admin` segmentado por papel.
+* **Validação:** `pytest backend/tests -v` (3/3 passaram), `npm --prefix frontend run typecheck` e `npm --prefix frontend run build` executados com sucesso.
+
+### 19 nov. 2026 — Etapa 4 Concluída + Início da Etapa 5 (Implementação)
+* Fechada a Etapa 4 com a definição dos contratos de API (`/api/auth`, `/api/variables`, `/api/categories`, `/api/laws`, `/api/concepts`, `/api/vocabularies`, `/api/report`), fluxo de sincronização Fuseki ↔ PostgreSQL, acesso autenticado obrigatório em toda a plataforma e permissão de criação/edição/exclusão de variáveis e normas para **Administrador** e **Analista** (ficando *Categorias* e *Usuários* restritos ao **Administrador**).
+* Iniciada a **Etapa 5 (Implementação)** em `semantic/`, `backend/` e `frontend/`.
+
+### 19 nov. 2026 — Etapa 3 Concluída
+* Fechada a Etapa 3 com a definição dos dois papéis (**Administrador** e **Analista**), recorte de abas do `/admin`, manutenção de **URL + PDF opcional** para normas (PDF em disco + metadado no PostgreSQL), busca direta sem Elasticsearch, inclusão de `myont:Categoria` e exclusão de Datasets na V1.
+
+### 19 nov. 2026 — Refinamentos Visuais na Vitrine `web_v2/`
+* Removido jargão RDF/OWL das telas operacionais (`CatalogPage`, `VariableDetailPage`, `VariableFormPage`, `ReportPage`, `AppLayout`), mantendo termos técnicos apenas em `docs/`.
+* Removido o modo escuro (`styles.css` e `AppLayout.tsx`), mantendo apenas tema claro.
+* Removida a página técnica `/ontology` (`OntologyPage.tsx` e endpoint `/api/ontology-overview`) após avaliação de aderência ao modelo de negócio.
+* Melhorado o formulário (`VariableFormPage.tsx` + `LegalBasePicker.tsx` + `VariableMultiPicker.tsx`): separação em 5 blocos com busca no padrão Schema.org para *Linhagem* e *Relações de Proxy*, validação contra descarte silencioso de riscos, reset de estado entre rotas, e padronização tipográfica/alinhamento dos cards de risco em `VariableDetailPage.tsx`.
 
 ### 19 nov. 2026 — Etapa 2 + Vitrine Visual V2
 * Registradas as Decisões `05`, `06` e `07` em [ABOUTME.md](ABOUTME.md) (`myont:Risco`, `myont:NivelRisco`, `myont:InstrumentoNormativo` e `myont:DispositivoLegal`).

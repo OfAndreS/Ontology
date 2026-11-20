@@ -76,9 +76,13 @@ myont:ConceitoExterno rdf:type owl:Class ;
     rdfs:label "Conceito Externo de Referência"@pt-br ;
     rdfs:comment "Representação normalizada de uma classe, propriedade ou enumeração extraída das ontologias complementares (Schema.org na V1/V2 inicial, extensível a FIBO e W3C DPV), preservando sua URI canônica para ancoragem semântica 1:N."@pt-br .
 
-### Apoio de Curadoria
+### Apoio de Curadoria e Organização Temática
 myont:StatusCuradoria rdf:type owl:Class ;
     rdfs:label "Status de Curadoria Jurídica"@pt-br .
+
+myont:Categoria rdf:type owl:Class ;
+    rdfs:label "Categoria Temática de Variável"@pt-br ;
+    rdfs:comment "Agrupamento temático de negócio das variáveis de crédito (Decisão 08, baseada nas tabelas do Anexo 4 / ICTI)."@pt-br .
 
 
 #################################################################
@@ -157,11 +161,17 @@ myont:baseadaEmConceitoExterno rdf:type owl:ObjectProperty ;
     rdfs:label "baseada em conceito externo"@pt-br ;
     rdfs:comment "Indica adaptação ou especialização de negócio a partir do termo externo."@pt-br .
 
-### Curadoria
+### Curadoria e Categorização
 myont:temStatusCuradoria rdf:type owl:ObjectProperty ;
     rdfs:domain myont:Variavel ;
     rdfs:range myont:StatusCuradoria ;
     rdfs:label "tem status de curadoria"@pt-br .
+
+myont:pertenceACategoria rdf:type owl:ObjectProperty ;
+    rdfs:domain myont:Variavel ;
+    rdfs:range myont:Categoria ;
+    rdfs:label "pertence à categoria"@pt-br ;
+    rdfs:comment "Associa uma variável ao seu agrupamento temático de negócio (Decisão 08)."@pt-br .
 
 
 #################################################################
@@ -248,6 +258,17 @@ myont:contextoExterno rdf:type owl:DatatypeProperty ;
     rdfs:domain myont:ConceitoExterno ;
     rdfs:range xsd:string ;
     rdfs:label "Contexto Hierárquico / Domínio Externo"@pt-br .
+
+### Metadados de Categorias Temáticas (Decisão 08)
+myont:descricaoCategoria rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Categoria ;
+    rdfs:range xsd:string ;
+    rdfs:label "Descrição da Categoria"@pt-br .
+
+myont:slugCategoria rdf:type owl:DatatypeProperty ;
+    rdfs:domain myont:Categoria ;
+    rdfs:range xsd:string ;
+    rdfs:label "Slug da Categoria"@pt-br .
 
 
 #################################################################

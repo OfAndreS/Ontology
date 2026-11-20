@@ -1,0 +1,84 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: myont_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-myont_platform}
+      POSTGRES_USER: ${POSTGRES_USER:-myont}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-myont_dev_password}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-myont} -d ${POSTGRES_DB:-myont_platform}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  fuseki:
+    build:
+      context: .
+      dockerfile: infra/fuseki/Dockerfile
+    container_name: myont_fuseki
+    restart: unless-stopped
+    environment:
+      ADMIN_PASSWORD: ${FUSEKI_ADMIN_PASSWORD:-admin}
+      JVM_ARGS: -Xmx1024m
+    ports:
+      - "3030:3030"
+    volumes:
+      - fuseki_data:/fuseki/databases
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3030/$/ping || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: myont_backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      fuseki:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-myont}:${POSTGRES_PASSWORD:-myont_dev_password}@postgres:5432/${POSTGRES_DB:-myont_platform}
+      FUSEKI_URL: http://fuseki:3030
+      FUSEKI_DATASET: ${FUSEKI_DATASET:-myont}
+      FUSEKI_USER: admin
+      FUSEKI_PASSWORD: ${FUSEKI_ADMIN_PASSWORD:-admin}
+      SECRET_KEY: ${SECRET_KEY:-change-this-secret-key-in-production}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-720}
+      ADMIN_DEFAULT_USERNAME: ${ADMIN_DEFAULT_USERNAME:-admin}
+      ADMIN_DEFAULT_EMAIL: ${ADMIN_DEFAULT_EMAIL:-admin@governanca.local}
+      ADMIN_DEFAULT_PASSWORD: ${ADMIN_DEFAULT_PASSWORD:-admin123}
+      SEMANTIC_DIR: /app/semantic
+      UPLOAD_DIR: /app/uploads/laws
+      CORS_ORIGINS: http://localhost:5173,http://localhost:3000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./semantic:/app/semantic:ro
+      - uploads_data:/app/uploads
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: myont_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  postgres_data:
+  fuseki_data:
+  uploads_data:

@@ -6,12 +6,72 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 #################################################################
+#    CATEGORIAS TEMÁTICAS (DECISÃO 08)
+#################################################################
+
+myont:Cat_Socioeconomico rdf:type owl:NamedIndividual , myont:Categoria ;
+    rdfs:label "Socioeconômico"@pt-br ;
+    myont:slugCategoria "socioeconomico"^^xsd:string ;
+    myont:descricaoCategoria "Variáveis socioeconômicas de renda, patrimônio, ocupação e estrutura familiar."^^xsd:string .
+
+myont:Cat_Demografico rdf:type owl:NamedIndividual , myont:Categoria ;
+    rdfs:label "Demográfico"@pt-br ;
+    myont:slugCategoria "demografico"^^xsd:string ;
+    myont:descricaoCategoria "Atributos demográficos e cadastrais protegidos contra discriminação."^^xsd:string .
+
+myont:Cat_InstitucionalFinanceiro rdf:type owl:NamedIndividual , myont:Categoria ;
+    rdfs:label "Institucional e Financeiro"@pt-br ;
+    myont:slugCategoria "institucional-e-financeiro"^^xsd:string ;
+    myont:descricaoCategoria "Histórico de crédito, relacionamento bancário, saldo e compromissos financeiros."^^xsd:string .
+
+myont:Cat_ValoresAtitudesComportamento rdf:type owl:NamedIndividual , myont:Categoria ;
+    rdfs:label "Valores, Atitudes e Comportamento"@pt-br ;
+    myont:slugCategoria "valores-atitudes-e-comportamento"^^xsd:string ;
+    myont:descricaoCategoria "Preferências de consumo, letramento financeiro, atitudes e padrões comportamentais."^^xsd:string .
+
+myont:Cat_Personalidade rdf:type owl:NamedIndividual , myont:Categoria ;
+    rdfs:label "Personalidade"@pt-br ;
+    myont:slugCategoria "personalidade"^^xsd:string ;
+    myont:descricaoCategoria "Traços psicológicos, psicométricos e comportamentais avaliados com cautela regulatória."^^xsd:string .
+
+myont:Cat_Situacional rdf:type owl:NamedIndividual , myont:Categoria ;
+    rdfs:label "Situacional"@pt-br ;
+    myont:slugCategoria "situacional"^^xsd:string ;
+    myont:descricaoCategoria "Eventos adversos e choques situacionais na vida do titular."^^xsd:string .
+
+myont:Cat_Educacional rdf:type owl:NamedIndividual , myont:Categoria ;
+    rdfs:label "Educacional"@pt-br ;
+    myont:slugCategoria "educacional"^^xsd:string ;
+    myont:descricaoCategoria "Formação acadêmica, área de estudo e histórico educacional."^^xsd:string .
+
+myont:Cat_Macroeconomico rdf:type owl:NamedIndividual , myont:Categoria ;
+    rdfs:label "Macroeconômico"@pt-br ;
+    myont:slugCategoria "macroeconomico"^^xsd:string ;
+    myont:descricaoCategoria "Indicadores econômicos agregados e variáveis de contexto macro."^^xsd:string .
+
+myont:Cat_Saude rdf:type owl:NamedIndividual , myont:Categoria ;
+    rdfs:label "Saúde"@pt-br ;
+    myont:slugCategoria "saude"^^xsd:string ;
+    myont:descricaoCategoria "Indicadores de saúde física e mental (dados pessoais sensíveis sob LGPD Art. 11)."^^xsd:string .
+
+myont:Cat_DadosAlternativos rdf:type owl:NamedIndividual , myont:Categoria ;
+    rdfs:label "Dados Alternativos"@pt-br ;
+    myont:slugCategoria "dados-alternativos"^^xsd:string ;
+    myont:descricaoCategoria "Metadados digitais, redes sociais, geolocalização e comportamento em dispositivos."^^xsd:string .
+
+myont:Cat_FinanceiroCorporativoPJ rdf:type owl:NamedIndividual , myont:Categoria ;
+    rdfs:label "Financeiro Corporativo (PJ)"@pt-br ;
+    myont:slugCategoria "financeiro-corporativo-pj"^^xsd:string ;
+    myont:descricaoCategoria "Indicadores contábeis e financeiros de pessoa jurídica."^^xsd:string .
+
+#################################################################
 #    CATÁLOGO V2 (VARIÁVEIS + NÓS myont:Risco DESMEMBRADOS)
 #################################################################
 
 myont:Income rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Income"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Socioeconomico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:LGPD_Art7_V_ExecucaoContrato , myont:Lei_14181_2021_Superendividamento ;
     myont:possuiRisco myont:Risco_Income_1 ;
     myont:baseadaEmConceitoExterno schema:MonetaryAmount , schema:baseSalary ;
@@ -31,6 +91,7 @@ myont:Risco_Income_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:FamilyIncome rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Family income"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Socioeconomico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:LGPD_Art7_V_ExecucaoContrato , myont:Lei_14181_2021_Superendividamento ;
     myont:possuiRisco myont:Risco_FamilyIncome_1 ;
     myont:baseadaEmConceitoExterno schema:MonetaryAmount ;
@@ -48,6 +109,7 @@ myont:Risco_FamilyIncome_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:ParentsIncome rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Parents’ income"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Socioeconomico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:CodigoCivil_Geral ;
     myont:possuiRisco myont:Risco_ParentsIncome_1 , myont:Risco_ParentsIncome_2 ;
     myont:baseadaEmConceitoExterno schema:MonetaryAmount , schema:parent ;
@@ -72,6 +134,7 @@ myont:Risco_ParentsIncome_2 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:Wealth rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Wealth"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Socioeconomico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:CodigoCivil_Garantias ;
     myont:possuiRisco myont:Risco_Wealth_1 , myont:Risco_Wealth_2 ;
     myont:equivalenteAConceitoExterno schema:netWorth ;
@@ -98,6 +161,7 @@ myont:Risco_Wealth_2 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:TotalFinancialAssets rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Total financial assets"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_InstitucionalFinanceiro ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito ;
     myont:possuiRisco myont:Risco_TotalFinancialAssets_1 ;
     myont:baseadaEmConceitoExterno schema:netWorth , schema:MonetaryAmount ;
@@ -114,6 +178,7 @@ myont:Risco_TotalFinancialAssets_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:HomeOwnership rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Home ownership"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Socioeconomico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:CodigoCivil_Garantias ;
     myont:possuiRisco myont:Risco_HomeOwnership_1 ;
     myont:baseadaEmConceitoExterno schema:Residence , schema:homeLocation ;
@@ -132,6 +197,7 @@ myont:Risco_HomeOwnership_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:Occupation rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Occupation"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Socioeconomico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Res_CMN_4966_2021 ;
     myont:possuiRisco myont:Risco_Occupation_1 ;
     myont:equivalenteAConceitoExterno schema:Occupation , schema:hasOccupation ;
@@ -151,6 +217,7 @@ myont:Risco_Occupation_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:EmploymentStatus rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Employment status"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Socioeconomico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Res_CMN_4966_2021 ;
     myont:possuiRisco myont:Risco_EmploymentStatus_1 ;
     myont:baseadaEmConceitoExterno schema:employmentType , schema:EmployeeRole ;
@@ -170,6 +237,7 @@ myont:Risco_EmploymentStatus_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:LengthOfEmployment rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Length of employment"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Socioeconomico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Res_CMN_4966_2021 ;
     myont:possuiRisco myont:Risco_LengthOfEmployment_1 ;
     myont:baseadaEmConceitoExterno schema:monthsOfExperience ;
@@ -189,6 +257,7 @@ myont:Risco_LengthOfEmployment_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:Education rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Education"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Socioeconomico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_IX_InteresseLegitimo , myont:Res_CMN_4966_2021 ;
     myont:possuiRisco myont:Risco_Education_1 , myont:Risco_Education_2 ;
     myont:equivalenteAConceitoExterno schema:educationalLevel ;
@@ -216,6 +285,7 @@ myont:Risco_Education_2 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:NumberOfChildrenDependents rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Number of children/dependents"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Socioeconomico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Lei_14181_2021_Superendividamento ;
     myont:possuiRisco myont:Risco_NumberOfChildrenDependents_1 , myont:Risco_NumberOfChildrenDependents_2 ;
     myont:baseadaEmConceitoExterno schema:children ;
@@ -241,6 +311,7 @@ myont:Risco_NumberOfChildrenDependents_2 rdf:type owl:NamedIndividual , myont:Ri
 myont:Age rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Age"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Demografico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Res_CMN_4966_2021 , myont:CodigoCivil_Geral ;
     myont:possuiRisco myont:Risco_Age_1 ;
     myont:baseadaEmConceitoExterno schema:birthDate ;
@@ -261,6 +332,7 @@ myont:Risco_Age_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:Gender rdf:type owl:NamedIndividual , myont:Variavel , myont:VariavelSensivel ;
     rdfs:label "Gender"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Demografico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_II_ObrigacaoLegal ;
     myont:possuiRisco myont:Risco_Gender_1 , myont:Risco_Gender_2 ;
     myont:equivalenteAConceitoExterno schema:gender ;
@@ -290,6 +362,7 @@ myont:Risco_Gender_2 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:MaritalStatus rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Marital status"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Demografico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:CodigoCivil_Geral ;
     myont:possuiRisco myont:Risco_MaritalStatus_1 ;
     myont:baseadaEmConceitoExterno schema:spouse ;
@@ -309,6 +382,7 @@ myont:Risco_MaritalStatus_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:Nationality rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Nationality / Foreign Worker Status (Nacionalidade)"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Demografico ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_II_ObrigacaoLegal ;
     myont:possuiRisco myont:Risco_Nationality_1 ;
     myont:equivalenteAConceitoExterno schema:nationality ;
@@ -328,6 +402,7 @@ myont:Risco_Nationality_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:AccountBalance rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Account balance"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_InstitucionalFinanceiro ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:LGPD_Art7_V_ExecucaoContrato ;
     myont:possuiRisco myont:Risco_AccountBalance_1 ;
     myont:baseadaEmConceitoExterno schema:BankAccount , schema:MonetaryAmount ;
@@ -345,6 +420,7 @@ myont:Risco_AccountBalance_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:NumberOfBankAccounts rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Number of bank accounts"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_InstitucionalFinanceiro ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Res_CMN_4966_2021 ;
     myont:possuiRisco myont:Risco_NumberOfBankAccounts_1 ;
     myont:baseadaEmConceitoExterno schema:BankAccount ;
@@ -361,6 +437,7 @@ myont:Risco_NumberOfBankAccounts_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:CreditLimit rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Credit limit"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_InstitucionalFinanceiro ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito ;
     myont:possuiRisco myont:Risco_CreditLimit_1 ;
     myont:baseadaEmConceitoExterno schema:accountOverdraftLimit , schema:MonetaryAmount ;
@@ -378,6 +455,7 @@ myont:Risco_CreditLimit_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:NumberOfCreditCards rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Number of credit cards"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_InstitucionalFinanceiro ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Res_CMN_4966_2021 ;
     myont:possuiRisco myont:Risco_NumberOfCreditCards_1 , myont:Risco_NumberOfCreditCards_2 ;
     myont:baseadaEmConceitoExterno schema:CreditCard , schema:PaymentCard ;
@@ -400,6 +478,7 @@ myont:Risco_NumberOfCreditCards_2 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:LoanAmount rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Loan amount"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_InstitucionalFinanceiro ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_V_ExecucaoContrato ;
     myont:possuiRisco myont:Risco_LoanAmount_1 ;
     myont:baseadaEmConceitoExterno schema:amount , schema:LoanOrCredit , schema:MonetaryAmount ;
@@ -418,6 +497,7 @@ myont:Risco_LoanAmount_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:LoanDuration rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Loan duration"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_InstitucionalFinanceiro ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_V_ExecucaoContrato ;
     myont:possuiRisco myont:Risco_LoanDuration_1 ;
     myont:equivalenteAConceitoExterno schema:loanTerm ;
@@ -436,6 +516,7 @@ myont:Risco_LoanDuration_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:PurposeOfLoan rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Purpose of loan"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_InstitucionalFinanceiro ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_V_ExecucaoContrato ;
     myont:possuiRisco myont:Risco_PurposeOfLoan_1 ;
     myont:baseadaEmConceitoExterno schema:loanType , schema:LoanOrCredit ;
@@ -453,6 +534,7 @@ myont:Risco_PurposeOfLoan_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:ParentFacilitation rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Parent facilitation"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_ValoresAtitudesComportamento ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_IX_InteresseLegitimo ;
     myont:possuiRisco myont:Risco_ParentFacilitation_1 ;
     myont:baseadaEmConceitoExterno schema:parent ;
@@ -472,6 +554,7 @@ myont:Risco_ParentFacilitation_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:ConsumerBehavior rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Consumer behavior"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_ValoresAtitudesComportamento ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_IX_InteresseLegitimo , myont:LGPD_Art7_I_Consentimento , myont:Lei_14181_2021_Superendividamento ;
     myont:possuiRisco myont:Risco_ConsumerBehavior_1 ;
     myont:baseadaEmConceitoExterno schema:BuyAction , schema:PayAction ;
@@ -490,6 +573,7 @@ myont:Risco_ConsumerBehavior_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:LevelOfExpenditure rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Level of expenditure (spending pattern)"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_ValoresAtitudesComportamento ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_IX_InteresseLegitimo ;
     myont:possuiRisco myont:Risco_LevelOfExpenditure_1 ;
     myont:baseadaEmConceitoExterno schema:PayAction , schema:MonetaryAmount ;
@@ -510,6 +594,7 @@ myont:Risco_LevelOfExpenditure_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:AdverseLifeEvents rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Adverse life events or life-altering events"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Situacional ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art7_X_ProtecaoCredito , myont:Normas_BACEN ;
     myont:possuiRisco myont:Risco_AdverseLifeEvents_1 ;
     myont:baseadaEmConceitoExterno schema:lifeEvent ;
@@ -529,6 +614,7 @@ myont:Risco_AdverseLifeEvents_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:PhysicalHealthStatus rdf:type owl:NamedIndividual , myont:Variavel , myont:VariavelSensivel ;
     rdfs:label "Physical health status"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_Saude ;
     myont:possuiRisco myont:Risco_PhysicalHealthStatus_1 ;
     myont:baseadaEmConceitoExterno schema:MedicalCondition , schema:MedicalEntity ;
     myont:atuaComoProxyDe myont:Age ;
@@ -548,6 +634,7 @@ myont:Risco_PhysicalHealthStatus_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:PostingPatterns rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Posting patterns"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_DadosAlternativos ;
     myont:autorizadaPorBaseLegal myont:CF_Art5_PrivacidadeSigilo ;
     myont:possuiRisco myont:Risco_PostingPatterns_1 ;
     myont:baseadaEmConceitoExterno schema:SocialMediaPosting ;
@@ -567,6 +654,7 @@ myont:Risco_PostingPatterns_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:UsageOfPhotoForPosts rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Usage of photo for posts"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_DadosAlternativos ;
     myont:possuiRisco myont:Risco_UsageOfPhotoForPosts_1 ;
     myont:baseadaEmConceitoExterno schema:Photograph , schema:ImageObject , schema:SocialMediaPosting ;
     myont:atuaComoProxyDe myont:Gender , myont:Age ;
@@ -586,6 +674,7 @@ myont:Risco_UsageOfPhotoForPosts_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:MajorThingsInPeoplesLives rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Major things in people’s lives"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_DadosAlternativos ;
     myont:autorizadaPorBaseLegal myont:CF_Art5_PrivacidadeSigilo ;
     myont:possuiRisco myont:Risco_MajorThingsInPeoplesLives_1 ;
     myont:equivalenteAConceitoExterno schema:lifeEvent ;
@@ -606,6 +695,7 @@ myont:Risco_MajorThingsInPeoplesLives_1 rdf:type owl:NamedIndividual , myont:Ris
 myont:PostingTime rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Posting time"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_DadosAlternativos ;
     myont:autorizadaPorBaseLegal myont:CF_Art5_PrivacidadeSigilo ;
     myont:possuiRisco myont:Risco_PostingTime_1 ;
     myont:baseadaEmConceitoExterno schema:SocialMediaPosting ;
@@ -625,6 +715,7 @@ myont:Risco_PostingTime_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:NumberOfFollowers rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Number of followers"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_DadosAlternativos ;
     myont:autorizadaPorBaseLegal myont:LGPD_Art6_I_Finalidade ;
     myont:possuiRisco myont:Risco_NumberOfFollowers_1 ;
     myont:baseadaEmConceitoExterno schema:follows , schema:FollowAction ;
@@ -644,6 +735,7 @@ myont:Risco_NumberOfFollowers_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:Friends rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Friends"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_DadosAlternativos ;
     myont:autorizadaPorBaseLegal myont:CodigoCivil_Geral ;
     myont:possuiRisco myont:Risco_Friends_1 ;
     myont:equivalenteAConceitoExterno schema:knows ;
@@ -663,6 +755,7 @@ myont:Risco_Friends_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:NumberOfMessages rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Number of messages"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_DadosAlternativos ;
     myont:autorizadaPorBaseLegal myont:CF_Art5_PrivacidadeSigilo ;
     myont:possuiRisco myont:Risco_NumberOfMessages_1 ;
     myont:baseadaEmConceitoExterno schema:Message ;
@@ -682,6 +775,7 @@ myont:Risco_NumberOfMessages_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:SmsSendingPattern rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "SMS sending pattern"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_DadosAlternativos ;
     myont:autorizadaPorBaseLegal myont:CF_Art5_PrivacidadeSigilo , myont:MarcoCivil_Internet ;
     myont:possuiRisco myont:Risco_SmsSendingPattern_1 ;
     myont:baseadaEmConceitoExterno schema:Message ;
@@ -700,6 +794,7 @@ myont:Risco_SmsSendingPattern_1 rdf:type owl:NamedIndividual , myont:Risco ;
 myont:GeographicalLocations rdf:type owl:NamedIndividual , myont:Variavel ;
     rdfs:label "Geographical locations"@en ;
     myont:temStatusCuradoria myont:Status_Auditada ;
+    myont:pertenceACategoria myont:Cat_DadosAlternativos ;
     myont:autorizadaPorBaseLegal myont:CF_Art5_XV_LiberdadeLocomocao ;
     myont:possuiRisco myont:Risco_GeographicalLocations_1 ;
     myont:equivalenteAConceitoExterno schema:GeoCoordinates ;

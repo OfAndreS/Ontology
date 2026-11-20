@@ -18,6 +18,7 @@ __pycache__/
 .env.local
 .env.*.local
 
-# Sistema e IDE
+# Sistema, uploads e IDE
+uploads/
 .DS_Store
 *.log

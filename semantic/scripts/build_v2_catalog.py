@@ -33,19 +33,45 @@ def ttl_escape(text: str) -> str:
     return cleaned.replace("\\", "\\\\").replace('"', '\\"')
 
 
+CATEGORIES_ORDER = [
+    ("Cat_Socioeconomico", "Socioeconômico", "socioeconomico", "Variáveis socioeconômicas de renda, patrimônio, ocupação e estrutura familiar."),
+    ("Cat_Demografico", "Demográfico", "demografico", "Atributos demográficos e cadastrais protegidos contra discriminação."),
+    ("Cat_InstitucionalFinanceiro", "Institucional e Financeiro", "institucional-e-financeiro", "Histórico de crédito, relacionamento bancário, saldo e compromissos financeiros."),
+    ("Cat_ValoresAtitudesComportamento", "Valores, Atitudes e Comportamento", "valores-atitudes-e-comportamento", "Preferências de consumo, letramento financeiro, atitudes e padrões comportamentais."),
+    ("Cat_Personalidade", "Personalidade", "personalidade", "Traços psicológicos, psicométricos e comportamentais avaliados com cautela regulatória."),
+    ("Cat_Situacional", "Situacional", "situacional", "Eventos adversos e choques situacionais na vida do titular."),
+    ("Cat_Educacional", "Educacional", "educacional", "Formação acadêmica, área de estudo e histórico educacional."),
+    ("Cat_Macroeconomico", "Macroeconômico", "macroeconomico", "Indicadores econômicos agregados e variáveis de contexto macro."),
+    ("Cat_Saude", "Saúde", "saude", "Indicadores de saúde física e mental (dados pessoais sensíveis sob LGPD Art. 11)."),
+    ("Cat_DadosAlternativos", "Dados Alternativos", "dados-alternativos", "Metadados digitais, redes sociais, geolocalização e comportamento em dispositivos."),
+    ("Cat_FinanceiroCorporativoPJ", "Financeiro Corporativo (PJ)", "financeiro-corporativo-pj", "Indicadores contábeis e financeiros de pessoa jurídica."),
+]
+
+
 def load_csv_rows(csv_path: Path) -> Dict[str, dict]:
-    """Carrega linhas válidas do Anexo 4 indexadas pelo nome exato da variável."""
+    """Carrega linhas válidas do Anexo 4 indexadas pelo nome exato da variável e sua categoria."""
     with csv_path.open(newline="", encoding="utf-8") as f:
         rows = list(csv.reader(f))
 
     records: Dict[str, dict] = {}
-    for row in rows[2:]:
-        if not row or not row[0].strip() or row[0].strip() == "Variável":
+    section_idx = -1
+    for row in rows:
+        first_cell = row[0].strip() if row else ""
+        if not first_cell:
             continue
+        if first_cell == "Variável":
+            section_idx += 1
+            continue
+        if section_idx < 0 or section_idx >= len(CATEGORIES_ORDER):
+            raise ValueError(f"Seção inesperada ({section_idx}) ao processar linha: {first_cell}")
+        cat_id, cat_label, cat_slug, _ = CATEGORIES_ORDER[section_idx]
         padded = row + [""] * max(0, 8 - len(row))
         name = padded[0].strip()
         records[name] = {
             "variavel": name,
+            "categoria_id": cat_id,
+            "categoria_nome": cat_label,
+            "categoria_slug": cat_slug,
             "origem": padded[1].strip(),
             "justificativa_legal": padded[2].strip(),
             "risco_etico": padded[3].strip(),
@@ -204,10 +230,24 @@ def main() -> None:
         "@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .",
         "",
         "#################################################################",
-        "#    CATÁLOGO V2 (VARIÁVEIS + NÓS myont:Risco DESMEMBRADOS)",
+        "#    CATEGORIAS TEMÁTICAS (DECISÃO 08)",
         "#################################################################",
         "",
     ]
+
+    for cat_id, cat_label, cat_slug, cat_desc in CATEGORIES_ORDER:
+        ttl_lines.append(f"myont:{cat_id} rdf:type owl:NamedIndividual , myont:Categoria ;")
+        ttl_lines.append(f'    rdfs:label "{ttl_escape(cat_label)}"@pt-br ;')
+        ttl_lines.append(f'    myont:slugCategoria "{ttl_escape(cat_slug)}"^^xsd:string ;')
+        ttl_lines.append(f'    myont:descricaoCategoria "{ttl_escape(cat_desc)}"^^xsd:string .')
+        ttl_lines.append("")
+
+    ttl_lines.extend([
+        "#################################################################",
+        "#    CATÁLOGO V2 (VARIÁVEIS + NÓS myont:Risco DESMEMBRADOS)",
+        "#################################################################",
+        "",
+    ])
 
     json_records: List[dict] = []
 
@@ -276,6 +316,7 @@ def main() -> None:
         ttl_lines.append(f"myont:{var_id} rdf:type {' , '.join(rdf_classes)} ;")
         ttl_lines.append(f'    rdfs:label "{ttl_escape(csv_name)}"@en ;')
         ttl_lines.append("    myont:temStatusCuradoria myont:Status_Auditada ;")
+        ttl_lines.append(f"    myont:pertenceACategoria myont:{rec['categoria_id']} ;")
 
         if auth_bases:
             ttl_lines.append(f"    myont:autorizadaPorBaseLegal {' , '.join(auth_bases)} ;")
@@ -332,6 +373,8 @@ def main() -> None:
                 "id": var_id,
                 "uri": f"https://ontologia.governanca.credito/myont#{var_id}",
                 "nome": csv_name,
+                "categoria_id": rec["categoria_id"],
+                "categoria_nome": rec["categoria_nome"],
                 "sensivel": item["sensivel"],
                 "status_curadoria": "Auditada",
                 "bases_autorizadoras": [b.replace("myont:", "") for b in auth_bases],

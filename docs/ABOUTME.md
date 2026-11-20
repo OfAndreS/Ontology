@@ -94,6 +94,13 @@ Esta seção documenta as escolhas estruturais consolidadas durante a concepçã
   * A relação `myont:atuaComoProxyDe` permanece direta (`Variavel -> Variavel`, inferindo `myont:VariavelProxy`), com o detalhamento dos efeitos discriminatórios estruturado nos respectivos nós de `myont:Risco`.
   * Ficam fora desta V1 a modelagem de `Dataset`, matrizes de correlação estatística e classes de tipo estatístico de dado (`TipoDado`), para avaliação de custo em etapa posterior.
 
+### 4.8 Inclusão de Categorias Temáticas na Ontologia (`myont:Categoria`) (Decisão 08)
+
+* **Data:** 19 nov. 2026.
+* **Status:** Aprovada (em discussão na Etapa 3 da mesclagem).
+* **Decisão:** Inclusão da classe `myont:Categoria` e da propriedade `myont:pertenceACategoria` (`Variavel -> Categoria`) na ontologia `MyOnt`, adotando como base os agrupamentos temáticos das tabelas do Anexo 4 (mapeados no ICTI como: *Socioeconômico*, *Demográfico*, *Institucional e Financeiro*, *Valores, Atitudes e Comportamento*, *Personalidade*, *Situacional*, *Educacional*, *Macroeconômico*, *Saúde*, *Dados Alternativos* e *Financeiro Corporativo (PJ)*).
+* **Detalhamento:** Permite organizar e filtrar variáveis por domínio de negócio diretamente no grafo de conhecimento (além da ancoragem em `ConceitoExterno`), mantendo coerência entre a camada semântica e a navegação do catálogo na plataforma unificada.
+
 ---
 
 ## 5 CASOS DE USO

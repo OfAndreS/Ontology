@@ -3,6 +3,8 @@
     "id": "Income",
     "uri": "https://ontologia.governanca.credito/myont#Income",
     "nome": "Income",
+    "categoria_id": "Cat_Socioeconomico",
+    "categoria_nome": "Socioeconômico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -44,6 +46,8 @@
     "id": "FamilyIncome",
     "uri": "https://ontologia.governanca.credito/myont#FamilyIncome",
     "nome": "Family income",
+    "categoria_id": "Cat_Socioeconomico",
+    "categoria_nome": "Socioeconômico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -79,6 +83,8 @@
     "id": "ParentsIncome",
     "uri": "https://ontologia.governanca.credito/myont#ParentsIncome",
     "nome": "Parents’ income",
+    "categoria_id": "Cat_Socioeconomico",
+    "categoria_nome": "Socioeconômico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -126,6 +132,8 @@
     "id": "Wealth",
     "uri": "https://ontologia.governanca.credito/myont#Wealth",
     "nome": "Wealth",
+    "categoria_id": "Cat_Socioeconomico",
+    "categoria_nome": "Socioeconômico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -173,6 +181,8 @@
     "id": "TotalFinancialAssets",
     "uri": "https://ontologia.governanca.credito/myont#TotalFinancialAssets",
     "nome": "Total financial assets",
+    "categoria_id": "Cat_InstitucionalFinanceiro",
+    "categoria_nome": "Institucional e Financeiro",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -210,6 +220,8 @@
     "id": "HomeOwnership",
     "uri": "https://ontologia.governanca.credito/myont#HomeOwnership",
     "nome": "Home ownership",
+    "categoria_id": "Cat_Socioeconomico",
+    "categoria_nome": "Socioeconômico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -248,6 +260,8 @@
     "id": "Occupation",
     "uri": "https://ontologia.governanca.credito/myont#Occupation",
     "nome": "Occupation",
+    "categoria_id": "Cat_Socioeconomico",
+    "categoria_nome": "Socioeconômico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -288,6 +302,8 @@
     "id": "EmploymentStatus",
     "uri": "https://ontologia.governanca.credito/myont#EmploymentStatus",
     "nome": "Employment status",
+    "categoria_id": "Cat_Socioeconomico",
+    "categoria_nome": "Socioeconômico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -328,6 +344,8 @@
     "id": "LengthOfEmployment",
     "uri": "https://ontologia.governanca.credito/myont#LengthOfEmployment",
     "nome": "Length of employment",
+    "categoria_id": "Cat_Socioeconomico",
+    "categoria_nome": "Socioeconômico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -366,6 +384,8 @@
     "id": "Education",
     "uri": "https://ontologia.governanca.credito/myont#Education",
     "nome": "Education",
+    "categoria_id": "Cat_Socioeconomico",
+    "categoria_nome": "Socioeconômico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -419,6 +439,8 @@
     "id": "NumberOfChildrenDependents",
     "uri": "https://ontologia.governanca.credito/myont#NumberOfChildrenDependents",
     "nome": "Number of children/dependents",
+    "categoria_id": "Cat_Socioeconomico",
+    "categoria_nome": "Socioeconômico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -462,6 +484,8 @@
     "id": "Age",
     "uri": "https://ontologia.governanca.credito/myont#Age",
     "nome": "Age",
+    "categoria_id": "Cat_Demografico",
+    "categoria_nome": "Demográfico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -501,6 +525,8 @@
     "id": "Gender",
     "uri": "https://ontologia.governanca.credito/myont#Gender",
     "nome": "Gender",
+    "categoria_id": "Cat_Demografico",
+    "categoria_nome": "Demográfico",
     "sensivel": true,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -555,6 +581,8 @@
     "id": "MaritalStatus",
     "uri": "https://ontologia.governanca.credito/myont#MaritalStatus",
     "nome": "Marital status",
+    "categoria_id": "Cat_Demografico",
+    "categoria_nome": "Demográfico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -591,6 +619,8 @@
     "id": "Nationality",
     "uri": "https://ontologia.governanca.credito/myont#Nationality",
     "nome": "Nationality / Foreign Worker Status (Nacionalidade)",
+    "categoria_id": "Cat_Demografico",
+    "categoria_nome": "Demográfico",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -626,6 +656,8 @@
     "id": "AccountBalance",
     "uri": "https://ontologia.governanca.credito/myont#AccountBalance",
     "nome": "Account balance",
+    "categoria_id": "Cat_InstitucionalFinanceiro",
+    "categoria_nome": "Institucional e Financeiro",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -664,6 +696,8 @@
     "id": "NumberOfBankAccounts",
     "uri": "https://ontologia.governanca.credito/myont#NumberOfBankAccounts",
     "nome": "Number of bank accounts",
+    "categoria_id": "Cat_InstitucionalFinanceiro",
+    "categoria_nome": "Institucional e Financeiro",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -698,6 +732,8 @@
     "id": "CreditLimit",
     "uri": "https://ontologia.governanca.credito/myont#CreditLimit",
     "nome": "Credit limit",
+    "categoria_id": "Cat_InstitucionalFinanceiro",
+    "categoria_nome": "Institucional e Financeiro",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -735,6 +771,8 @@
     "id": "NumberOfCreditCards",
     "uri": "https://ontologia.governanca.credito/myont#NumberOfCreditCards",
     "nome": "Number of credit cards",
+    "categoria_id": "Cat_InstitucionalFinanceiro",
+    "categoria_nome": "Institucional e Financeiro",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -782,6 +820,8 @@
     "id": "LoanAmount",
     "uri": "https://ontologia.governanca.credito/myont#LoanAmount",
     "nome": "Loan amount",
+    "categoria_id": "Cat_InstitucionalFinanceiro",
+    "categoria_nome": "Institucional e Financeiro",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -823,6 +863,8 @@
     "id": "LoanDuration",
     "uri": "https://ontologia.governanca.credito/myont#LoanDuration",
     "nome": "Loan duration",
+    "categoria_id": "Cat_InstitucionalFinanceiro",
+    "categoria_nome": "Institucional e Financeiro",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -860,6 +902,8 @@
     "id": "PurposeOfLoan",
     "uri": "https://ontologia.governanca.credito/myont#PurposeOfLoan",
     "nome": "Purpose of loan",
+    "categoria_id": "Cat_InstitucionalFinanceiro",
+    "categoria_nome": "Institucional e Financeiro",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -897,6 +941,8 @@
     "id": "ParentFacilitation",
     "uri": "https://ontologia.governanca.credito/myont#ParentFacilitation",
     "nome": "Parent facilitation",
+    "categoria_id": "Cat_ValoresAtitudesComportamento",
+    "categoria_nome": "Valores, Atitudes e Comportamento",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -932,6 +978,8 @@
     "id": "ConsumerBehavior",
     "uri": "https://ontologia.governanca.credito/myont#ConsumerBehavior",
     "nome": "Consumer behavior",
+    "categoria_id": "Cat_ValoresAtitudesComportamento",
+    "categoria_nome": "Valores, Atitudes e Comportamento",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -971,6 +1019,8 @@
     "id": "LevelOfExpenditure",
     "uri": "https://ontologia.governanca.credito/myont#LevelOfExpenditure",
     "nome": "Level of expenditure (spending pattern)",
+    "categoria_id": "Cat_ValoresAtitudesComportamento",
+    "categoria_nome": "Valores, Atitudes e Comportamento",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -1012,6 +1062,8 @@
     "id": "AdverseLifeEvents",
     "uri": "https://ontologia.governanca.credito/myont#AdverseLifeEvents",
     "nome": "Adverse life events or life-altering events",
+    "categoria_id": "Cat_Situacional",
+    "categoria_nome": "Situacional",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -1048,6 +1100,8 @@
     "id": "PhysicalHealthStatus",
     "uri": "https://ontologia.governanca.credito/myont#PhysicalHealthStatus",
     "nome": "Physical health status",
+    "categoria_id": "Cat_Saude",
+    "categoria_nome": "Saúde",
     "sensivel": true,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [],
@@ -1087,6 +1141,8 @@
     "id": "PostingPatterns",
     "uri": "https://ontologia.governanca.credito/myont#PostingPatterns",
     "nome": "Posting patterns",
+    "categoria_id": "Cat_DadosAlternativos",
+    "categoria_nome": "Dados Alternativos",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -1123,6 +1179,8 @@
     "id": "UsageOfPhotoForPosts",
     "uri": "https://ontologia.governanca.credito/myont#UsageOfPhotoForPosts",
     "nome": "Usage of photo for posts",
+    "categoria_id": "Cat_DadosAlternativos",
+    "categoria_nome": "Dados Alternativos",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [],
@@ -1168,6 +1226,8 @@
     "id": "MajorThingsInPeoplesLives",
     "uri": "https://ontologia.governanca.credito/myont#MajorThingsInPeoplesLives",
     "nome": "Major things in people’s lives",
+    "categoria_id": "Cat_DadosAlternativos",
+    "categoria_nome": "Dados Alternativos",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -1206,6 +1266,8 @@
     "id": "PostingTime",
     "uri": "https://ontologia.governanca.credito/myont#PostingTime",
     "nome": "Posting time",
+    "categoria_id": "Cat_DadosAlternativos",
+    "categoria_nome": "Dados Alternativos",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -1241,6 +1303,8 @@
     "id": "NumberOfFollowers",
     "uri": "https://ontologia.governanca.credito/myont#NumberOfFollowers",
     "nome": "Number of followers",
+    "categoria_id": "Cat_DadosAlternativos",
+    "categoria_nome": "Dados Alternativos",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -1280,6 +1344,8 @@
     "id": "Friends",
     "uri": "https://ontologia.governanca.credito/myont#Friends",
     "nome": "Friends",
+    "categoria_id": "Cat_DadosAlternativos",
+    "categoria_nome": "Dados Alternativos",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -1317,6 +1383,8 @@
     "id": "NumberOfMessages",
     "uri": "https://ontologia.governanca.credito/myont#NumberOfMessages",
     "nome": "Number of messages",
+    "categoria_id": "Cat_DadosAlternativos",
+    "categoria_nome": "Dados Alternativos",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -1352,6 +1420,8 @@
     "id": "SmsSendingPattern",
     "uri": "https://ontologia.governanca.credito/myont#SmsSendingPattern",
     "nome": "SMS sending pattern",
+    "categoria_id": "Cat_DadosAlternativos",
+    "categoria_nome": "Dados Alternativos",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
@@ -1386,6 +1456,8 @@
     "id": "GeographicalLocations",
     "uri": "https://ontologia.governanca.credito/myont#GeographicalLocations",
     "nome": "Geographical locations",
+    "categoria_id": "Cat_DadosAlternativos",
+    "categoria_nome": "Dados Alternativos",
     "sensivel": false,
     "status_curadoria": "Auditada",
     "bases_autorizadoras": [
