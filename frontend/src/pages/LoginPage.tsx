@@ -40,7 +40,7 @@ export function LoginPage() {
           <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">
             ICTi
           </p>
-          <h1 className="mt-1.5 text-lg font-bold text-foreground">Governança de Variáveis</h1>
+          <h1 className="mt-1.5 text-lg font-bold text-foreground">Credit Feature Wiki</h1>
         </div>
 
         <form onSubmit={handleSubmit} className="mt-5 space-y-4">

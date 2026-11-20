@@ -42,7 +42,7 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(
-    title="ICTi: Feature Governance — API",
+    title="ICTI Credit Feature Wiki — API",
     version="2.0.0",
     lifespan=lifespan,
 )

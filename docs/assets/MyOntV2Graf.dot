@@ -1,0 +1,17 @@
+digraph g {
+	"owl:Thing" -> "NivelRisco" [label="has subclass"]
+	"BaseLegal" -> "DispositivoLegal" [label="has subclass"]
+	"owl:Thing" -> "StatusCuradoria" [label="has subclass"]
+	"owl:Thing" -> "LegalBasis" [label="has subclass"]
+	"SensitivePersonalData" -> "VariavelSensivel" [label="has subclass"]
+	"owl:Thing" -> "Categoria" [label="has subclass"]
+	"owl:Thing" -> "Risco" [label="has subclass"]
+	"owl:Thing" -> "ConceitoExterno" [label="has subclass"]
+	"Variavel" -> "VariavelSensivel" [label="has subclass"]
+	"BaseLegal" -> "InstrumentoNormativo" [label="has subclass"]
+	"LegalBasis" -> "BaseLegal" [label="has subclass"]
+	"owl:Thing" -> "PersonalData" [label="has subclass"]
+	"PersonalData" -> "Variavel" [label="has subclass"]
+	"owl:Thing" -> "SensitivePersonalData" [label="has subclass"]
+	"Variavel" -> "VariavelProxy" [label="has subclass"]
+}

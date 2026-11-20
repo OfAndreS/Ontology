@@ -126,15 +126,15 @@ export function AppLayout({ children }: { children: ReactNode }) {
         >
           {compact ? (
             <span className="flex h-8 items-center justify-center rounded-md bg-primary px-1.5 text-[0.65rem] font-bold tracking-wider text-primary-foreground">
-              ICTi
+              ICTI
             </span>
           ) : (
             <div className="flex min-w-0 flex-col leading-tight">
               <span className="text-[0.65rem] tracking-[0.18em] text-sidebar-foreground/60">
-                ICTi
+                ICTI
               </span>
               <span className="truncate text-sm font-semibold text-sidebar-foreground">
-                Feature Governance
+                Credit Feature Wiki
               </span>
             </div>
           )}
@@ -219,7 +219,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
       {/* Barra superior apenas em telas pequenas */}
       <div className="no-print flex items-center justify-between border-b border-sidebar-border bg-sidebar px-4 py-2.5 text-sidebar-foreground md:hidden">
         <Link to="/" className="flex items-center gap-2.5">
-          <span className="text-sm font-semibold">Feature Governance</span>
+          <span className="text-sm font-semibold">ICTI Credit Feature Wiki</span>
         </Link>
         <button
           type="button"
