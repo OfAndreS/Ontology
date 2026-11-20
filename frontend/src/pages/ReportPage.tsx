@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { CheckSquare, Copy, Download, FileCheck2, Search, Square } from "lucide-react";
@@ -15,6 +15,12 @@ export function ReportPage() {
   );
   const [search, setSearch] = useState("");
   const [report, setReport] = useState<ReportResponse | null>(null);
+
+  useEffect(() => {
+    if (preselected) {
+      setSelectedIds((prev) => (prev.includes(preselected) ? prev : [...prev, preselected]));
+    }
+  }, [preselected]);
 
   const varsQ = useQuery({ queryKey: ["variables"], queryFn: api.getVariables });
   const variables = varsQ.data ?? [];

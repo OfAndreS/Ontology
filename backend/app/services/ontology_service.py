@@ -555,11 +555,11 @@ class OntologyService:
             )
 
         for idx, dev in enumerate(dispositivos, start=1):
-            dev_id = (
-                sanitize_identifier(dev.get("id") or "")
-                if dev.get("id")
-                else sanitize_identifier(f"{law_id}_{dev['label']}_{idx}")
-            )
+            raw_dev_id = (dev.get("id") or "").strip()
+            if raw_dev_id and re.fullmatch(r"[A-Za-z][A-Za-z0-9_]*", raw_dev_id):
+                dev_id = raw_dev_id
+            else:
+                dev_id = sanitize_identifier(raw_dev_id or f"{law_id}_{dev['label']}_{idx}")
             t.extend([
                 f"myont:{dev_id} rdf:type owl:NamedIndividual , myont:DispositivoLegal .",
                 f"myont:{dev_id} rdfs:label {sparql_str(dev['label'].strip())}@pt-br .",
@@ -633,10 +633,6 @@ class OntologyService:
         )
 
         # Remove triplas do instrumento e de seus dispositivos atuais no grafo de dados
-        delete_clauses = [f"myont:{existing.id} ?p ?o ."]
-        for d in existing.dispositivos:
-            delete_clauses.append(f"myont:{d.id} ?dp_{d.id} ?do_{d.id} .")
-
         self.backend.update(
             f"""{PREFIXES}
             DELETE WHERE {{

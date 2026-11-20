@@ -96,7 +96,6 @@ export function LawDetailPage() {
                 )}
               </div>
               <h1 className="mt-2 text-2xl font-bold text-foreground">{law.label}</h1>
-              <p className="mt-1 font-mono text-xs text-muted-foreground">{law.id}</p>
             </div>
 
             <div className="flex items-center gap-2">
@@ -127,7 +126,7 @@ export function LawDetailPage() {
         <section className="grid gap-4 md:grid-cols-2">
           <div className="rounded-xl border border-rule bg-surface p-5">
             <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              <Scale className="h-4 w-4 text-primary" /> Ementa / Descrição & Fonte Oficial
+              <Scale className="h-4 w-4 text-primary" /> Ementa e fonte
             </h2>
             <p className="mt-2 text-sm text-foreground">
               {law.descricao || "Sem ementa descritiva cadastrada."}
@@ -146,7 +145,7 @@ export function LawDetailPage() {
 
           <div className="rounded-xl border border-rule bg-surface p-5">
             <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              <FileText className="h-4 w-4 text-primary" /> Documento PDF (Opcional)
+              <FileText className="h-4 w-4 text-primary" /> Arquivo PDF
             </h2>
 
             <input
@@ -210,7 +209,7 @@ export function LawDetailPage() {
 
         <section className="rounded-xl border border-rule bg-surface p-6">
           <h2 className="text-base font-bold text-foreground">
-            Dispositivos Legais Citáveis ({law.dispositivos.length})
+            Dispositivos ({law.dispositivos.length})
           </h2>
           {law.dispositivos.length === 0 ? (
             <p className="mt-2 text-xs text-muted-foreground">
@@ -254,15 +253,11 @@ export function LawDetailPage() {
           )}
         </section>
 
-        <section className="rounded-xl border border-rule bg-surface p-5">
-          <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            <Clock className="h-4 w-4 text-primary" /> Histórico da Norma
-          </h2>
-          {law.history.length === 0 ? (
-            <p className="mt-2 text-xs text-muted-foreground">
-              Nenhum registro operacional após a carga inicial.
-            </p>
-          ) : (
+        {law.history.length > 0 ? (
+          <section className="rounded-xl border border-rule bg-surface p-5">
+            <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <Clock className="h-4 w-4 text-primary" /> Histórico da Norma
+            </h2>
             <ul className="mt-3 divide-y divide-rule text-xs">
               {law.history.map((h) => (
                 <li key={h.id} className="flex items-center justify-between py-2">
@@ -275,8 +270,12 @@ export function LawDetailPage() {
                 </li>
               ))}
             </ul>
-          )}
-        </section>
+          </section>
+        ) : (
+          <p className="flex items-center gap-1.5 px-1 text-xs text-muted-foreground">
+            <Clock className="h-3.5 w-3.5" /> Sem registros operacionais após a carga inicial.
+          </p>
+        )}
       </div>
     </div>
   );

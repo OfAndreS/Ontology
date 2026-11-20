@@ -2,20 +2,20 @@ export type RoleType = "admin" | "analista";
 export type DescKey = "origem" | "justificativa_legal" | "explicabilidade" | "atuacao_proxy";
 
 export const DESC_FIELDS: Array<{ key: DescKey; title: string; placeholder: string }> = [
-  { key: "origem", title: "Origem Sugerida", placeholder: "Ex.: Titular / SCR / Bureaus / Open Finance" },
+  { key: "origem", title: "Origem", placeholder: "Ex.: Titular / SCR / Bureaus / Open Finance" },
   {
     key: "justificativa_legal",
-    title: "Justificativa Legal de Uso",
+    title: "Justificativa legal",
     placeholder: "Ex.: LGPD Art. 7º, X (Proteção ao Crédito), Execução de Contrato...",
   },
   {
     key: "explicabilidade",
-    title: "Explicabilidade Necessária",
+    title: "Explicabilidade",
     placeholder: "Como justificar o impacto dessa feature na decisão ao cliente/auditor...",
   },
   {
     key: "atuacao_proxy",
-    title: "Atuação como Proxy",
+    title: "Observações",
     placeholder: "Explique de quais atributos sensíveis ou protegidos pode atuar como proxy...",
   },
 ];

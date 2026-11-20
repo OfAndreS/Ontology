@@ -1,9 +1,11 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   AlertTriangle,
   ArrowLeft,
+  ArrowRight,
+  Check,
   CheckCircle2,
   ChevronRight,
   Clock,
@@ -14,6 +16,7 @@ import {
   FileText,
   FolderTree,
   GitBranch,
+  Layers,
   Loader2,
   Pencil,
   ShieldAlert,
@@ -31,10 +34,94 @@ const FIELD_ICON = {
   atuacao_proxy: GitBranch,
 } as const;
 
+function RelationFlowRow({
+  title,
+  centerLabel,
+  leftTitle,
+  leftItems,
+  leftEmpty,
+  rightTitle,
+  rightItems,
+  rightEmpty,
+  highlightRight = false,
+}: {
+  title: string;
+  centerLabel: string;
+  leftTitle: string;
+  leftItems: Array<{ id: string; label: string }>;
+  leftEmpty: string;
+  rightTitle: string;
+  rightItems: Array<{ id: string; label: string }>;
+  rightEmpty: string;
+  highlightRight?: boolean;
+}) {
+  return (
+    <div className="rounded-lg border border-rule bg-background p-4">
+      <p className="mb-3 text-[0.7rem] font-bold uppercase tracking-wider text-muted-foreground">
+        {title}
+      </p>
+      <div className="grid items-center gap-3 md:grid-cols-[1fr_auto_auto_auto_1fr]">
+        <div className="space-y-1.5">
+          <span className="block text-[0.7rem] font-medium text-muted-foreground">{leftTitle}</span>
+          {leftItems.length > 0 ? (
+            <div className="flex flex-wrap gap-1.5">
+              {leftItems.map((item) => (
+                <Link
+                  key={item.id}
+                  to={`/variables/${encodeURIComponent(item.id)}`}
+                  className="rounded-md border border-rule bg-surface px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <span className="text-xs text-muted-foreground">{leftEmpty}</span>
+          )}
+        </div>
+
+        <ArrowRight className="hidden h-4 w-4 text-muted-foreground/60 md:block" />
+
+        <div className="inline-flex items-center justify-center rounded-lg border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary">
+          {centerLabel}
+        </div>
+
+        <ArrowRight className="hidden h-4 w-4 text-muted-foreground/60 md:block" />
+
+        <div className="space-y-1.5 md:text-right">
+          <span className="block text-[0.7rem] font-medium text-muted-foreground">
+            {rightTitle}
+          </span>
+          {rightItems.length > 0 ? (
+            <div className="flex flex-wrap gap-1.5 md:justify-end">
+              {rightItems.map((item) => (
+                <Link
+                  key={item.id}
+                  to={`/variables/${encodeURIComponent(item.id)}`}
+                  className={
+                    highlightRight
+                      ? "rounded-md border border-primary/30 bg-accent/60 px-2.5 py-1 text-xs font-medium text-accent-foreground hover:border-primary"
+                      : "rounded-md border border-rule bg-surface px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
+                  }
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <span className="text-xs text-muted-foreground">{rightEmpty}</span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function VariableDetailPage() {
   const { id = "" } = useParams();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const [copied, setCopied] = useState(false);
 
   const varQ = useQuery({
     queryKey: ["variable", id],
@@ -109,12 +196,12 @@ export function VariableDetailPage() {
   const reverseProxies = v.reverse_proxies ?? [];
   const derivedChildren = v.derived_children ?? [];
   const totalConceitos = v.conceitos_equivalentes.length + v.conceitos_baseados.length;
-  const totalConexoes =
-    v.proxy_de.length + reverseProxies.length + v.derivada_de.length + derivedChildren.length;
 
-  const copyId = () => {
-    navigator.clipboard.writeText(v.id);
-    toast.success(`Identificador "${v.id}" copiado.`);
+  const copyName = () => {
+    navigator.clipboard.writeText(v.label);
+    setCopied(true);
+    toast.success(`"${v.label}" copiado.`);
+    window.setTimeout(() => setCopied(false), 1500);
   };
 
   return (
@@ -138,8 +225,6 @@ export function VariableDetailPage() {
                   </Link>
                 </>
               )}
-              <ChevronRight className="h-3.5 w-3.5" />
-              <span className="truncate font-mono text-foreground">{v.id}</span>
             </nav>
 
             <div className="flex flex-wrap items-center gap-2">
@@ -171,19 +256,19 @@ export function VariableDetailPage() {
             </div>
           </div>
 
-          <div className="mt-5">
-            <div className="flex flex-wrap items-center gap-2.5">
+          <div className="mt-4">
+            <div className="flex flex-wrap items-center gap-2">
               <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
                 {v.label}
               </h1>
               <button
                 type="button"
-                onClick={copyId}
-                title="Copiar identificador técnico"
-                className="inline-flex items-center gap-1 rounded-md border border-rule bg-background px-2 py-1 font-mono text-xs text-muted-foreground hover:border-primary hover:text-foreground"
+                onClick={copyName}
+                title="Copiar nome da variável"
+                aria-label="Copiar nome da variável"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-rule bg-background text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
               >
-                <span>{v.id}</span>
-                <Copy className="h-3 w-3" />
+                {copied ? <Check className="h-3.5 w-3.5 text-primary" /> : <Copy className="h-3.5 w-3.5" />}
               </button>
             </div>
 
@@ -196,13 +281,9 @@ export function VariableDetailPage() {
                 Risco Máximo: {riskShortLabel(v.nivel_risco_maximo)}
               </span>
 
-              {v.sensivel ? (
+              {v.sensivel && (
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-[oklch(0.85_0.12_25)] bg-[oklch(0.94_0.08_25)] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[oklch(0.40_0.20_25)]">
-                  <ShieldAlert className="h-3.5 w-3.5" /> Variável Sensível / Protegida
-                </span>
-              ) : (
-                <span className="rounded-full border border-rule/60 bg-surface-muted px-3 py-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                  Não sensível diretamente
+                  <ShieldAlert className="h-3.5 w-3.5" /> Variável sensível
                 </span>
               )}
 
@@ -225,25 +306,6 @@ export function VariableDetailPage() {
               )}
             </div>
           </div>
-
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <div className="rounded-lg border border-rule bg-background px-3.5 py-2.5">
-              <p className="text-[0.7rem] font-medium text-muted-foreground">Riscos mapeados</p>
-              <p className="mt-0.5 font-mono text-lg font-bold">{v.riscos.length}</p>
-            </div>
-            <div className="rounded-lg border border-rule bg-background px-3.5 py-2.5">
-              <p className="text-[0.7rem] font-medium text-muted-foreground">Bases autorizadoras</p>
-              <p className="mt-0.5 font-mono text-lg font-bold">{v.bases_autorizadoras.length}</p>
-            </div>
-            <div className="rounded-lg border border-rule bg-background px-3.5 py-2.5">
-              <p className="text-[0.7rem] font-medium text-muted-foreground">Schema.org</p>
-              <p className="mt-0.5 font-mono text-lg font-bold">{totalConceitos}</p>
-            </div>
-            <div className="rounded-lg border border-rule bg-background px-3.5 py-2.5">
-              <p className="text-[0.7rem] font-medium text-muted-foreground">Proxies & Linhagem</p>
-              <p className="mt-0.5 font-mono text-lg font-bold">{totalConexoes}</p>
-            </div>
-          </div>
         </div>
       </header>
 
@@ -252,7 +314,7 @@ export function VariableDetailPage() {
           <section className="rounded-xl border border-[oklch(0.85_0.12_45)] bg-accent/40 p-5">
             <div className="mb-2 flex items-center gap-2 text-sm font-bold text-accent-foreground">
               <AlertTriangle className="h-4 w-4 text-primary" />
-              <span>Alertas Preventivos Herdados por Derivação</span>
+              <span>Alertas herdados</span>
             </div>
             <ul className="list-disc space-y-1 pl-5 text-sm text-foreground">
               {v.inherited_alerts.map((alert, idx) => (
@@ -262,11 +324,11 @@ export function VariableDetailPage() {
           </section>
         )}
 
-        {/* Autorização Legal de Uso */}
+        {/* Autorização legal */}
         <section className="space-y-4 rounded-xl border border-rule bg-surface p-6 shadow-xs">
           <div className="flex items-center gap-2 text-sm font-bold text-foreground">
             <CheckCircle2 className="h-4 w-4 text-[oklch(0.45_0.15_145)]" />
-            <span>Autorização Legal de Uso</span>
+            <span>Autorização legal</span>
           </div>
 
           {v.bases_autorizadoras.length > 0 ? (
@@ -320,11 +382,11 @@ export function VariableDetailPage() {
           })}
         </section>
 
-        {/* Riscos e Controles Mapeados */}
+        {/* Riscos */}
         <section className="space-y-4 rounded-xl border border-rule bg-surface p-6 shadow-xs">
           <div className="flex items-center gap-2 text-sm font-bold text-foreground">
             <ShieldAlert className="h-4 w-4 text-primary" />
-            <span>Riscos e Controles Mapeados ({v.riscos.length})</span>
+            <span>Riscos ({v.riscos.length})</span>
           </div>
 
           {v.riscos.length === 0 ? (
@@ -359,7 +421,7 @@ export function VariableDetailPage() {
                   <div className="grid gap-4 border-t border-rule pt-3 sm:grid-cols-2">
                     <div>
                       <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                        Demanda de Governança Mitigadora
+                        Mitigação / Governança
                       </p>
                       <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                         {risk.demanda_governanca || "Não informada."}
@@ -378,7 +440,7 @@ export function VariableDetailPage() {
 
                   <div className="border-t border-rule pt-3">
                     <p className="mb-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Normas / Dispositivos Restritivos ou Acionados
+                      Normas acionadas
                     </p>
                     {risk.bases_acionadas.length > 0 ? (
                       <div className="flex flex-wrap gap-1.5">
@@ -404,11 +466,11 @@ export function VariableDetailPage() {
           )}
         </section>
 
-        {/* Lastro Externo (Schema.org) */}
+        {/* Schema.org */}
         <section className="rounded-xl border border-rule bg-surface p-6 shadow-xs">
           <div className="mb-3 flex items-center gap-2 text-sm font-bold text-foreground">
             <FileText className="h-4 w-4 text-primary" />
-            <span>Referência Conceitual (Schema.org)</span>
+            <span>Schema.org</span>
           </div>
 
           {totalConceitos === 0 ? (
@@ -466,59 +528,62 @@ export function VariableDetailPage() {
           )}
         </section>
 
-        {/* Relações Semânticas de Proxy e Derivação */}
-        <section className="rounded-xl border border-rule bg-surface p-6 shadow-xs">
-          <div className="mb-3 flex items-center gap-2 text-sm font-bold text-foreground">
+        {/* Relações de Proxy + Observações */}
+        <section className="space-y-4 rounded-xl border border-rule bg-surface p-6 shadow-xs">
+          <div className="flex items-center gap-2 text-sm font-bold text-foreground">
             <GitBranch className="h-4 w-4 text-primary" />
-            <span>Relações de Proxy e Derivação</span>
+            <span>Relações de Proxy</span>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Atua como Proxy de
-              </p>
-              {v.proxy_de.length > 0 ? (
-                <div className="flex flex-wrap gap-2">
-                  {v.proxy_de.map((pid) => (
-                    <Link
-                      key={pid}
-                      to={`/variables/${encodeURIComponent(pid)}`}
-                      className="rounded-md border border-rule bg-accent/50 px-2.5 py-1 text-xs font-medium text-accent-foreground hover:border-primary"
-                    >
-                      {byId.get(pid)?.label ?? pid}
-                    </Link>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-xs text-muted-foreground">Nenhuma ligação direta mapeada.</p>
-              )}
-            </div>
+          <RelationFlowRow
+            title="Direção de Proxy"
+            centerLabel={v.label}
+            leftTitle="Proxies desta"
+            leftItems={reverseProxies}
+            leftEmpty="Nenhuma registrada"
+            rightTitle="Atua como proxy de"
+            rightItems={v.proxy_de.map((pid) => ({
+              id: pid,
+              label: byId.get(pid)?.label ?? pid,
+            }))}
+            rightEmpty="Nenhuma ligação direta"
+            highlightRight
+          />
 
-            <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Outras variáveis que atuam como Proxy desta
+          <div className="border-t border-rule pt-4">
+            <p className="mb-1.5 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              Observações
+            </p>
+            {v.descricoes.atuacao_proxy ? (
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {v.descricoes.atuacao_proxy}
               </p>
-              {reverseProxies.length > 0 ? (
-                <div className="flex flex-wrap gap-2">
-                  {reverseProxies.map((rp) => (
-                    <Link
-                      key={rp.id}
-                      to={`/variables/${encodeURIComponent(rp.id)}`}
-                      className="rounded-md border border-rule bg-surface-muted px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
-                    >
-                      {rp.label}
-                    </Link>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-xs text-muted-foreground">Nenhuma registrada.</p>
-              )}
-            </div>
+            ) : (
+              <p className="text-xs text-muted-foreground">Não informado ainda.</p>
+            )}
+          </div>
+        </section>
 
-            <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Derivada de (Origem de Feature)
+        {/* Linhagem — Pipeline Vertical */}
+        <section className="rounded-xl border border-rule bg-surface p-6 shadow-xs">
+          <div className="mb-5 flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+              <Layers className="h-4 w-4 text-primary" />
+              <span>Linhagem</span>
+            </div>
+            <span className="feature-chip">
+              {v.derivada_de.length === 0 ? "Atributo primário" : `${v.derivada_de.length} origem(ns)`}
+            </span>
+          </div>
+
+          <div className="relative space-y-5 pl-6 before:absolute before:top-2 before:bottom-2 before:left-[7px] before:w-0.5 before:bg-rule">
+            {/* Nível 1: Origens */}
+            <div className="relative">
+              <span className="absolute -left-6 top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-rule bg-surface">
+                <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground" />
+              </span>
+              <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                1. Origens
               </p>
               {v.derivada_de.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
@@ -526,20 +591,44 @@ export function VariableDetailPage() {
                     <Link
                       key={did}
                       to={`/variables/${encodeURIComponent(did)}`}
-                      className="rounded-md border border-rule bg-surface-muted px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
+                      className="rounded-md border border-rule bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
                     >
                       {byId.get(did)?.label ?? did}
                     </Link>
                   ))}
                 </div>
               ) : (
-                <p className="text-xs text-muted-foreground">Variável primária (não derivada).</p>
+                <p className="text-xs text-muted-foreground">
+                  Variável primária (não calculada a partir de outras variáveis).
+                </p>
               )}
             </div>
 
-            <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Variáveis derivadas desta
+            {/* Nível 2: Variável Atual */}
+            <div className="relative">
+              <span className="absolute -left-6 top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-primary bg-surface">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              </span>
+              <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
+                2. Variável em Análise
+              </p>
+              <div className="inline-flex flex-wrap items-center gap-2 rounded-lg border border-primary/35 bg-primary/8 px-3 py-1.5">
+                <span className="text-xs font-bold text-foreground">{v.label}</span>
+                {v.inherited_alerts.length > 0 && (
+                  <span className="rounded-full bg-accent px-2 py-0.5 text-[0.65rem] font-semibold text-accent-foreground">
+                    {v.inherited_alerts.length} alerta(s) herdado(s)
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Nível 3: Derivadas */}
+            <div className="relative">
+              <span className="absolute -left-6 top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-rule bg-surface">
+                <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground" />
+              </span>
+              <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                3. Derivadas desta
               </p>
               {derivedChildren.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
@@ -547,50 +636,26 @@ export function VariableDetailPage() {
                     <Link
                       key={ch.id}
                       to={`/variables/${encodeURIComponent(ch.id)}`}
-                      className="rounded-md border border-rule bg-surface-muted px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
+                      className="rounded-md border border-rule bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:border-primary"
                     >
                       {ch.label}
                     </Link>
                   ))}
                 </div>
               ) : (
-                <p className="text-xs text-muted-foreground">Nenhuma derivada cadastrada.</p>
+                <p className="text-xs text-muted-foreground">Nenhuma variável derivada cadastrada.</p>
               )}
             </div>
           </div>
         </section>
 
-        {/* Atuação como Proxy */}
-        {(() => {
-          const proxyField = DESC_FIELDS.find((f) => f.key === "atuacao_proxy")!;
-          const Icon = FIELD_ICON[proxyField.key];
-          const val = v.descricoes[proxyField.key];
-          return (
-            <section className="rounded-xl border border-rule bg-surface p-6 shadow-xs">
-              <div className="mb-2 flex items-center gap-2 text-sm font-bold text-foreground">
-                <Icon className="h-4 w-4 text-primary" />
-                <span>{proxyField.title}</span>
-              </div>
-              {val ? (
-                <p className="text-sm leading-relaxed text-muted-foreground">{val}</p>
-              ) : (
-                <p className="text-xs text-muted-foreground">Não informado ainda.</p>
-              )}
-            </section>
-          );
-        })()}
-
         {/* Histórico de Alterações */}
-        <section className="rounded-xl border border-rule bg-surface p-6 shadow-xs">
-          <div className="mb-2 flex items-center gap-2 text-sm font-bold text-foreground">
-            <Clock className="h-4 w-4 text-primary" />
-            <span>Histórico de Alterações</span>
-          </div>
-          {!v.history || v.history.length === 0 ? (
-            <p className="text-xs text-muted-foreground">
-              Nenhuma edição registrada após a carga inicial do catálogo.
-            </p>
-          ) : (
+        {v.history && v.history.length > 0 ? (
+          <section className="rounded-xl border border-rule bg-surface p-6 shadow-xs">
+            <div className="mb-2 flex items-center gap-2 text-sm font-bold text-foreground">
+              <Clock className="h-4 w-4 text-primary" />
+              <span>Histórico de Alterações</span>
+            </div>
             <ul className="divide-y divide-rule text-xs">
               {v.history.map((h) => (
                 <li key={h.id} className="flex items-center justify-between py-2">
@@ -603,8 +668,12 @@ export function VariableDetailPage() {
                 </li>
               ))}
             </ul>
-          )}
-        </section>
+          </section>
+        ) : (
+          <p className="flex items-center gap-1.5 px-1 text-xs text-muted-foreground">
+            <Clock className="h-3.5 w-3.5" /> Sem edições registradas após a carga inicial.
+          </p>
+        )}
       </article>
     </div>
   );

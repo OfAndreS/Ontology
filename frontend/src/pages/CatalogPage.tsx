@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -18,16 +18,23 @@ import { api } from "@/lib/api";
 import { riskBadgeClass, riskShortLabel, statusBadgeClass } from "@/lib/levels";
 
 export function CatalogPage() {
-  const [searchParams] = useSearchParams();
-  const initialCat = searchParams.get("category") ?? "";
+  const [searchParams, setSearchParams] = useSearchParams();
+  const urlCategory = searchParams.get("category") ?? "";
   const [search, setSearch] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState(initialCat);
+  const [categoryFilter, setCategoryFilter] = useState(urlCategory);
   const [riskFilter, setRiskFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [sensitiveOnly, setSensitiveOnly] = useState(false);
   const [proxyOnly, setProxyOnly] = useState(false);
-  const [showFilters, setShowFilters] = useState(Boolean(initialCat));
+  const [showFilters, setShowFilters] = useState(Boolean(urlCategory));
   const [sortAsc, setSortAsc] = useState(true);
+
+  useEffect(() => {
+    setCategoryFilter(urlCategory);
+    if (urlCategory) {
+      setShowFilters(true);
+    }
+  }, [urlCategory]);
 
   const varsQ = useQuery({ queryKey: ["variables"], queryFn: api.getVariables });
   const catsQ = useQuery({ queryKey: ["categories"], queryFn: api.getCategories });
@@ -100,6 +107,9 @@ export function CatalogPage() {
     setStatusFilter("");
     setSensitiveOnly(false);
     setProxyOnly(false);
+    if (searchParams.has("category")) {
+      setSearchParams({}, { replace: true });
+    }
   };
 
   return (
@@ -130,15 +140,15 @@ export function CatalogPage() {
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-xl border border-rule bg-background p-4">
-              <p className="text-xs font-medium text-muted-foreground">Variáveis no Catálogo</p>
+              <p className="text-xs font-medium text-muted-foreground">Variáveis</p>
               <p className="mt-1 font-mono text-2xl font-bold">{stats.total}</p>
             </div>
             <div className="rounded-xl border border-rule bg-background p-4">
-              <p className="text-xs font-medium text-muted-foreground">Riscos Desmembrados</p>
+              <p className="text-xs font-medium text-muted-foreground">Riscos</p>
               <p className="mt-1 font-mono text-2xl font-bold">{stats.totalRiscos}</p>
             </div>
             <div className="rounded-xl border border-rule bg-background p-4">
-              <p className="text-xs font-medium text-muted-foreground">Veto ou Risco Máximo</p>
+              <p className="text-xs font-medium text-muted-foreground">Veto ou Máximo</p>
               <p className="mt-1 font-mono text-2xl font-bold text-[oklch(0.45_0.18_28)]">
                 {stats.vetosOrMax}
               </p>
@@ -204,7 +214,7 @@ export function CatalogPage() {
                   : "border-rule bg-background text-muted-foreground hover:text-foreground"
               }`}
             >
-              <ShieldAlert className="h-3.5 w-3.5" /> Sensíveis / Protegidas
+              <ShieldAlert className="h-3.5 w-3.5" /> Sensíveis
             </button>
 
             <button
@@ -350,15 +360,14 @@ export function CatalogPage() {
                     {v.label}
                   </h2>
 
-                  <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                    <span className="font-mono">{v.id}</span>
-                    {v.categoria_label && (
+                  {v.categoria_label && (
+                    <div className="mt-1.5">
                       <span className="inline-flex items-center gap-1 rounded bg-surface-muted px-2 py-0.5 text-[0.7rem] font-medium text-foreground">
                         <FolderTree className="h-3 w-3 text-primary" />
                         {v.categoria_label}
                       </span>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
                   {v.riscos.length > 0 && (
                     <p className="mt-3 line-clamp-2 text-xs leading-relaxed text-muted-foreground">

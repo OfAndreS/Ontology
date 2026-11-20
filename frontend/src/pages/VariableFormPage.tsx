@@ -248,7 +248,7 @@ export function VariableFormPage() {
           {/* 1. Identificação e Atributos Básicos */}
           <section className="space-y-4 rounded-xl border border-rule bg-surface p-6 shadow-xs">
             <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">
-              1. Identificação e Atributos da Variável
+              1. Identificação e Atributos
             </h2>
 
             <div className="grid gap-4 sm:grid-cols-2">
@@ -266,7 +266,7 @@ export function VariableFormPage() {
 
               <label className="space-y-1.5">
                 <span className="block text-xs font-medium text-muted-foreground">
-                  Status de Curadoria Jurídica
+                  Curadoria
                 </span>
                 <select
                   value={statusCuradoria}
@@ -302,7 +302,7 @@ export function VariableFormPage() {
 
             <label className="block space-y-1.5">
               <span className="block text-xs font-medium text-muted-foreground">
-                Origem Sugerida
+                Origem
               </span>
               <textarea
                 rows={4}
@@ -317,7 +317,7 @@ export function VariableFormPage() {
 
             <label className="block space-y-1.5">
               <span className="block text-xs font-medium text-muted-foreground">
-                Explicabilidade Necessária
+                Explicabilidade
               </span>
               <textarea
                 rows={4}
@@ -348,7 +348,7 @@ export function VariableFormPage() {
           <section className="space-y-4 rounded-xl border border-rule bg-surface p-6 shadow-xs">
             <div>
               <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">
-                2. Referência Conceitual (Schema.org)
+                2. Schema.org
               </h2>
               <p className="mt-0.5 text-xs text-muted-foreground">
                 Pesquise termos para ancorar a variável como <strong>Equivalente</strong> (mesmo
@@ -510,7 +510,7 @@ export function VariableFormPage() {
               <div className="rounded-lg border border-[oklch(0.85_0.12_45)] bg-accent/40 p-4">
                 <div className="mb-1.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accent-foreground">
                   <AlertTriangle className="h-4 w-4 text-primary" />
-                  Alertas Preventivos Herdados da Derivação
+                  Alertas herdados
                 </div>
                 <ul className="list-disc space-y-1 pl-5 text-xs text-foreground">
                   {liveInheritedAlerts.map((al, i) => (
@@ -551,7 +551,7 @@ export function VariableFormPage() {
 
             <label className="block space-y-1.5">
               <span className="block text-xs font-medium text-muted-foreground">
-                Atuação como Proxy (Descrição)
+                Observações
               </span>
               <textarea
                 rows={2}
@@ -579,7 +579,7 @@ export function VariableFormPage() {
             <div className="space-y-3 border-b border-rule pb-5">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  Bases Legais Autorizadoras de Uso
+                  Bases autorizadoras
                 </p>
                 <p className="mt-0.5 text-xs text-muted-foreground">
                   Normas ou dispositivos que legitimam a coleta/uso desta variável.
@@ -589,12 +589,12 @@ export function VariableFormPage() {
                 options={allLegalBases}
                 selectedIds={basesAutorizadoras}
                 onChange={setBasesAutorizadoras}
-                placeholder="+ Adicionar base legal autorizadora..."
+                placeholder="+ Adicionar base autorizadora..."
                 chipTone="auth"
               />
               <label className="block space-y-1.5 pt-1">
                 <span className="block text-xs font-medium text-muted-foreground">
-                  Justificativa Legal de Uso
+                  Justificativa legal
                 </span>
                 <textarea
                   rows={2}
@@ -612,7 +612,7 @@ export function VariableFormPage() {
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    Riscos e Controles Mapeados ({riscos.length})
+                    Riscos ({riscos.length})
                   </p>
                   <p className="mt-0.5 text-xs text-muted-foreground">
                     O nível máximo da variável será calculado automaticamente a partir dos riscos.
@@ -686,7 +686,7 @@ export function VariableFormPage() {
                       <div className="grid gap-3 sm:grid-cols-2">
                         <label className="space-y-1">
                           <span className="block text-xs font-medium text-muted-foreground">
-                            Demanda de Governança Mitigadora
+                            Mitigação / Governança
                           </span>
                           <textarea
                             rows={2}
@@ -717,7 +717,7 @@ export function VariableFormPage() {
 
                       <div className="space-y-1.5">
                         <p className="text-xs font-medium text-muted-foreground">
-                          Normas / Dispositivos Restritivos ou Acionados
+                          Normas acionadas
                         </p>
                         <LegalBasePicker
                           options={allLegalBases}

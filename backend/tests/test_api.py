@@ -222,6 +222,19 @@ def test_law_crud_pdf_and_category_guard(client: TestClient):
     assert dl.status_code == 200
     assert dl.content.startswith(b"%PDF-1.4")
 
+    # Atualiza norma existente preservando IDs dos dispositivos legais
+    lgpd = client.get("/api/laws/norma-lgpd", headers=hdr).json()
+    assert any(d["id"] == "LGPD_Art7_X_ProtecaoCredito" for d in lgpd["dispositivos"])
+    patched_lgpd = client.patch(
+        "/api/laws/norma-lgpd",
+        headers=hdr,
+        json={"descricao": "Lei Geral de Proteção de Dados atualizada"},
+    )
+    assert patched_lgpd.status_code == 200
+    assert any(
+        d["id"] == "LGPD_Art7_X_ProtecaoCredito" for d in patched_lgpd.json()["dispositivos"]
+    )
+
     # Exclui norma e valida limpeza
     assert client.delete(f"/api/laws/{slug}", headers=hdr).status_code == 204
     assert client.get(f"/api/laws/{slug}", headers=hdr).status_code == 404
